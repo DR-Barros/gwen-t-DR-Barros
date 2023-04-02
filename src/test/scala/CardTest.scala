@@ -1,4 +1,7 @@
 package cl.uchile.dcc
+import gwent.UnitCard
+import gwent.WeatherCard
+
 import munit.FunSuite
 
 class CardTest extends munit.FunSuite {
@@ -10,7 +13,7 @@ class CardTest extends munit.FunSuite {
   override def beforeEach(context: BeforeEach): Unit = {
     U1 = new UnitCard("soldado")
     U2 = new UnitCard("arquera")
-    W1 = new WheatherCard("Escarcha")
+    W1 = new WeatherCard("Escarcha")
     W2 = new WeatherCard("Niebla")
   }
   test("Las Cartas tienen nombre"){
@@ -20,9 +23,9 @@ class CardTest extends munit.FunSuite {
     assertEquals(W2.getName(), "Niebla")
   }
   test("Las Cartas tienen un tipo"){
-    assertEquals(U1.getTipe(), "Unit")
-    assertEquals(U1.getTipe(), U2.getTipe())
-    assertEquals(W1.getTipe(), "Weather")
-    assertEquals(W1.getTipe(), W2.getTipe())
+    assertEquals(U1.getCardType(), "Unit")
+    assertEquals(U1.getCardType(), U2.getCardType())
+    assertEquals(W1.getCardType(), "Weather")
+    assertEquals(W1.getCardType(), W2.getCardType())
   }
 }
