@@ -1,14 +1,25 @@
 package cl.uchile.dcc
-import gwent.UserPlayer
+import gwent.{Deck, UnitCard, UserPlayer}
+
 import munit.FunSuite
+
+import scala.collection.mutable.ListBuffer
 
 class PlayerTest extends munit.FunSuite {
   var player1: UserPlayer = _
   var player2: UserPlayer = _
+  var deck1: Deck = _
 
   override def beforeEach(context: BeforeEach): Unit = {
     player1 = new UserPlayer("P1", 1)
     player2 = new UserPlayer("P2", 2)
+    deck1 = new Deck(ListBuffer(
+      new UnitCard("Darth Vader", 19), new UnitCard("Luke Skywalker", 16), new UnitCard("Yoda", 20),
+      new UnitCard("Han Solo", 10), new UnitCard("C3PO", 1), new UnitCard("Chewbacca", 12),
+      new UnitCard("Darth Maul", 13), new UnitCard("Obi Wan Kenobi", 17), new UnitCard("Ahsoka Tano", 12),
+      new UnitCard("Palpatine", 20), new UnitCard("R2-D2", 9), new UnitCard("Mace Windu", 17),
+      new UnitCard("Din Djarin", 13), new UnitCard("General Grievous", 14), new UnitCard("Leia Organa", 16)
+    ))
   }
 
   test("Un jugador debe tener un nombre"){
@@ -26,5 +37,45 @@ class PlayerTest extends munit.FunSuite {
     player1.loseGems()
     player1.loseGems()
     assertEquals(player1.getGems(), 0)
+  }
+  test("Un jugador comienza con 0 cartas en su mano"){
+    assertEquals(player1.handSize(), 0)
+  }
+  test("Los jugadores al robar cartas de un mazo aumentan la cantidad de cartas de su mano"){
+    player1.stealCard(deck1)
+    assertEquals(player1.handSize(), 1)
+    player1.stealCard(deck1)
+    player1.stealCard(deck1)
+    player1.stealCard(deck1)
+    assertEquals(player1.handSize(), 4)
+  }
+  test("La maxima cantidad de cartas en la mano es 10"){
+    player2.stealCard(deck1)
+    player2.stealCard(deck1)
+    player2.stealCard(deck1)
+    player2.stealCard(deck1)
+    player2.stealCard(deck1)
+    player2.stealCard(deck1)
+    player2.stealCard(deck1)
+    player2.stealCard(deck1)
+    player2.stealCard(deck1)
+    player2.stealCard(deck1)
+    assertEquals(player2.handSize(), 10)
+    player2.stealCard(deck1)
+    assertEquals(player2.handSize(), 10)
+  }
+  test("Al jugar una carta disminuye la cantidad de cartas en la mano del jugador"){
+    assertEquals(player2.handSize(), 0)
+    player2.stealCard(deck1)
+    player2.stealCard(deck1)
+    assertEquals(player2.handSize(), 2)
+    player2.playCard(1)
+    assertEquals(player2.handSize(), 1)
+    player2.playCard(4)
+    assertEquals(player2.handSize(), 0)
+  }
+  test("Si el jugador no tiene cartas en la mano juega la carta vacia"){
+    assertEquals(player2.handSize(), 0)
+    assertEquals(player2.playCard(1).getName(), "empty")
   }
 }
