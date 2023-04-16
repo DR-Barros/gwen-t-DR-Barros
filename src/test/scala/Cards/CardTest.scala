@@ -57,6 +57,22 @@ class CardTest extends munit.FunSuite {
   }
 }
 
+class CorpCardTest extends munit.FunSuite{
+  var C1: CorpCard = _
+
+  override def beforeEach(context: BeforeEach): Unit = {
+    C1 = new CorpCard("vikingo", 18)
+  }
+  test("Una carta cuerpo a cuerpo tien nombre"){
+    assertEquals(C1.getName(), "vikingo")
+  }
+  test("Una carta de cuerpo a cuerpo es de tipo cuerpo a cuerpo"){
+    assertEquals(C1.getType(), "Corp")
+  }
+  test("Una carta de cuerpo a cuerpo tiene fuerza"){
+    assertEquals(C1.getStrength(), 18)
+  }
+}
 class CardsHandTest extends munit.FunSuite {
   var U1: UnitCard = _
   var U2: UnitCard = _
