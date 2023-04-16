@@ -20,6 +20,5 @@ class Deck (private var cards: ListBuffer [Card]){
     } else {
       return new emptyCard
     }
-    
   }
 }

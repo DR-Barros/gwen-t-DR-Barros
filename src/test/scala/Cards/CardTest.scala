@@ -56,3 +56,56 @@ class CardTest extends munit.FunSuite {
     assertEquals(D2.stealCard().getCardType(), "empty")
   }
 }
+
+class CardsHandTest extends munit.FunSuite {
+  var U1: UnitCard = _
+  var U2: UnitCard = _
+  var W1: WeatherCard = _
+  var W2: WeatherCard = _
+  var C1: CardsHand = _
+  var C2: CardsHand = _
+
+  override def beforeEach(context: BeforeEach): Unit = {
+    U1 = new UnitCard("soldado", 15)
+    U2 = new UnitCard("arquera", 4)
+    W1 = new WeatherCard("Escarcha")
+    W2 = new WeatherCard("Niebla")
+    C1 = new CardsHand()
+    C2 = new CardsHand()
+  }
+
+  test("La mano de cartas se inicializa vacia"){
+    assertEquals(C1.handSize(), 0)
+    assertEquals(C2.handSize(), 0)
+  }
+  test("A la mano de cartas se le pueden agragr cartas"){
+    assertEquals(C1.handSize(), 0)
+    C1.addCards(U2)
+    assertEquals(C1.handSize(), 1)
+  }
+  test("Una mano de cartas puede tener como maximo 10 cartas"){
+    C1.addCards(U2)
+    C1.addCards(U1)
+    C1.addCards(W2)
+    C1.addCards(U2)
+    C1.addCards(W1)
+    C1.addCards(U1)
+    C1.addCards(W2)
+    C1.addCards(U2)
+    C1.addCards(U2)
+    C1.addCards(W1)
+    assertEquals(C1.handSize(), 10)
+    C1.addCards(W2)
+    C1.addCards(U2)
+    C1.addCards(W1)
+    C1.addCards(U1)
+    C1.addCards(W2)
+    assertEquals(C1.handSize(), 10)
+  }
+  test("Una carta puede ser jugada, diminuyendo la cantidad de cartas de la mano"){
+    C1.addCards(U2)
+    assertEquals(C1.handSize(), 1)
+    C1.playCard()
+    assertEquals(C1.handSize(), 0)
+  }
+}
