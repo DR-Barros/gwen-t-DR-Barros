@@ -1,5 +1,7 @@
 package cl.uchile.dcc
-package gwent
+package gwent.Cards
+
+import gwent.Cards.Card
 
 class emptyCard extends Card {
   def getName(): String = {

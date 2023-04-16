@@ -1,5 +1,8 @@
 package cl.uchile.dcc
-package gwent
+package gwent.Cards
+
+import gwent.Cards.Card
+
 import scala.collection.mutable.ListBuffer
 
 class Deck (private var cards: ListBuffer [Card]){

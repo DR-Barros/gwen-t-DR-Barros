@@ -1,7 +1,9 @@
 package cl.uchile.dcc
-package gwent
-import gwent.Player
-import gwent.Card
+package gwent.Players
+
+import gwent.Cards.{Card, Deck, emptyCard}
+import gwent.Players.Player
+
 import scala.collection.mutable.ListBuffer
 
 class UserPlayer (private  val name: String, private val zone: Int) extends Player {

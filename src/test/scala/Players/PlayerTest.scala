@@ -1,5 +1,8 @@
 package cl.uchile.dcc
-import gwent.{Deck, UnitCard, UserPlayer}
+package Players
+
+import gwent.Cards.{Deck, UnitCard}
+import gwent.Players.UserPlayer
 
 import munit.FunSuite
 

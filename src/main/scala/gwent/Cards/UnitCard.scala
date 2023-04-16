@@ -1,5 +1,7 @@
 package cl.uchile.dcc
-package gwent
+package gwent.Cards
+
+import gwent.Cards.Card
 
 class UnitCard(private val name: String, private val strength: Int) extends Card {
   private val cardType: String = "Unit"

@@ -1,9 +1,8 @@
 package cl.uchile.dcc
-import gwent.Card
-import gwent.UnitCard
-import gwent.WeatherCard
-import gwent.emptyCard
-import gwent.Deck
+package Cards
+
+import gwent.Cards.*
+
 import munit.FunSuite
 
 import scala.collection.mutable.ListBuffer
