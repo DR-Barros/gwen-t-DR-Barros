@@ -73,6 +73,54 @@ class CorpCardTest extends munit.FunSuite{
     assertEquals(C1.getStrength(), 18)
   }
 }
+
+class DistanceCardTest extends munit.FunSuite{
+  var C1: DistanceCard = _
+
+  override def beforeEach(context: BeforeEach): Unit = {
+    C1 = new DistanceCard("arquera", 14)
+  }
+  test("Una carta cuerpo a cuerpo tien nombre"){
+    assertEquals(C1.getName(), "arquera")
+  }
+  test("Una carta de cuerpo a cuerpo es de tipo cuerpo a cuerpo"){
+    assertEquals(C1.getCardType(), "Distance")
+  }
+  test("Una carta de cuerpo a cuerpo tiene fuerza"){
+    assertEquals(C1.getStrength(), 14)
+  }
+}
+
+class SiegeCardTest extends munit.FunSuite{
+  var C1: SiegeCard = _
+
+  override def beforeEach(context: BeforeEach): Unit = {
+    C1 = new SiegeCard("catapulta", 25)
+  }
+  test("Una carta cuerpo a cuerpo tien nombre"){
+    assertEquals(C1.getName(), "catapulta")
+  }
+  test("Una carta de cuerpo a cuerpo es de tipo cuerpo a cuerpo"){
+    assertEquals(C1.getCardType(), "Siege")
+  }
+  test("Una carta de cuerpo a cuerpo tiene fuerza"){
+    assertEquals(C1.getStrength(), 25)
+  }
+}
+
+class WeatherCardTest extends munit.FunSuite{
+  var W1: WeatherCard = _
+
+  override def beforeEach(context: BeforeEach): Unit = {
+    W1 = new WeatherCard("soleado")
+  }
+  test("Una carta cuerpo a cuerpo tien nombre"){
+    assertEquals(W1.getName(), "soleado")
+  }
+  test("Una carta de cuerpo a cuerpo es de tipo cuerpo a cuerpo"){
+    assertEquals(W1.getCardType(), "Weather")
+  }
+}
 class CardsHandTest extends munit.FunSuite {
   var U1: UnitCard = _
   var U2: UnitCard = _
