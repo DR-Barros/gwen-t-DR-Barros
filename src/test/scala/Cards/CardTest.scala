@@ -67,7 +67,7 @@ class CorpCardTest extends munit.FunSuite{
     assertEquals(C1.getName(), "vikingo")
   }
   test("Una carta de cuerpo a cuerpo es de tipo cuerpo a cuerpo"){
-    assertEquals(C1.getType(), "Corp")
+    assertEquals(C1.getCardType(), "Corp")
   }
   test("Una carta de cuerpo a cuerpo tiene fuerza"){
     assertEquals(C1.getStrength(), 18)
