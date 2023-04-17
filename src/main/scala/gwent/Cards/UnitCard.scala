@@ -3,13 +3,12 @@ package gwent.Cards
 
 import gwent.Cards.Card
 
-class UnitCard(private val name: String, private val strength: Int) extends Card {
-  private val cardType: String = "Unit"
+abstract class UnitCard(private val name: String, private val strength: Int) extends Card {
   def getName(): String = {
     return name
   }
   def getCardType(): String = {
-    return  cardType
+    return  "Unit"
   }
   def getStrength(): Int = {
     return  strength
