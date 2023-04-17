@@ -122,16 +122,16 @@ class WeatherCardTest extends munit.FunSuite{
   }
 }
 class CardsHandTest extends munit.FunSuite {
-  var U1: UnitCard = _
-  var U2: UnitCard = _
+  var U1: CorpCard = _
+  var U2: DistanceCard = _
   var W1: WeatherCard = _
   var W2: WeatherCard = _
   var C1: CardsHand = _
   var C2: CardsHand = _
 
   override def beforeEach(context: BeforeEach): Unit = {
-    U1 = new UnitCard("soldado", 15)
-    U2 = new UnitCard("arquera", 4)
+    U1 = new CorpCard("soldado", 15)
+    U2 = new DistanceCard("arquera", 4)
     W1 = new WeatherCard("Escarcha")
     W2 = new WeatherCard("Niebla")
     C1 = new CardsHand()
