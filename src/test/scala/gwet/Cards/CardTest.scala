@@ -1,5 +1,5 @@
 package cl.uchile.dcc
-package Cards
+package gwet.Cards
 
 import gwent.Cards.*
 
@@ -22,6 +22,11 @@ class CorpCardTest extends munit.FunSuite{
   test("Una carta de cuerpo a cuerpo tiene fuerza"){
     assertEquals(C1.getStrength(), 18)
   }
+  test("Una carta cuerpo a cuerpo se identifica por su nombre y fuerza"){
+    assert(C1.equals(new CorpCard("vikingo", 18)))
+    assert(!C1.equals(new CorpCard("soldado", 18)))
+    assert(!C1.equals(new CorpCard("vikingo", 10)))
+  }
 }
 
 class DistanceCardTest extends munit.FunSuite{
@@ -30,14 +35,19 @@ class DistanceCardTest extends munit.FunSuite{
   override def beforeEach(context: BeforeEach): Unit = {
     C1 = new DistanceCard("arquera", 14)
   }
-  test("Una carta cuerpo a cuerpo tien nombre"){
+  test("Una carta a distancia tien nombre"){
     assertEquals(C1.getName(), "arquera")
   }
-  test("Una carta de cuerpo a cuerpo es de tipo cuerpo a cuerpo"){
+  test("Una carta a distancia es de a distancia"){
     assertEquals(C1.getCardType(), "Distance")
   }
-  test("Una carta de cuerpo a cuerpo tiene fuerza"){
+  test("Una carta a distancia tiene fuerza"){
     assertEquals(C1.getStrength(), 14)
+  }
+  test("Una carta a distancia se identifica por su nombre y fuerza") {
+    assert(C1.equals(new DistanceCard("arquera", 14)))
+    assert(!C1.equals(new DistanceCard("mago", 14)))
+    assert(!C1.equals(new DistanceCard("arquera", 10)))
   }
 }
 
@@ -47,14 +57,19 @@ class SiegeCardTest extends munit.FunSuite{
   override def beforeEach(context: BeforeEach): Unit = {
     C1 = new SiegeCard("catapulta", 25)
   }
-  test("Una carta cuerpo a cuerpo tien nombre"){
+  test("Una carta de asedio tien nombre"){
     assertEquals(C1.getName(), "catapulta")
   }
-  test("Una carta de cuerpo a cuerpo es de tipo cuerpo a cuerpo"){
+  test("Una carta de asedio es de tipo asedio"){
     assertEquals(C1.getCardType(), "Siege")
   }
-  test("Una carta de cuerpo a cuerpo tiene fuerza"){
+  test("Una carta de asedio tiene fuerza"){
     assertEquals(C1.getStrength(), 25)
+  }
+  test("Una carta de asedio se identifica por su nombre y fuerza") {
+    assert(C1.equals(new SiegeCard("catapulta", 25)))
+    assert(!C1.equals(new SiegeCard("Torre", 25)))
+    assert(!C1.equals(new SiegeCard("catapulta", 20)))
   }
 }
 
@@ -64,10 +79,10 @@ class WeatherCardTest extends munit.FunSuite{
   override def beforeEach(context: BeforeEach): Unit = {
     W1 = new WeatherCard("soleado")
   }
-  test("Una carta cuerpo a cuerpo tien nombre"){
+  test("Una carta de clima tien nombre"){
     assertEquals(W1.getName(), "soleado")
   }
-  test("Una carta de cuerpo a cuerpo es de tipo cuerpo a cuerpo"){
+  test("Una carta de clima es de tipo clima"){
     assertEquals(W1.getCardType(), "Weather")
   }
 }

@@ -4,9 +4,7 @@ package Cards
 
 import gwent.Cards.{Deck, CorpCard, DistanceCard, SiegeCard, Card}
 import gwent.Players.UserPlayer
-
 import munit.FunSuite
-
 import scala.collection.mutable.ListBuffer
 
 class PlayerTest extends munit.FunSuite {
@@ -38,6 +36,10 @@ class PlayerTest extends munit.FunSuite {
     assertEquals(player1.getZone(), 1)
     assertEquals(player2.getZone(), 2)
   }
+  test("Un jugador se identifica por su nombre y zona"){
+    assert(!player1.equals(player2))
+    assert(player1.equals(new UserPlayer("P1", 1, new Deck(ListBuffer()))))
+  }
   test("manejo de gemas de un jugador"){
     assertEquals(player1.getGems(), 2)
     player1.loseGems()
@@ -58,7 +60,7 @@ class PlayerTest extends munit.FunSuite {
     assertEquals(player1.handSize(), 4)
   }
 
-  test("El jugador puede jugar cartas"){
+  test("El jugador puede jugar cartas y estas se eliminan de la mano"){
     assertEquals(player2.handSize(), 0)
     player2.stealCard()
     player2.stealCard()
