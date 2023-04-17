@@ -154,7 +154,7 @@ class CardsHandTest extends munit.FunSuite {
   test("Una carta puede ser jugada, diminuyendo la cantidad de cartas de la mano"){
     C1.addCards(U2)
     assertEquals(C1.handSize(), 1)
-    C1.playCard()
+    C1.playCard(0)
     assertEquals(C1.handSize(), 0)
   }
 }

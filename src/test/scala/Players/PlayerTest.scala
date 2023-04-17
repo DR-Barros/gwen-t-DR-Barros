@@ -1,7 +1,8 @@
 package cl.uchile.dcc
 package Players
+package Cards
 
-import gwent.Cards.{Deck, UnitCard}
+import gwent.Cards.{Deck, CorpCard, DistanceCard, SiegeCard}
 import gwent.Players.UserPlayer
 
 import munit.FunSuite
@@ -17,11 +18,11 @@ class PlayerTest extends munit.FunSuite {
     player1 = new UserPlayer("P1", 1)
     player2 = new UserPlayer("P2", 2)
     deck1 = new Deck(ListBuffer(
-      new UnitCard("Darth Vader", 19), new UnitCard("Luke Skywalker", 16), new UnitCard("Yoda", 20),
-      new UnitCard("Han Solo", 10), new UnitCard("C3PO", 1), new UnitCard("Chewbacca", 12),
-      new UnitCard("Darth Maul", 13), new UnitCard("Obi Wan Kenobi", 17), new UnitCard("Ahsoka Tano", 12),
-      new UnitCard("Palpatine", 20), new UnitCard("R2-D2", 9), new UnitCard("Mace Windu", 17),
-      new UnitCard("Din Djarin", 13), new UnitCard("General Grievous", 14), new UnitCard("Leia Organa", 16)
+      new CorpCard("Darth Vader", 19), new CorpCard("Luke Skywalker", 16), new CorpCard("Yoda", 20),
+      new DistanceCard("Han Solo", 10), new SiegeCard("C3PO", 1), new DistanceCard("Chewbacca", 12),
+      new CorpCard("Darth Maul", 13), new CorpCard("Obi Wan Kenobi", 17), new CorpCard("Ahsoka Tano", 12),
+      new CorpCard("Palpatine", 20), new SiegeCard("R2-D2", 9), new CorpCard("Mace Windu", 17),
+      new DistanceCard("Din Djarin", 13), new CorpCard("General Grievous", 14), new DistanceCard("Leia Organa", 16)
     ))
   }
 

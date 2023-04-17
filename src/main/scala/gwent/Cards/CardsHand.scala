@@ -17,16 +17,9 @@ class CardsHand {
       cards += card
     }
   }
-  def playCard(): Card = {
-    val n = handSize()
-    if (n > 0) {
-      val r = new scala.util.Random
-      val random = r.nextInt(n)
-      val cardReturn = cards(random)
-      cards -= cardReturn
-      return cardReturn
-    } else {
-      return new emptyCard
-    }
+  def playCard(n: Int): Card = {
+    val card = cards(n)
+    cards -= card
+    return card
   }
 }

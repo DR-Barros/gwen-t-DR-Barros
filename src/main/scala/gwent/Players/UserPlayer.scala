@@ -1,7 +1,7 @@
 package cl.uchile.dcc
 package gwent.Players
 
-import gwent.Cards.{Card, Deck, emptyCard}
+import gwent.Cards.{Card, CardsHand, Deck, emptyCard}
 import gwent.Players.Player
 
 import scala.collection.mutable.ListBuffer
@@ -30,7 +30,7 @@ class UserPlayer (private  val name: String, private val zone: Int) extends Play
    *
    * Esta variable almacena en una lista las cartas que el jugador tiene en la mano.
    */
-  private var cardHand = ListBuffer[Card]()
+  private var cardHand = new CardsHand
 
   /**
    * Devuelve el nombre del jugador.
@@ -66,7 +66,7 @@ class UserPlayer (private  val name: String, private val zone: Int) extends Play
    * Devuelve la cantidad de cartas que el jugador tiene en la mano del jugador.
    */
   def handSize(): Int = {
-    return cardHand.size
+    return cardHand.handSize()
   }
 
   /**
@@ -76,7 +76,7 @@ class UserPlayer (private  val name: String, private val zone: Int) extends Play
     if (handSize() < 10){
       val card = deck.stealCard()
       if (card.getName() != "empty") {
-        cardHand += card
+        cardHand.addCards(card)
       }
     }
   }
@@ -87,13 +87,10 @@ class UserPlayer (private  val name: String, private val zone: Int) extends Play
   def playCard(n: Int): Card = {
     var hS = handSize()
     if (hS > 0 && n < hS){
-      var rCard: Card = cardHand(n)
-      cardHand -= rCard
-      return rCard
+      return cardHand.playCard(n)
+      
     } else if (hS > 0){
-      var rCard: Card = cardHand(hS -1)
-      cardHand -= rCard
-      return rCard
+      return cardHand.playCard(hS -1)
     } else {
       return  new emptyCard
     }
