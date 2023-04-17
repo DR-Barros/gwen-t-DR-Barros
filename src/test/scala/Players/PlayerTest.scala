@@ -2,7 +2,7 @@ package cl.uchile.dcc
 package Players
 package Cards
 
-import gwent.Cards.{Deck, CorpCard, DistanceCard, SiegeCard}
+import gwent.Cards.{Deck, CorpCard, DistanceCard, SiegeCard, Card}
 import gwent.Players.UserPlayer
 
 import munit.FunSuite
@@ -57,15 +57,17 @@ class PlayerTest extends munit.FunSuite {
     player1.stealCard()
     assertEquals(player1.handSize(), 4)
   }
-  
+
   test("El jugador puede jugar cartas"){
     assertEquals(player2.handSize(), 0)
     player2.stealCard()
     player2.stealCard()
     assertEquals(player2.handSize(), 2)
-    player2.playCard(1)
+    var card = player2.playCard(1)
+    equals(card.isInstanceOf[Card])
     assertEquals(player2.handSize(), 1)
-    player2.playCard(4)
+    card = player2.playCard(4)
+    equals(card.isInstanceOf[Card])
     assertEquals(player2.handSize(), 0)
   }
 }

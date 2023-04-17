@@ -3,7 +3,7 @@ package gwent.Players
 
 import gwent.Cards.{Card, CardsHand, Deck, emptyCard}
 import gwent.Players.Player
-
+import java.util.Objects
 import scala.collection.mutable.ListBuffer
 
 /** clase que representa un jugador.
@@ -20,7 +20,7 @@ import scala.collection.mutable.ListBuffer
  * @since 1.0.0
  * @version 1.0.2
  */
-class UserPlayer (private  val name: String, private val zone: Int, private var deck: Deck) extends Player {
+class UserPlayer (private  val name: String, private val zone: Int, private var deck: Deck) extends Player with Equals {
   /** Contador de gemas.
    *
    * Esta variable lleva la cuenta de cuantas gemas le quedan al jugador, se inicia en 2.
@@ -89,11 +89,32 @@ class UserPlayer (private  val name: String, private val zone: Int, private var 
     var hS = handSize()
     if (hS > 0 && n < hS){
       return cardHand.playCard(n)
-
     } else if (hS > 0){
       return cardHand.playCard(hS -1)
     } else {
       return  new emptyCard
     }
   }
+
+  /**
+   * Comprobar si el objeto es de la mima clase que el objeto actual
+   */
+  override def canEqual(that: Any): Boolean = that.isInstanceOf[UserPlayer]
+
+  /**
+   * Evalua si son iguales
+   */
+  override def equals(obj: Any): Boolean = {
+    if (canEqual(obj)){
+      val other = obj.asInstanceOf[UserPlayer]
+       return (this eq other) || (this.getName() == other.getName() && this.getZone() == other.getZone())
+    } else {
+      return false
+    }
+  }
+
+  /**
+   * hashcode
+   */
+  override def hashCode(): Int = Objects.hash(classOf[UserPlayer], name, zone)
 }
