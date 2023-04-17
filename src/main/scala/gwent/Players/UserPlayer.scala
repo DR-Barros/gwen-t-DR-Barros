@@ -18,19 +18,20 @@ import scala.collection.mutable.ListBuffer
  *
  * @author Daniel Radrigan
  * @since 1.0.0
- * @version 1.0.0
+ * @version 1.0.2
  */
-class UserPlayer (private  val name: String, private val zone: Int) extends Player {
+class UserPlayer (private  val name: String, private val zone: Int, private var deck: Deck) extends Player {
   /** Contador de gemas.
    *
    * Esta variable lleva la cuenta de cuantas gemas le quedan al jugador, se inicia en 2.
    */
   private var gems: Int = 2;
+
   /** Mano de Cartas.
    *
-   * Esta variable almacena en una lista las cartas que el jugador tiene en la mano.
+   * Esta variable es Una mano de cartas y por lo tanto instancia la clase CardsHand.
    */
-  private var cardHand = new CardsHand
+  private var cardHand: CardsHand = new CardsHand
 
   /**
    * Devuelve el nombre del jugador.
@@ -72,7 +73,7 @@ class UserPlayer (private  val name: String, private val zone: Int) extends Play
   /**
    * Realiza la acción de robar una carta del mazo.
    */
-  def stealCard(deck: Deck): Unit = {
+  def stealCard(): Unit = {
     if (handSize() < 10){
       val card = deck.stealCard()
       if (card.getName() != "empty") {
@@ -88,7 +89,7 @@ class UserPlayer (private  val name: String, private val zone: Int) extends Play
     var hS = handSize()
     if (hS > 0 && n < hS){
       return cardHand.playCard(n)
-      
+
     } else if (hS > 0){
       return cardHand.playCard(hS -1)
     } else {
