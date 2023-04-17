@@ -5,10 +5,34 @@ import gwent.Cards.Card
 
 import scala.collection.mutable.ListBuffer
 
+/**Clase que representa un mazo de cartas
+ *
+ * Un mazo de cartas se define como un conjunto de cartas al cual le podemos ir robando cartas
+ *
+ * @param cards conjunto de cartas en un ListBuffer
+ *
+ * @author Daniel Radrigan
+ * @since 1.0.0
+ * @version 1.0.0
+ */
 class Deck (private var cards: ListBuffer [Card]){
+  /** Calcula el tamaño del mazo
+   *
+   * Entrega la cantidad de elementos (cartas) que tiene el mazo
+   *
+   * @return numero de cartas en el mazo
+   */
   def deckSize(): Int = {
     return cards.size
   }
+
+  /**Robar una carta
+   *
+   * Genera un numero random menor al tamaño del mazo, devuelve la carta en el inidce que corresponde al numero generado,
+   * elimina la carta del mazo. En caso de estar vacio el mazo devuelve una carta vacia que indica que no hay cartas
+   *
+   * @return una carta del mazo
+   */
   def stealCard(): Card = {
     val n = deckSize()
     if (n > 0){

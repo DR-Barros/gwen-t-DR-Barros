@@ -3,10 +3,16 @@ package gwent.Cards
 
 import java.util.Objects
 
-/** Clase de carta tipo cuerpo a cuerpo
+/** Clase de carta tipo asedio
+ *
+ * Las cartas de asedio, tiene un tipo fijo, ademas de un nombre y fuerza que los identifica
  *
  * @param name nombre de la carta
  * @param strength fuerza de la carta
+ *                 
+ * @author Daniel Radrigan
+ * @since 1.0.0
+ * @version 1.0.0 
  */
 class SiegeCard (private val name: String, private  val strength: Int) extends UnitCard(name, strength) with Equals {
   override def getCardType(): String = {

@@ -5,7 +5,7 @@ import java.util.Objects
 
 /** Clase de carta tipo cuerpo a cuerpo
  * 
- * Las cartas  cuerpo a cuerpo, tiene un tipo fijo que indica su tipo, ademas de un nombre y fuerza que los identifica
+ * Las cartas  cuerpo a cuerpo, tiene un tipo fijo, ademas de un nombre y fuerza que los identifica
  *
  * @param name nombre de la carta
  * @param strength fuerza de la carta

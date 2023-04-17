@@ -5,10 +5,20 @@ import java.util.Objects
 
 /** Clase de carta tipo a distancia
  *
+ * Las cartas  a distancia, tiene un tipo fijo, ademas de un nombre y fuerza que los identifica
+ *
  * @param name nombre de la carta
  * @param strength fuerza de la carta
+ *
+ * @author Daniel Radrigan
+ * @since 1.0.0
+ * @version 1.0.0                 
  */
 class DistanceCard (private val name: String, private  val strength: Int) extends UnitCard(name, strength) with Equals {
+  /** Devuelve el tipo de la carta
+   *
+   * @return "Corp"
+   */
   override def getCardType(): String = {
     return "Distance"
   }
