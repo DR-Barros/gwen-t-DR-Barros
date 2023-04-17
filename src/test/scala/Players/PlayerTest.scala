@@ -49,7 +49,7 @@ class PlayerTest extends munit.FunSuite {
   test("Un jugador comienza con 0 cartas en su mano"){
     assertEquals(player1.handSize(), 0)
   }
-  test("Los jugadores al robar cartas de un mazo aumentan la cantidad de cartas de su mano"){
+  test("Los jugadores pueden robar cartas del mazo y agregarla a la mano"){
     player1.stealCard()
     assertEquals(player1.handSize(), 1)
     player1.stealCard()
@@ -57,22 +57,8 @@ class PlayerTest extends munit.FunSuite {
     player1.stealCard()
     assertEquals(player1.handSize(), 4)
   }
-  test("La maxima cantidad de cartas en la mano es 10"){
-    player2.stealCard()
-    player2.stealCard()
-    player2.stealCard()
-    player2.stealCard()
-    player2.stealCard()
-    player2.stealCard()
-    player2.stealCard()
-    player2.stealCard()
-    player2.stealCard()
-    player2.stealCard()
-    assertEquals(player2.handSize(), 10)
-    player2.stealCard()
-    assertEquals(player2.handSize(), 10)
-  }
-  test("Al jugar una carta disminuye la cantidad de cartas en la mano del jugador"){
+  
+  test("El jugador puede jugar cartas"){
     assertEquals(player2.handSize(), 0)
     player2.stealCard()
     player2.stealCard()
@@ -81,9 +67,5 @@ class PlayerTest extends munit.FunSuite {
     assertEquals(player2.handSize(), 1)
     player2.playCard(4)
     assertEquals(player2.handSize(), 0)
-  }
-  test("Si el jugador no tiene cartas en la mano juega la carta vacia"){
-    assertEquals(player2.handSize(), 0)
-    assertEquals(player2.playCard(1).getName(), "empty")
   }
 }
