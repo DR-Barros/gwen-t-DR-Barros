@@ -13,4 +13,20 @@ This project's goal is to create a (simplified) clone of the
 
 ---
 
+## Cartas
+Se crea un trait Card en el cual se especifica todo lo que debe tener todas las cartas, 
+este trait va a ser implementado  por las clases WeatherCard y UnitCard (abstract). Ademas, 
+Se crea una carta especial (emptyCard) cuya unica funcion es ser devuelta cuando Deck o CardsHand
+estan vacios y de esta forma señalar que esta vacio.
+
+La Clase abstracta UnitCard tiene 3 subclases, las cuales son CorpCard, SiegeCard y DistanceCard
+las que respectivamente representan Unidades cuerpo a cuerpo,Unidades de asedio y Unidades a distancia.
+
+---
+
+## Jugadores
+
+
+---
 **The rest of the documentation is left for the users of this template to complete**
+

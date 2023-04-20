@@ -3,7 +3,6 @@ package gwent.Cards
 
 import gwent.Cards.Card
 
-import scala.collection.mutable.ListBuffer
 
 /**Clase que representa un mazo de cartas
  *
@@ -13,9 +12,14 @@ import scala.collection.mutable.ListBuffer
  *
  * @author Daniel Radrigan
  * @since 1.0.0
- * @version 1.0.0
+ * @version 1.0.1
  */
-class Deck (private var cards: ListBuffer [Card]){
+class Deck (private var cards: Array [Card]){
+  /** Cantidad de cartas en el mazo
+   *
+   * Esta variable guarda cuantas cartas hay en el mazo
+   */
+  private var size = cards.length
   /** Calcula el tamaño del mazo
    *
    * Entrega la cantidad de elementos (cartas) que tiene el mazo
@@ -23,7 +27,7 @@ class Deck (private var cards: ListBuffer [Card]){
    * @return numero de cartas en el mazo
    */
   def deckSize(): Int = {
-    return cards.size
+    return size
   }
 
   /**Robar una carta
@@ -34,12 +38,12 @@ class Deck (private var cards: ListBuffer [Card]){
    * @return una carta del mazo
    */
   def stealCard(): Card = {
-    val n = deckSize()
-    if (n > 0){
+    if (size > 0){
         val r = new scala.util.Random
-        val random = r.nextInt(n)
+        val random = r.nextInt(size)
         val cardReturn = cards(random)
-        cards -= cardReturn
+        cards(random) = cards(size-1)
+        size -= 1
         return cardReturn
     } else {
       return new emptyCard

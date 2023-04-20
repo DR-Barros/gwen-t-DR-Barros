@@ -19,7 +19,7 @@ class CorpCard(private val name: String, private  val strength: Int) extends Uni
    * 
    * @return "Corp"
    */
-  override def getCardType(): String = {
+  def getCardType(): String = {
     return "Corp"
   }
 

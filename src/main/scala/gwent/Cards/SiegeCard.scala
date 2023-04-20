@@ -15,7 +15,7 @@ import java.util.Objects
  * @version 1.0.0 
  */
 class SiegeCard (private val name: String, private  val strength: Int) extends UnitCard(name, strength) with Equals {
-  override def getCardType(): String = {
+  def getCardType(): String = {
     return "Siege"
   }
 

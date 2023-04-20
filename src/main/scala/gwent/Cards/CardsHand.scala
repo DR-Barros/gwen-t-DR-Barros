@@ -14,14 +14,20 @@ import scala.collection.mutable.ListBuffer
  *
  * @author Daniel Radrigan
  * @since 1.0.0
- * @version 1.0.0
+ * @version 1.0.1
  */
 class CardsHand {
   /** Lista de cartas
    *
-   * Esta variable guarda el conjunto de cartas de la mano
+   * Esta variable guarda el conjunto de cartas de la mano en un array
    */
-  private var cards: ListBuffer [Card] = ListBuffer [Card]()
+  private var cards: Array[Card] = new Array[Card](10)
+
+  /** Cantidad de cartas en la mano
+   *
+   * Esta variable guarda cuantas cartas hay en la mano
+   */
+  private var cant: Int = 0
 
   /** Calcula el tamaño de la mano
    *
@@ -30,7 +36,7 @@ class CardsHand {
    * @return el tamaño de la mano
    */
   def handSize(): Int = {
-    return cards.size
+    return cant
   }
 
   /** Añade una carta a la mano
@@ -41,7 +47,8 @@ class CardsHand {
    */
   def addCards(card: Card): Unit = {
     if (card.getCardType() != "Empty" && handSize() < 10){
-      cards += card
+      cards(cant) = card
+      cant += 1
     }
   }
 
@@ -54,8 +61,14 @@ class CardsHand {
    * @return la carta jugada
    */
   def playCard(n: Int): Card = {
-    val card = cards(n)
-    cards -= card
-    return card
+    if (n < handSize() && n>=0){
+      val card = cards(n)
+      cant -= 1
+      for (i <- n until cant) {
+        cards(i) = cards(i + 1)
+      }
+      return card
+    }
+    return new emptyCard
   }
 }

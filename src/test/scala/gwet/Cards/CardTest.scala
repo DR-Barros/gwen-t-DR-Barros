@@ -27,6 +27,13 @@ class CorpCardTest extends munit.FunSuite{
     assert(!C1.equals(new CorpCard("soldado", 18)))
     assert(!C1.equals(new CorpCard("vikingo", 10)))
   }
+  test("Una carta cuerpo a cuerpo solo es igual a otra carta cuerpo a cuerpo con igual nombre y fuerza"){
+    assert(C1.equals(new CorpCard("vikingo", 18)))
+    assert(!C1.equals(new CorpCard("vikingos", 18)))
+    assert(!C1.equals(new CorpCard("vikingo", 19)))
+    assert(!C1.equals(new DistanceCard("vikingo", 18)))
+    assert(!C1.equals(new SiegeCard("vikingo", 18)))
+  }
 }
 
 class DistanceCardTest extends munit.FunSuite{
@@ -48,6 +55,13 @@ class DistanceCardTest extends munit.FunSuite{
     assert(C1.equals(new DistanceCard("arquera", 14)))
     assert(!C1.equals(new DistanceCard("mago", 14)))
     assert(!C1.equals(new DistanceCard("arquera", 10)))
+  }
+  test("Una carta a distancia solo es igual a otra carta a distancia con igual nombre y fuerza") {
+    assert(C1.equals(new DistanceCard("arquera", 14)))
+    assert(!C1.equals(new DistanceCard("arqueras", 14)))
+    assert(!C1.equals(new DistanceCard("arquera", 19)))
+    assert(!C1.equals(new CorpCard("arquera", 14)))
+    assert(!C1.equals(new SiegeCard("arquera", 14)))
   }
 }
 
@@ -71,22 +85,58 @@ class SiegeCardTest extends munit.FunSuite{
     assert(!C1.equals(new SiegeCard("Torre", 25)))
     assert(!C1.equals(new SiegeCard("catapulta", 20)))
   }
+  test("Una carta de asedio solo es igual a otra carta de asedio con igual nombre y fuerza") {
+    assert(C1.equals(new SiegeCard("catapulta", 25)))
+    assert(!C1.equals(new SiegeCard("catapultas", 25)))
+    assert(!C1.equals(new SiegeCard("catapulta", 19)))
+    assert(!C1.equals(new CorpCard("catapulta", 25)))
+    assert(!C1.equals(new DistanceCard("catapulta", 25)))
+  }
 }
 
 class WeatherCardTest extends munit.FunSuite{
   var W1: WeatherCard = _
+  var W2: WeatherCard = _
 
   override def beforeEach(context: BeforeEach): Unit = {
     W1 = new WeatherCard("soleado")
+    W2 = new WeatherCard("nublado")
   }
   test("Una carta de clima tien nombre"){
     assertEquals(W1.getName(), "soleado")
   }
-  test("Una carta de clima es de tipo clima"){
+  test("Una carta de clima es de tipo clima y no es igual a una carta de unidad"){
     assertEquals(W1.getCardType(), "Weather")
+    assert(!W1.equals(new CorpCard("Soldado", 15)))
+    assert(!W1.equals(new DistanceCard("Arquera", 15)))
+    assert(!W1.equals(new SiegeCard("catapulta", 20)))
+  }
+  test("Una carta clima se identifica por su nombre"){
+    assert(W1.equals(new WeatherCard("soleado")))
+    assert(!W1.equals(W2))
   }
 }
 
+class EmptyCardTest extends munit.FunSuite{
+  var e:emptyCard = _
+
+  override def beforeEach(context: BeforeEach): Unit = {
+    e = new  emptyCard()
+  }
+  test("Una carta vacia se llama empty"){
+    assertEquals(e.getName(), "empty")
+  }
+  test("Una carta vacia es de tipo empty"){
+    assertEquals(e.getCardType(), "empty")
+  }
+  test("Una carta vacia solo es igual a una carta vacia"){
+    assert(e.equals(new emptyCard))
+    assert(!e.equals(new WeatherCard("soleado")))
+    assert(!e.equals(new CorpCard("Soldado", 15)))
+    assert(!e.equals(new DistanceCard("Arquera", 15)))
+    assert(!e.equals(new SiegeCard("catapulta", 20)))
+  }
+}
 class DeckTest extends munit.FunSuite{
   var U1: CorpCard = _
   var U2: DistanceCard = _
@@ -100,8 +150,8 @@ class DeckTest extends munit.FunSuite{
     U2 = new DistanceCard("arquera", 4)
     W1 = new WeatherCard("Escarcha")
     W2 = new WeatherCard("Niebla")
-    D1 = new Deck(ListBuffer(U1, U2, W1))
-    D2 = new Deck(ListBuffer())
+    D1 = new Deck(Array(U1, U2, W1))
+    D2 = new Deck(Array())
   }
 
   test("Los mazos pueden tener 0 o mas cartas") {
@@ -110,9 +160,11 @@ class DeckTest extends munit.FunSuite{
   }
   test("Si un mazo tiene cartas se puede sacar una y el mazo queda con una carta menos") {
     assertEquals(D1.deckSize(), 3)
-    D1.stealCard()
+    var card = D1.stealCard()
+    assert(card.isInstanceOf[Card])
     assertEquals(D1.deckSize(), 2)
-    D1.stealCard()
+    card = D1.stealCard()
+    assert(card.isInstanceOf[Card])
 
   }
   test("Si un mazo no tiene cartas devuelve una carta vacia") {
@@ -169,7 +221,16 @@ class CardsHandTest extends munit.FunSuite {
   test("Una carta puede ser jugada, diminuyendo la cantidad de cartas de la mano"){
     C1.addCards(U2)
     assertEquals(C1.handSize(), 1)
-    C1.playCard(0)
+    var card: Card = C1.playCard(0)
+    assert(card.isInstanceOf[Card])
     assertEquals(C1.handSize(), 0)
+  }
+  test("Si una mano no tiene cartas, devuelve una carta vacia que señala que esta vacia la mano"){
+    assert(C1.playCard(0).equals(new emptyCard))
+  }
+  test("Si se le pide una carta con un indice que no tiene la mano esta devuelve una carta vacia"){
+    C1.addCards(U2)
+    assert(C1.playCard(-1).equals(new emptyCard))
+    assert(C1.playCard(5).equals(new emptyCard))
   }
 }

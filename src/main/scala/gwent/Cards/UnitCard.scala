@@ -24,14 +24,6 @@ abstract class UnitCard(private val name: String, private val strength: Int) ext
     return name
   }
 
-  /** Devuelve el tipo de la carta
-   * 
-   * @return "Unit"
-   */
-  def getCardType(): String = {
-    return  "Unit"
-  }
-
   /**Devuelve la fuerza de la carta
    * 
    * @return fuerza

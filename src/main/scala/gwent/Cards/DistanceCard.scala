@@ -19,7 +19,7 @@ class DistanceCard (private val name: String, private  val strength: Int) extend
    *
    * @return "Corp"
    */
-  override def getCardType(): String = {
+  def getCardType(): String = {
     return "Distance"
   }
 
