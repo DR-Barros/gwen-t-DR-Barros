@@ -33,6 +33,7 @@ class CorpCardTest extends munit.FunSuite{
     assert(!C1.equals(new CorpCard("vikingo", 19)))
     assert(!C1.equals(new DistanceCard("vikingo", 18)))
     assert(!C1.equals(new SiegeCard("vikingo", 18)))
+    assert(!C1.equals(new WeatherCard("Soleado")))
   }
 }
 
@@ -62,7 +63,9 @@ class DistanceCardTest extends munit.FunSuite{
     assert(!C1.equals(new DistanceCard("arquera", 19)))
     assert(!C1.equals(new CorpCard("arquera", 14)))
     assert(!C1.equals(new SiegeCard("arquera", 14)))
+    assert(!C1.equals(new WeatherCard("Soleado")))
   }
+
 }
 
 class SiegeCardTest extends munit.FunSuite{
@@ -91,6 +94,7 @@ class SiegeCardTest extends munit.FunSuite{
     assert(!C1.equals(new SiegeCard("catapulta", 19)))
     assert(!C1.equals(new CorpCard("catapulta", 25)))
     assert(!C1.equals(new DistanceCard("catapulta", 25)))
+    assert(!C1.equals(new WeatherCard("Soleado")))
   }
 }
 

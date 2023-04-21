@@ -12,9 +12,9 @@ import java.util.Objects
  *
  * @author Daniel Radrigan
  * @since 1.0.0
- * @version 1.0.0                 
+ * @version 1.0.1                 
  */
-class DistanceCard (private val name: String, private  val strength: Int) extends UnitCard(name, strength) with Equals {
+class DistanceCard (private val name: String, private  val strength: Int) extends UnitCard(name, strength) {
   /** Devuelve el tipo de la carta
    *
    * @return "Corp"
@@ -34,7 +34,7 @@ class DistanceCard (private val name: String, private  val strength: Int) extend
   override def equals(obj: Any): Boolean = {
     if (canEqual(obj)) {
       val other = obj.asInstanceOf[DistanceCard]
-      return (this eq other) || (this.getName() == other.getName() && this.getStrength() == other.getStrength())
+      return super.equals(other)
     } else {
       return false
     }
