@@ -1,11 +1,5 @@
 package cl.uchile.dcc
-package gwet.Cards
-
-import gwent.Cards.*
-
-import munit.FunSuite
-
-import scala.collection.mutable.ListBuffer
+package gwent.Cards
 
 class CorpCardTest extends munit.FunSuite{
   var C1: CorpCard = _
