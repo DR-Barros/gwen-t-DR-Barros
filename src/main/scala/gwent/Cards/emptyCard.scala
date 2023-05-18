@@ -3,6 +3,8 @@ package gwent.Cards
 
 import gwent.Cards.Card
 
+import cl.uchile.dcc.gwent.Board.BoardSection
+
 import java.util.Objects
 /** Clase de carta vacia
  *
@@ -27,6 +29,10 @@ class emptyCard extends Card with Equals {
    */
   def getCardType(): String = {
     return "empty"
+  }
+
+  def assignZone(sec: BoardSection, wheather: Array[Card]): Unit = {
+    return 
   }
 
   /**

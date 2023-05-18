@@ -1,6 +1,8 @@
 package cl.uchile.dcc
 package gwent.Cards
 
+import cl.uchile.dcc.gwent.Board.BoardSection
+
 import java.util.Objects
 
 /** Clase de carta tipo asedio
@@ -17,6 +19,10 @@ import java.util.Objects
 class SiegeCard (private val name: String, private  val strength: Int) extends UnitCard(name, strength)  {
   def getCardType(): String = {
     return "Siege"
+  }
+
+  def assignZone(sec: BoardSection, wheather: Array[Card]): Unit = {
+    sec.assignZoneS(this)
   }
 
   /**

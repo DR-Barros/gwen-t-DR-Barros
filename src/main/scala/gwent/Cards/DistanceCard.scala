@@ -1,6 +1,8 @@
 package cl.uchile.dcc
 package gwent.Cards
 
+import cl.uchile.dcc.gwent.Board.BoardSection
+
 import java.util.Objects
 
 /** Clase de carta tipo a distancia
@@ -21,6 +23,10 @@ class DistanceCard (private val name: String, private  val strength: Int) extend
    */
   def getCardType(): String = {
     return "Distance"
+  }
+
+  def assignZone(sec: BoardSection, wheather: Array[Card]): Unit = {
+    sec.assignZoneD(this)
   }
 
   /**

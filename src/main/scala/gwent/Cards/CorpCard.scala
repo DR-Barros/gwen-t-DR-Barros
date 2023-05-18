@@ -1,6 +1,8 @@
 package cl.uchile.dcc
 package gwent.Cards
 
+import cl.uchile.dcc.gwent.Board.BoardSection
+
 import java.util.Objects
 
 /** Clase de carta tipo cuerpo a cuerpo
@@ -22,6 +24,10 @@ class CorpCard(private val name: String, private  val strength: Int) extends Uni
   def getCardType(): String = {
     return "Corp"
   }
+
+  def assignZone(sec: BoardSection, wheather: Array[Card]): Unit = {
+    sec.assignZoneC(this)
+  } 
 
   /**
    * Comprobar si el objeto es de la mima clase que el objeto actual

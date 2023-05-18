@@ -3,6 +3,8 @@ package gwent.Cards
 
 import gwent.Cards.Card
 
+import cl.uchile.dcc.gwent.Board.BoardSection
+
 import java.util.Objects
 
 /** Clase de carta tipo clima
@@ -18,6 +20,10 @@ class WeatherCard(private val name: String) extends Card with Equals {
    */
   def getName(): String = {
     return name
+  }
+
+  def assignZone(sec: BoardSection, wheather: Array[Card]): Unit = {
+    wheather(0) = this
   }
 
   /** Devuelve el tipo de la carta
