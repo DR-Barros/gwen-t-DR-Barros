@@ -3,6 +3,8 @@ package gwent.Cards
 
 import gwent.Cards.Card
 
+import cl.uchile.dcc.gwent.Exception.{HandDontHaveCard, HandIsFull}
+
 import scala.collection.mutable.ListBuffer
 
 /**Una clase que representa una mano de cartas
@@ -46,9 +48,11 @@ class CardsHand {
    * @param card recibe una carta
    */
   def addCards(card: Card): Unit = {
-    if (card.getCardType() != "Empty" && handSize() < 10){
+    if (handSize() < 10){
       cards(cant) = card
       cant += 1
+    } else{
+      throw new HandIsFull("la mano esta llena, no puede agregar mas cartas")
     }
   }
 
@@ -69,6 +73,6 @@ class CardsHand {
       }
       return card
     }
-    return new emptyCard
+    throw new HandDontHaveCard("La mano no contiene  la carta solicitada")
   }
 }
