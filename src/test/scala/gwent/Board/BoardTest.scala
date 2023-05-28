@@ -30,7 +30,7 @@ class BoardTest extends munit.FunSuite {
     board.playCardSec1(player, 1)
     //falta mostrar las cartas y ver que son las que corresponden
     assert(cardC.equals(board.getSec1C()(0)))
-    //assert(cardD.equals(board.getSec1D()(0)))
+    assert(cardD.equals(board.getSec1D()(0)))
     assert(cardS.equals(board.getSec1S()(0)))
     assert(cardW.equals(board.getSecW()(0)))
   }
@@ -41,7 +41,7 @@ class BoardTest extends munit.FunSuite {
     board.playCardSec2(player, 1)
     //mostrar que estan en 2 pero no en 1
     assert(cardC.equals(board.getSec2C()(0)))
-    //assert(cardD.equals(board.getSec2D()(0)))
+    assert(cardD.equals(board.getSec2D()(0)))
     assert(cardS.equals(board.getSec2S()(0)))
     assert(cardW.equals(board.getSecW()(0)))
   }
