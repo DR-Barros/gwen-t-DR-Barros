@@ -1,7 +1,7 @@
 package cl.uchile.dcc
 package gwent.Players
 
-import gwent.Cards.{Card, CardsHand, Deck, emptyCard}
+import gwent.Cards.{Card, CardsHand, Deck}
 import gwent.Players.Player
 import java.util.Objects
 import scala.collection.mutable.ListBuffer
@@ -87,13 +87,7 @@ class UserPlayer (private  val name: String, private val zone: Int, private var 
    */
   def playCard(n: Int): Card = {
     var hS = handSize()
-    if (hS > 0 && n < hS){
-      return cardHand.playCard(n)
-    } else if (hS > 0){
-      return cardHand.playCard(hS -1)
-    } else {
-      return  new emptyCard
-    }
+    return cardHand.playCard(n-1)
   }
 
   /**
@@ -112,9 +106,8 @@ class UserPlayer (private  val name: String, private val zone: Int, private var 
       return false
     }
   }
-
   /**
-   * hashcode
+   * Hashcode
    */
   override def hashCode(): Int = Objects.hash(classOf[UserPlayer], name, zone)
 }

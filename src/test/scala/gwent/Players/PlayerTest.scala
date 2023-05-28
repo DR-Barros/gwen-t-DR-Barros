@@ -2,9 +2,12 @@ package cl.uchile.dcc
 package Players
 package Cards
 
-import gwent.Cards.{Deck, CorpCard, DistanceCard, SiegeCard, Card}
+import gwent.Cards.{Card, CorpCard, Deck, DistanceCard, SiegeCard}
 import gwent.Players.UserPlayer
+
+import cl.uchile.dcc.gwent.Exception.HandDontHaveCard
 import munit.FunSuite
+
 import scala.collection.mutable.ListBuffer
 
 class PlayerTest extends munit.FunSuite {
@@ -71,13 +74,12 @@ class PlayerTest extends munit.FunSuite {
     var card = player2.playCard(1)
     assert(card.isInstanceOf[Card])
     assertEquals(player2.handSize(), 1)
-    card = player2.playCard(4)
+    card = player2.playCard(1)
     assert(card.isInstanceOf[Card])
     assertEquals(player2.handSize(), 0)
   }
-  test("Si un jugador intenta jugar una carta sin tener cartas en la mano, se devuelve una carta vacia"){
+  test("Si un jugador intenta jugar una carta sin tener cartas en la mano se lanza la excepcion HandDontHaveCard"){
     assertEquals(player2.handSize(), 0)
-    var card = player2.playCard(0)
-    assertEquals(card.getCardType(), "empty")
+    intercept[HandDontHaveCard]{player2.playCard(0)}
   }
 }

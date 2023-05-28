@@ -4,11 +4,11 @@ package gwent.Board
 import gwent.Cards.Card
 
 class BoardSection {
-  private var zoneC: Array[Card] = new Array[Card](25)
+  private var zoneC: Array[Card] = new Array[Card](6)
   private var countC: Int = 0
-  private var zoneD: Array[Card] = new Array[Card](25)
+  private var zoneD: Array[Card] = new Array[Card](6)
   private var countD: Int = 0
-  private var zoneS: Array[Card] = new Array[Card](25)
+  private var zoneS: Array[Card] = new Array[Card](6)
   private var countS: Int = 0
 
   def assignZoneC(card: Card): Unit = {

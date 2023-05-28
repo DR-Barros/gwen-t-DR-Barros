@@ -3,6 +3,8 @@ package gwent.Cards
 
 import gwent.Cards.Card
 
+import cl.uchile.dcc.gwent.Exception.DeckIsEmpty
+
 
 /**Clase que representa un mazo de cartas
  *
@@ -46,7 +48,7 @@ class Deck (private var cards: Array [Card]){
         size -= 1
         return cardReturn
     } else {
-      return new emptyCard
+        throw new DeckIsEmpty("El mazo esta vacio, no es posible robar cartas")
     }
   }
 }

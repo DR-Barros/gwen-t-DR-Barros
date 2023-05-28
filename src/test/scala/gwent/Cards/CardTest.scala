@@ -1,6 +1,8 @@
 package cl.uchile.dcc
 package gwent.Cards
 
+import gwent.Exception.{DeckIsEmpty, HandDontHaveCard, HandIsFull}
+
 class CorpCardTest extends munit.FunSuite{
   var C1: CorpCard = _
 
@@ -115,26 +117,6 @@ class WeatherCardTest extends munit.FunSuite{
   }
 }
 
-class EmptyCardTest extends munit.FunSuite{
-  var e:emptyCard = _
-
-  override def beforeEach(context: BeforeEach): Unit = {
-    e = new  emptyCard()
-  }
-  test("Una carta vacia se llama empty"){
-    assertEquals(e.getName(), "empty")
-  }
-  test("Una carta vacia es de tipo empty"){
-    assertEquals(e.getCardType(), "empty")
-  }
-  test("Una carta vacia solo es igual a una carta vacia"){
-    assert(e.equals(new emptyCard))
-    assert(!e.equals(new WeatherCard("soleado")))
-    assert(!e.equals(new CorpCard("Soldado", 15)))
-    assert(!e.equals(new DistanceCard("Arquera", 15)))
-    assert(!e.equals(new SiegeCard("catapulta", 20)))
-  }
-}
 class DeckTest extends munit.FunSuite{
   var U1: CorpCard = _
   var U2: DistanceCard = _
@@ -165,9 +147,8 @@ class DeckTest extends munit.FunSuite{
     assert(card.isInstanceOf[Card])
 
   }
-  test("Si un mazo no tiene cartas devuelve una carta vacia") {
-    assertEquals(D2.stealCard().getName(), "empty")
-    assertEquals(D2.stealCard().getCardType(), "empty")
+  test("Si un mazo no tiene cartas lanza la excepcion DeckIsEmpty") {
+    intercept[DeckIsEmpty]{D2.stealCard()}
   }
 }
 
@@ -197,7 +178,7 @@ class CardsHandTest extends munit.FunSuite {
     C1.addCards(U2)
     assertEquals(C1.handSize(), 1)
   }
-  test("Una mano de cartas puede tener como maximo 10 cartas"){
+  test("Una mano de cartas puede tener como maximo 10 cartas, si se intentan agregar mas cartas se lanza la excepcion HandIsFull"){
     C1.addCards(U2)
     C1.addCards(U1)
     C1.addCards(W2)
@@ -209,11 +190,9 @@ class CardsHandTest extends munit.FunSuite {
     C1.addCards(U2)
     C1.addCards(W1)
     assertEquals(C1.handSize(), 10)
-    C1.addCards(W2)
-    C1.addCards(U2)
-    C1.addCards(W1)
-    C1.addCards(U1)
-    C1.addCards(W2)
+    intercept[HandIsFull]{C1.addCards(W2)}
+    intercept[HandIsFull]{C1.addCards(U2)}
+    intercept[HandIsFull]{C1.addCards(U1)}
     assertEquals(C1.handSize(), 10)
   }
   test("Una carta puede ser jugada, diminuyendo la cantidad de cartas de la mano"){
@@ -223,12 +202,12 @@ class CardsHandTest extends munit.FunSuite {
     assert(card.isInstanceOf[Card])
     assertEquals(C1.handSize(), 0)
   }
-  test("Si una mano no tiene cartas, devuelve una carta vacia que señala que esta vacia la mano"){
-    assert(C1.playCard(0).equals(new emptyCard))
+  test("Si una mano no tiene cartas se lanza la excepcion HandDontHaveCard"){
+    intercept[HandDontHaveCard]{C1.playCard(0)}
   }
-  test("Si se le pide una carta con un indice que no tiene la mano esta devuelve una carta vacia"){
+  test("Si se le pide una carta con un indice que no tiene la mano se lanza la excepcion HandDontHaveCard"){
     C1.addCards(U2)
-    assert(C1.playCard(-1).equals(new emptyCard))
-    assert(C1.playCard(5).equals(new emptyCard))
+    intercept[HandDontHaveCard]{C1.playCard(-1)}
+    intercept[HandDontHaveCard]{C1.playCard(5)}
   }
 }
