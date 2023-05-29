@@ -1,7 +1,7 @@
 package cl.uchile.dcc
 package gwent.Cards
 
-import cl.uchile.dcc.gwent.Board.BoardSection
+import cl.uchile.dcc.gwent.Board.Section
 
 import java.util.Objects
 
@@ -30,7 +30,7 @@ class CorpCard(private val name: String, private  val strength: Int) extends Uni
    * @param sec es la seccion del tablero a la cual hay que asignar la carta
    * @param wheather corresponde a la seccion de clima
    */
-  def assignZone(sec: BoardSection, wheather: Array[Card]): Unit = {
+  def assignZone(sec: Section, wheather: Array[Card]): Unit = {
     sec.assignZoneC(this)
   } 
 

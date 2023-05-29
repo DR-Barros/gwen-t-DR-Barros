@@ -1,7 +1,9 @@
 package cl.uchile.dcc
 package gwent.Exception
 
-/** Excepcion lanzada cuando el mazo esta vacio
+/** Excepción lanzada cuando el mazo esta vacío
+ * 
+ * la excepcion notifica que el mazo esta vacio y por lo tanto no se pueden robar cartas
  * 
  * @param message el mensaje descriptivo del error
  *

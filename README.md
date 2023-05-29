@@ -13,19 +13,18 @@ This project's goal is to create a (simplified) clone of the
 
 ## Cartas
 Se crea un Trait Card en el cual se especifica todo lo que debe tener todas las cartas. 
-Este Trait va a ser implementado  por las clases WeatherCard y UnitCard (abstract). Además, 
-Se crea una carta especial (emptyCard) cuya única función es ser devuelta cuando Deck o CardsHand
-están vacíos y de esta forma señalar que esta vacío.
+Este Trait va a ser implementado por las clases WeatherCard y UnitCard (abstract). Dentro de las funciones que deben 
+tener las cartas se encuentra tener que saber a qué zona o fila asignarse mediante el método "assignZone"
 
 ### Interface de carta:
 Todas las cartas comparten una interface (Trait "Card") en común que especifica los métodos que deben tener todas 
 las cartas. Todas las cartas deben tener un nombre y un tipo (clima, cuerpo a cuerpo, a distancia o de 
 asedio) por lo que deben tener un método que devuelva estos valores para poder utilizarlos, 
-respectivamente estos métodos son getName y getCardType.
+respectivamente estos métodos son getName y getCardType. Además, tienen un método assignZone que asigna donde debería 
+quedar la carta cuando es jugada en el tablero.
 
 ![Esquema UML de Card](Card(Trait).jpg)
 
-En un futuro cuando se implemente el tablero se usara getCardType para identificar a que parte de este debe ir cada carta.
 
 
 
@@ -59,13 +58,6 @@ Esta clase define los métodos getName y getStrength que devuelve el nombre y fu
    Esta subclase de UnitCard representa las cartas cuerpo a cuerpo, hereda los métodos getName y getStrength
    de UnitCard y añade la implementación del método getCardType para que devuelva "DistanceCard"
 
-#### emptyCard:
-La clase emptyCard es un tipo especial de "Carta", dado que en si no es una carta, sino que señala que no se puede 
-devolver una carta. Se crea este tipo dado que tanto en Deck como en CardsHand tienen un método que 
-devuelve una carta. En el caso de que no tengan una carta para entregar van a devolver este tipo especial 
-para que el programa sepa que ya no quedan cartas.
-
-![Esquema UML de emptyCard](emptyCard.jpg)
 ---
 
 ## Jugadores
@@ -92,6 +84,25 @@ que el juego se comporte como si se hubiese barajado el mazo.
 A diferencia del mazo, la mano de cartas comienza sin cartas, se le pueden ir agregando cartas cuando el jugador 
 robe cartas del mazo y perderá una carta cuando el jugador juegue una carta.
 
+## Tablero de Juego
+La clase Board representa el tablero de juego, esta clase tiene los métodos necesarios para que los jugadores jueguen sus cartas
+y estás mediante double dispatch sepan en qué fila deban ser asignadas. Se crea un método para cada sección y que este
+reciba al jugador, ya que conceptualmente creo que no es el tablero el que sabe la sección del jugador sino que debería ser una clase
+de juego el que lo sepa y llame estos métodos.
+
+Las secciones 1 y 2 se implementan mediante la clase BoardSection.
+
+![Esquema UML de Board](Board.jpg)
+
+### BoardSection
+La representación de las secciones se hace mediante la clase BoardSection que contiene las 3 filas de cada sección:
+* Cuerpo a cuerpo
+* Distancia
+* Asedio
+estas filas son arreglos con hasta 6 cartas, en donde cada uno recibe el tipo de carta correspondiente
+
+## UML Global
+![Esquema UML](UML%20global.jpg)
 ---
 **The rest of the documentation is left for the users of this template to complete**
 

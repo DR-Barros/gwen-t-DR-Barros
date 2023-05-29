@@ -1,7 +1,7 @@
 package cl.uchile.dcc
 package gwent.Cards
 
-import cl.uchile.dcc.gwent.Board.BoardSection
+import cl.uchile.dcc.gwent.Board.Section
 
 import java.util.Objects
 
@@ -14,19 +14,19 @@ import java.util.Objects
  *                 
  * @author Daniel Radrigan
  * @since 1.0.0
- * @version 1.0.2 
+ * @version 1.0.2
  */
 class SiegeCard (private val name: String, private  val strength: Int) extends UnitCard(name, strength)  {
   def getCardType(): String = {
     return "Siege"
   }
 
-  /** Asigna la carta en la fila de asedio de la seccion entregada
-   * 
+  /** Asigna la carta en la fila de asedio de la sección entregada
+   *
    * @param sec es la seccion del tablero a la cual hay que asignar la carta
    * @param wheather corresponde a la seccion de clima
    */
-  def assignZone(sec: BoardSection, wheather: Array[Card]): Unit = {
+  def assignZone(sec: Section, wheather: Array[Card]): Unit = {
     sec.assignZoneS(this)
   }
 

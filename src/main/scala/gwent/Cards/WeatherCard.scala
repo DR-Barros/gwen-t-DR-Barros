@@ -3,7 +3,7 @@ package gwent.Cards
 
 import gwent.Cards.Card
 
-import cl.uchile.dcc.gwent.Board.BoardSection
+import cl.uchile.dcc.gwent.Board.Section
 
 import java.util.Objects
 
@@ -31,7 +31,7 @@ class WeatherCard(private val name: String) extends Card with Equals {
    * @param sec es la seccion del tablero a la cual hay que asignar la carta
    * @param wheather corresponde a la seccion de clima
    */
-  def assignZone(sec: BoardSection, wheather: Array[Card]): Unit = {
+  def assignZone(sec: Section, wheather: Array[Card]): Unit = {
     wheather(0) = this
   }
 

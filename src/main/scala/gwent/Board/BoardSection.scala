@@ -14,7 +14,7 @@ import gwent.Cards.Card
  * @since 1.0.0
  * @version 1.0.0
  */
-class BoardSection {
+class BoardSection  extends Section {
   /** Fila de cartas cuerpo a cuerpo
    *
    * En el arreglo se guardan las cartas cuerpo a cuerpo
