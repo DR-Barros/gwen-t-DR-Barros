@@ -14,7 +14,7 @@ import java.util.Objects
  *
  * @author Daniel Radrigan
  * @since 1.0.0
- * @version 1.0.1                 
+ * @version 1.0.2                 
  */
 class DistanceCard (private val name: String, private  val strength: Int) extends UnitCard(name, strength) {
   /** Devuelve el tipo de la carta
@@ -25,6 +25,11 @@ class DistanceCard (private val name: String, private  val strength: Int) extend
     return "Distance"
   }
 
+  /** Asigna la carta en la fila a Distancia de la seccion entregada
+   * 
+   * @param sec es la seccion del tablero a la cual hay que asignar la carta
+   * @param wheather corresponde a la seccion de clima
+   */
   def assignZone(sec: BoardSection, wheather: Array[Card]): Unit = {
     sec.assignZoneD(this)
   }

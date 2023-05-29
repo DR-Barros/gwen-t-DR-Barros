@@ -14,13 +14,18 @@ import java.util.Objects
  *                 
  * @author Daniel Radrigan
  * @since 1.0.0
- * @version 1.0.1 
+ * @version 1.0.2 
  */
 class SiegeCard (private val name: String, private  val strength: Int) extends UnitCard(name, strength)  {
   def getCardType(): String = {
     return "Siege"
   }
 
+  /** Asigna la carta en la fila de asedio de la seccion entregada
+   * 
+   * @param sec es la seccion del tablero a la cual hay que asignar la carta
+   * @param wheather corresponde a la seccion de clima
+   */
   def assignZone(sec: BoardSection, wheather: Array[Card]): Unit = {
     sec.assignZoneS(this)
   }

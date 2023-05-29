@@ -14,7 +14,7 @@ import cl.uchile.dcc.gwent.Exception.DeckIsEmpty
  *
  * @author Daniel Radrigan
  * @since 1.0.0
- * @version 1.0.1
+ * @version 1.0.2
  */
 class Deck (private var cards: Array [Card]){
   /** Cantidad de cartas en el mazo
@@ -35,7 +35,9 @@ class Deck (private var cards: Array [Card]){
   /**Robar una carta
    *
    * Genera un numero random menor al tamaño del mazo, devuelve la carta en el inidce que corresponde al numero generado,
-   * elimina la carta del mazo. En caso de estar vacio el mazo devuelve una carta vacia que indica que no hay cartas
+   * elimina la carta del mazo. En caso de estar vacio lanza una excepcion de tipo DeckIsEmpty
+   * 
+   * @throws DeckIsEmpty cuando el mazo esta vacio
    *
    * @return una carta del mazo
    */

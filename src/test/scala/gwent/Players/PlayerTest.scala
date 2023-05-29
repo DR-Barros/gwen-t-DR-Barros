@@ -15,14 +15,14 @@ class PlayerTest extends munit.FunSuite {
   var player2: UserPlayer = _
 
   override def beforeEach(context: BeforeEach): Unit = {
-    player1 = new UserPlayer("P1", 1, new Deck(Array(
+    player1 = new UserPlayer("P1", new Deck(Array(
       new CorpCard("Darth Vader", 19), new CorpCard("Luke Skywalker", 16), new CorpCard("Yoda", 20),
       new DistanceCard("Han Solo", 10), new SiegeCard("C3PO", 1), new DistanceCard("Chewbacca", 12),
       new CorpCard("Darth Maul", 13), new CorpCard("Obi Wan Kenobi", 17), new CorpCard("Ahsoka Tano", 12),
       new CorpCard("Palpatine", 20), new SiegeCard("R2-D2", 9), new CorpCard("Mace Windu", 17),
       new DistanceCard("Din Djarin", 13), new CorpCard("General Grievous", 14), new DistanceCard("Leia Organa", 16)
     )))
-    player2 = new UserPlayer("P2", 2, new Deck(Array(
+    player2 = new UserPlayer("P2", new Deck(Array(
       new CorpCard("Darth Vader", 19), new CorpCard("Luke Skywalker", 16), new CorpCard("Yoda", 20),
       new DistanceCard("Han Solo", 10), new SiegeCard("C3PO", 1), new DistanceCard("Chewbacca", 12),
       new CorpCard("Darth Maul", 13), new CorpCard("Obi Wan Kenobi", 17), new CorpCard("Ahsoka Tano", 12),
@@ -35,16 +35,12 @@ class PlayerTest extends munit.FunSuite {
     assertEquals(player1.getName(), "P1")
     assertEquals(player2.getName(), "P2")
   }
-  test("Un jugador debe tener una zona"){
-    assertEquals(player1.getZone(), 1)
-    assertEquals(player2.getZone(), 2)
-  }
   test("Un jugador debe ser de clase UserPlayer"){
     assert(!player1.equals(new CorpCard("P1", 1)))
   }
   test("Un jugador se identifica por su nombre y zona"){
     assert(!player1.equals(player2))
-    assert(player1.equals(new UserPlayer("P1", 1, new Deck(Array()))))
+    assert(player1.equals(new UserPlayer("P1", new Deck(Array()))))
   }
   test("manejo de gemas de un jugador"){
     assertEquals(player1.getGems(), 2)

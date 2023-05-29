@@ -16,7 +16,7 @@ import scala.collection.mutable.ListBuffer
  *
  * @author Daniel Radrigan
  * @since 1.0.0
- * @version 1.0.1
+ * @version 1.0.2
  */
 class CardsHand {
   /** Lista de cartas
@@ -44,8 +44,11 @@ class CardsHand {
   /** Añade una carta a la mano
    *
    * Recibe una carta y se la añade a cards para añadirla a la mano
+   * Si la mano ya esta llena lanza la excepcion HandIsFull
    *
    * @param card recibe una carta
+   *
+   * @throws HandIsFull si es que la mano esta llena
    */
   def addCards(card: Card): Unit = {
     if (handSize() < 10){
@@ -60,8 +63,12 @@ class CardsHand {
    *
    * recibe un numero que indica el indice de la carta a jugar, se extrae la carta de la mano,
    * se elimina la carta de la mano y luego se devuelve la carta jugada
+   * Si la carta solicitada no esta en la carta se lanza una excepcion de tipo HandDontHaveCard
    *
    * @param n el numero de la carta que se va a jugar
+   *          
+   * @throws HandDontHaveCard cuando no hay carta en el indice entregado         
+   *          
    * @return la carta jugada
    */
   def playCard(n: Int): Card = {

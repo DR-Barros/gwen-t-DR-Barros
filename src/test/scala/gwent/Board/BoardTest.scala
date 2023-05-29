@@ -17,7 +17,7 @@ class BoardTest extends munit.FunSuite {
     cardD = new DistanceCard("Han Solo", 10)
     cardS = new SiegeCard("C3PO", 1)
     cardW = new WeatherCard("Templado")
-    player = new UserPlayer("P1", 1, new Deck(Array(cardC, cardD, cardS, cardW)))
+    player = new UserPlayer("P1", new Deck(Array(cardC, cardD, cardS, cardW)))
     player.stealCard()
     player.stealCard()
     player.stealCard()
@@ -54,9 +54,9 @@ class BoardSectionTest extends munit.FunSuite{
     Sec1 = new BoardSection()
   }
   test("Las secciones del tablero comienzan vacias"){
-    assertEquals(Sec1.getZoneC().toSeq, new Array[Card](25).toSeq)
-    assertEquals(Sec1.getZoneS().toSeq, new Array[Card](25).toSeq)
-    assertEquals(Sec1.getZoneD().toSeq, new Array[Card](25).toSeq)
+    assertEquals(Sec1.getZoneC().toSeq, new Array[Card](6).toSeq)
+    assertEquals(Sec1.getZoneS().toSeq, new Array[Card](6).toSeq)
+    assertEquals(Sec1.getZoneD().toSeq, new Array[Card](6).toSeq)
   }
   test("Las cartas pueden ser asignadas a alguna zona de la seccion"){
     val card: Card = new CorpCard("nombre", 14)

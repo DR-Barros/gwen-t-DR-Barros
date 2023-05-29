@@ -18,9 +18,9 @@ import scala.collection.mutable.ListBuffer
  *
  * @author Daniel Radrigan
  * @since 1.0.0
- * @version 1.0.2
+ * @version 1.0.3
  */
-class UserPlayer (private  val name: String, private val zone: Int, private var deck: Deck) extends Player with Equals {
+class UserPlayer (private  val name: String, private var deck: Deck) extends Player with Equals {
   /** Contador de gemas.
    *
    * Esta variable lleva la cuenta de cuantas gemas le quedan al jugador, se inicia en 2.
@@ -40,12 +40,6 @@ class UserPlayer (private  val name: String, private val zone: Int, private var 
     return name
   }
 
-  /**
-   * Devuelve la zona del tablero del jugador.
-   */
-  def getZone(): Int = {
-    return zone
-  }
 
   /**
    * Devuelve la cantidad de gemas que le quedan al jugador.
@@ -74,12 +68,8 @@ class UserPlayer (private  val name: String, private val zone: Int, private var 
    * Realiza la acción de robar una carta del mazo.
    */
   def stealCard(): Unit = {
-    if (handSize() < 10){
-      val card = deck.stealCard()
-      if (card.getName() != "empty") {
-        cardHand.addCards(card)
-      }
-    }
+    val card = deck.stealCard()
+    cardHand.addCards(card)
   }
 
   /**
@@ -101,7 +91,7 @@ class UserPlayer (private  val name: String, private val zone: Int, private var 
   override def equals(obj: Any): Boolean = {
     if (canEqual(obj)){
       val other = obj.asInstanceOf[UserPlayer]
-       return (this eq other) || (this.getName() == other.getName() && this.getZone() == other.getZone())
+       return (this eq other) || (this.getName() == other.getName())
     } else {
       return false
     }
@@ -109,5 +99,5 @@ class UserPlayer (private  val name: String, private val zone: Int, private var 
   /**
    * Hashcode
    */
-  override def hashCode(): Int = Objects.hash(classOf[UserPlayer], name, zone)
+  override def hashCode(): Int = Objects.hash(classOf[UserPlayer], name)
 }

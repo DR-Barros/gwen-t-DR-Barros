@@ -12,6 +12,10 @@ import java.util.Objects
  * Las cartas de clima tienen un tipo y un nombre que las identifica
  *
  * @param name nombre
+ *
+ * @author Daniel Radrigan
+ * @since 1.0.0
+ * @version 1.0.2             
  */
 class WeatherCard(private val name: String) extends Card with Equals {
   /** Devuelve el nombre de la carta
@@ -22,6 +26,11 @@ class WeatherCard(private val name: String) extends Card with Equals {
     return name
   }
 
+  /** Asigna la carta en la seccion de clima
+   * 
+   * @param sec es la seccion del tablero a la cual hay que asignar la carta
+   * @param wheather corresponde a la seccion de clima
+   */
   def assignZone(sec: BoardSection, wheather: Array[Card]): Unit = {
     wheather(0) = this
   }
