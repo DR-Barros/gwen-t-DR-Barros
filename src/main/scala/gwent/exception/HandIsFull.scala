@@ -1,5 +1,5 @@
 package cl.uchile.dcc
-package gwent.Exception
+package gwent.exception
 
 /** Excepcion lanzada cuando la mano esta llena
  * 

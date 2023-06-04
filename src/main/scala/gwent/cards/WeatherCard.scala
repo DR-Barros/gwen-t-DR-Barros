@@ -1,9 +1,9 @@
 package cl.uchile.dcc
-package gwent.Cards
+package gwent.cards
 
-import gwent.Cards.Card
+import gwent.cards.Card
 
-import cl.uchile.dcc.gwent.Board.Section
+import cl.uchile.dcc.gwent.board.Section
 
 import java.util.Objects
 

@@ -1,7 +1,7 @@
 package cl.uchile.dcc
-package gwent.Players
+package gwent.players
 
-import gwent.Cards.{Card, Deck}
+import gwent.cards.{Card, Deck}
 
 trait Player {
   def getName(): String

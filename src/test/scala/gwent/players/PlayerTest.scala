@@ -2,10 +2,10 @@ package cl.uchile.dcc
 package Players
 package Cards
 
-import gwent.Cards.{Card, CorpCard, Deck, DistanceCard, SiegeCard}
-import gwent.Players.UserPlayer
+import gwent.cards.{Card, CorpCard, Deck, DistanceCard, SiegeCard}
+import gwent.players.UserPlayer
 
-import cl.uchile.dcc.gwent.Exception.HandDontHaveCard
+import cl.uchile.dcc.gwent.exception.HandDontHaveCard
 import munit.FunSuite
 
 import scala.collection.mutable.ListBuffer

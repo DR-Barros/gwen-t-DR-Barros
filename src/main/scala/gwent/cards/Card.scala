@@ -1,7 +1,7 @@
 package cl.uchile.dcc
-package gwent.Cards
+package gwent.cards
 
-import gwent.Board.Section
+import gwent.board.Section
 
 trait Card {
   def getName(): String

@@ -1,7 +1,7 @@
 package cl.uchile.dcc
-package gwent.Board
+package gwent.board
 
-import gwent.Cards.Card
+import gwent.cards.Card
 
 trait Section {
   def assignZoneC(card: Card): Unit 

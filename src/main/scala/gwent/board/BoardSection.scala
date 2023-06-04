@@ -1,6 +1,6 @@
 package cl.uchile.dcc
-package gwent.Board
-import gwent.Cards.Card
+package gwent.board
+import gwent.cards.Card
 
 /**Representa la seccion del tablero de cada jugador
  *

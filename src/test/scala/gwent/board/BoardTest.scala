@@ -1,7 +1,7 @@
 package cl.uchile.dcc
-package gwent.Board
-import gwent.Cards.{Card, CorpCard, Deck, WeatherCard, DistanceCard, SiegeCard}
-import gwent.Players.UserPlayer
+package gwent.board
+import gwent.cards.{Card, CorpCard, Deck, WeatherCard, DistanceCard, SiegeCard}
+import gwent.players.UserPlayer
 
 class BoardTest extends munit.FunSuite {
   var board: Board = _

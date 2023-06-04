@@ -1,9 +1,9 @@
 package cl.uchile.dcc
-package gwent.Cards
+package gwent.cards
 
-import gwent.Cards.Card
+import gwent.cards.Card
 
-import cl.uchile.dcc.gwent.Exception.DeckIsEmpty
+import cl.uchile.dcc.gwent.exception.DeckIsEmpty
 
 
 /**Clase que representa un mazo de cartas

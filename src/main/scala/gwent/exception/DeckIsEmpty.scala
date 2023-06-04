@@ -1,5 +1,5 @@
 package cl.uchile.dcc
-package gwent.Exception
+package gwent.exception
 
 /** Excepción lanzada cuando el mazo esta vacío
  * 

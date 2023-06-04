@@ -1,7 +1,7 @@
 package cl.uchile.dcc
-package gwent.Cards
+package gwent.cards
 
-import gwent.Exception.{DeckIsEmpty, HandDontHaveCard, HandIsFull}
+import gwent.exception.{DeckIsEmpty, HandDontHaveCard, HandIsFull}
 
 class CorpCardTest extends munit.FunSuite{
   var C1: CorpCard = _
