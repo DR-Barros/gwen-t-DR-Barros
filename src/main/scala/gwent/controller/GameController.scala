@@ -4,21 +4,20 @@ package gwent.controller
 import gwent.players.Player
 
 import cl.uchile.dcc.gwent.board.Board
-import cl.uchile.dcc.gwent.controller.states.State
+import cl.uchile.dcc.gwent.controller.states._
 
 
 class GameController extends Controller{
   private var p1: Player = _
   private var p2: Player = _
   private var board: Board = _
-  private var state: State = startState()
+  private var state: State = new StartState()
   state.setController(this)
 
   def setState(aState: State): Unit = {
     state = aState
     state.setController(this)
   }
-
 
   def handleState(): Unit = state.handle()
 
