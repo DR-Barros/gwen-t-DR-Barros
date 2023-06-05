@@ -5,7 +5,7 @@ import gwent.controller.Controller
 
 trait State {
   def setController(controller: Controller): Unit
-
+  protected def changeState(state: State): Unit
   def handle(): Unit
   def start(): Unit
   def roundInit(): Unit
