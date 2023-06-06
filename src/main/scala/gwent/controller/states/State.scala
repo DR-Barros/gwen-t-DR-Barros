@@ -20,7 +20,6 @@ trait State {
   def finishRound(): Unit
   def nextRound(): Unit
   def finishGame(): Unit
-  def restartGame(): Unit
   def isStart(): Boolean
   def isRoundInit(): Boolean
   def isPlayer1Turn(): Boolean
@@ -34,5 +33,4 @@ trait State {
   def isFinishRound(): Boolean
   def isNextRound(): Boolean
   def isFinishGame(): Boolean
-  def isRestartGame(): Boolean
 }

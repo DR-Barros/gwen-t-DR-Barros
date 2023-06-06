@@ -47,8 +47,6 @@ class GameController extends Controller{
 
   def finishGame(): Unit = state.finishGame()
 
-  def restartGame(): Unit = state.restartGame()
-
   def isStart(): Boolean = state.isStart()
 
   def isRoundInit(): Boolean = state.isRoundInit()
@@ -74,6 +72,4 @@ class GameController extends Controller{
   def isNextRound(): Boolean = state.isNextRound()
 
   def isFinishGame(): Boolean = state.isFinishGame()
-
-  def isRestartGame(): Boolean = state.isRestartGame()
 }

@@ -125,7 +125,6 @@ pasa a "Jugar carta P1" y si elige pasar pasa al estado "Juega CPU fin".
 12. Terminar ronda:
 13. Proxima ronda: borrar tablero y robar 3 cartas 
 14. Terminar juego:
-15. Reiniciar:
 
 
 ---

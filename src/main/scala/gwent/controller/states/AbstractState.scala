@@ -44,8 +44,6 @@ abstract class AbstractState extends State {
 
   def finishGame(): Unit = error()
 
-  def restartGame(): Unit = error()
-
   def isStart(): Boolean = false
 
   def isRoundInit(): Boolean = false
@@ -72,5 +70,4 @@ abstract class AbstractState extends State {
 
   def isFinishGame(): Boolean = false
 
-  def isRestartGame(): Boolean = false
 }
