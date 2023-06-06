@@ -112,20 +112,23 @@ Los estados son los siguientes:
 1. inicio (Start): En este primer estado se inicializan los jugadores, el tablero y luego cada jugador roba 10 cartas. 
 De este estado se pasa a Inicio Ronda.
 3. Inicio ronda (RoundInit): En este estado se decide cúal de los jugadores va a comenzar a jugar primero. Puede pasar a 
-"Juega Player 1" o "Juega CPU".
-4. Juega Player 1: En este estado el jugador decide si jugar 1 carta o pasar el turno. Si el jugador decide jugar cartas 
-pasa a "Jugar carta P1" y si elige pasar pasa al estado "Juega CPU fin". 
-5. Jugar carta P1: en este estado el jugador decide cúal carta jugar. De este estado se pasa a "Juega CPU"
-6. Juega P1 fin:
-7. Jugar cartas P1:
-8. Juega CPU:
-9. Jugar carta CPU:
-10. Juega CPU fin:
-11. Jugar cartas:
-12. Terminar ronda:
-13. Proxima ronda: borrar tablero y robar 3 cartas 
-14. Terminar juego:
+"Turno P1" o "Turno P2".
+4. Turno P1: En este estado el jugador decide si jugar 1 carta o pasar el turno. Si el jugador decide jugar cartas 
+pasa a "Jugar carta P1" y si elige pasar pasa al estado "Turno P2 final". 
+5. Jugar carta P1: En este estado el jugador decide cúal carta jugar. De este estado se pasa a "Turno P2"
+6. Turno P1 final: En este estado el jugador decide si jugar cartas o pasar el turno. Si el jugador decide pasar se termina la ronda
+7. Jugar cartas P1: En este estado el jugador puede jugar cuantas cartas quiera. De este estado se pasa a "Turno P2 final"
+8. Turno P2: En este estado el jugador decide si jugar 1 carta o pasar el turno. Si el jugador decide jugar cartas
+   pasa a "Jugar carta P2" y si elige pasar pasa al estado "Turno P1 final".
+9. Jugar carta P2: En este estado el jugador decide cúal carta jugar. De este estado se pasa a "Turno P1"
+10. Turno P2 fin: En este estado el jugador decide si jugar cartas o pasar el turno. Si el jugador decide pasar se termina la ronda
+11. Jugar cartas P2: En este estado el jugador puede jugar cuantas cartas quiera. De este estado se pasa a "Turno P1 final"
+12. Terminar ronda: En este estado se calculan los puntos de los jugadores y se restan las gemas correspondientes segun quien perdio
+o si hay empate. De este estado si alguno de los jugadores se quedo sin cartas se pasa a "Terminar juego" si no se pasa a "Proxima ronda"
+13. Proxima ronda: En este estado se borra el tablero y roban 3 cartas cada jugador. De este estado se pasa a "Inicio de ronda"
+14. Terminar juego: En este estado se evalua quien gano o si hubo empate. Si el jugador quiere puede reiniciar el juego volviendo a "Inicio"
 
+Es importante notar que si el jugador no tiene cartas por jugar se pasa automaticamente su turno.
 
 ---
 **The rest of the documentation is left for the users of this template to complete**
