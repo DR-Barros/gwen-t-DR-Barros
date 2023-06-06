@@ -8,9 +8,9 @@ import cl.uchile.dcc.gwent.controller.states._
 
 
 class GameController extends Controller{
-  private var p1: Player = _
-  private var p2: Player = _
-  private var board: Board = _
+  private var p1: Option[Player] = None
+  private var p2: Option[Player] = None
+  private var board: Option[Board] = None
   private var state: State = new StartState()
   state.setController(this)
 
