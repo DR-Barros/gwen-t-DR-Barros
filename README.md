@@ -109,12 +109,13 @@ estas filas son arreglos con hasta 6 cartas, en donde cada uno recibe el tipo de
 El siguiente esquema de estados resume los distintos estados en que puede encontrarse el GameController.
 ![Esquema de estados](esquemaEstados.jpg)
 Los estados son los siguientes:
-1. Start: En este primer estado se inicializan los jugadores, el tablero y luego cada jugador roba 10 cartas. De este estado se pasa a Inicio Ronda.
-3. Inicio ronda: En este estado se decide cúal de los jugadores va a comenzar a jugar primero. Puede pasar a "Juega Player 1" o
-"Juega CPU".
-4. Juega Player 1: En este estado el jugador decide si jugar 1 carta o pasar el turno. Si el jugador decide jugar cartas pasa a "Jugar carta P1"
-y si elige pasar pasa al estado "Juega CPU fin". 
-5. Jugar carta P1:
+1. inicio (Start): En este primer estado se inicializan los jugadores, el tablero y luego cada jugador roba 10 cartas. 
+De este estado se pasa a Inicio Ronda.
+3. Inicio ronda (RoundInit): En este estado se decide cúal de los jugadores va a comenzar a jugar primero. Puede pasar a 
+"Juega Player 1" o "Juega CPU".
+4. Juega Player 1: En este estado el jugador decide si jugar 1 carta o pasar el turno. Si el jugador decide jugar cartas 
+pasa a "Jugar carta P1" y si elige pasar pasa al estado "Juega CPU fin". 
+5. Jugar carta P1: en este estado el jugador decide cúal carta jugar. De este estado se pasa a "Juega CPU"
 6. Juega P1 fin:
 7. Jugar cartas P1:
 8. Juega CPU:

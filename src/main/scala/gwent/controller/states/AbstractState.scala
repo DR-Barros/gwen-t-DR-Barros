@@ -5,7 +5,7 @@ import gwent.controller.Controller
 
 import cl.uchile.dcc.gwent.exception.StateError
 
-class AbstractState extends State {
+abstract class AbstractState extends State {
   private var c: Option[Controller] = None
   def setController(controller: Controller): Unit = {
     c = Some(controller)
@@ -16,7 +16,7 @@ class AbstractState extends State {
       c.get.setState(state)
   }
 
-  def error() = throw new StateError("Wrong State")
+  private def error() = throw new StateError("Wrong State")
 
   def start(): Unit = error()
 
