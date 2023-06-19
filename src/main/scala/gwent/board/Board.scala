@@ -1,8 +1,9 @@
 package cl.uchile.dcc
 package gwent.board
 import gwent.cards.Card
-
 import gwent.players.Player
+
+import cl.uchile.dcc.gwent.board.states.{BoardState, ClearState}
 
 /** Representa el tablero del juego
  *
@@ -25,6 +26,20 @@ class Board{
   /** Seccion de clima
    */
   private val weatherSec: Array[Card] = new Array[Card](1)
+  /** estado del clima del tablero
+   * y la inicializacion del estado con el tablero
+   */
+  private var state: BoardState = new ClearState()
+  state.setBoard(this)
+
+  /**Cambia el estado de clima del tablero
+   *
+   * @param cState estado al cual se va a cambiar
+   */
+  def setState(cState: BoardState): Unit = {
+    state = cState
+    state.setBoard(this)
+  }
 
   /** juega la carta del jugador en la seccion 1
    *

@@ -4,7 +4,7 @@ import gwent.board.Board
 
 trait BoardState {
   def setBoard(board: Board): Unit
-  protected  def changeState: Unit
+  protected  def changeState(state: BoardState): Unit
   def clear(): Unit
   def fog(): Unit
   def frost(): Unit
