@@ -1,7 +1,7 @@
 package cl.uchile.dcc
 package gwent.cards
 
-import gwent.board.Section
+import gwent.board.{Board, BoardSection, Section}
 
 trait Card {
   def getName(): String
@@ -9,4 +9,6 @@ trait Card {
   def getCardType(): String
   
   def assignZone(sec: Section, wheather: Array[Card]): Unit
+  
+  def apply(board: Board, boardSection: BoardSection): Unit
 }

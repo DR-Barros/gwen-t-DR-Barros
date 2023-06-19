@@ -1,9 +1,8 @@
 package cl.uchile.dcc
 package gwent.cards
 
-import gwent.cards.Card
-
-import cl.uchile.dcc.gwent.board.Section
+import cl.uchile.dcc.gwent.board.{Board, BoardSection, Section}
+import gwent.effects.Effect
 
 import java.util.Objects
 
@@ -12,12 +11,13 @@ import java.util.Objects
  * Las cartas de clima tienen un tipo y un nombre que las identifica
  *
  * @param name nombre
+ * @param effect el efecto de la carta
  *
  * @author Daniel Radrigan
  * @since 1.0.0
- * @version 1.0.2             
+ * @version 1.0.3
  */
-class WeatherCard(private val name: String) extends Card with Equals {
+class WeatherCard(private val name: String, private val effect: Effect) extends Card with Equals {
   /** Devuelve el nombre de la carta
    *
    * @return nombre
@@ -41,6 +41,15 @@ class WeatherCard(private val name: String) extends Card with Equals {
    */
   def getCardType(): String = {
     return "Weather"
+  }
+
+  /** Le entrega la responsabilidad a la carta de aplicar el efecto
+   *
+   * @param board tablero del juego
+   * @param boardSection seccion donde juega el jugador que uso la carta
+   */
+  def apply(board: Board, boardSection: BoardSection): Unit = {
+    effect.apply(board, boardSection)
   }
 
   /**

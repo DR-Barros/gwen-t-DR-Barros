@@ -2,7 +2,7 @@ package cl.uchile.dcc
 package gwent.cards
 
 import cl.uchile.dcc.gwent.board.Section
-
+import gwent.effects.Effect
 import java.util.Objects
 
 /** Clase de carta tipo asedio
@@ -11,12 +11,13 @@ import java.util.Objects
  *
  * @param name nombre de la carta
  * @param strength fuerza de la carta
+ * @param effect el efecto de la carta                
  *                 
  * @author Daniel Radrigan
  * @since 1.0.0
- * @version 1.0.2
+ * @version 1.0.3
  */
-class SiegeCard (private val name: String, private  val strength: Int) extends UnitCard(name, strength)  {
+class SiegeCard (private val name: String, private  val strength: Int, private val effect: Effect) extends UnitCard(name, strength, effect)  {
   def getCardType(): String = {
     return "Siege"
   }
