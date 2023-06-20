@@ -27,7 +27,6 @@ class Board{
    */
   private val weatherSec: Array[Card] = new Array[Card](1)
   /** estado del clima del tablero
-   * y la inicializacion del estado con el tablero
    */
   private var state: BoardState = new ClearState()
   state.setBoard(this)
@@ -48,6 +47,7 @@ class Board{
    */
   def playCardSec1(player: Player, n: Int): Unit = {
     val card = player.playCard(n)
+    card.apply(this,sec1)
     card.assignZone(sec1, weatherSec)
   }
 
@@ -58,6 +58,7 @@ class Board{
    */
   def playCardSec2(player: Player, n: Int): Unit = {
     val card = player.playCard(n)
+    card.apply(this, sec2)
     card.assignZone(sec2, weatherSec)
   }
 
@@ -116,4 +117,44 @@ class Board{
   def getSecW():Array[Card] = {
     return weatherSec
   }
+
+  /** Cambia al estado despejado
+   */
+  def clear(): Unit = state.clear()
+
+  /** Cambia al estado Niebla
+   */
+  def fog(): Unit = state.fog()
+
+  /** Cambia al estado escarcha
+   */
+  def frost(): Unit = state.frost()
+
+  /** Cambia al estado lluvia
+   */
+  def rain(): Unit = state.rain()
+
+  /** Devuelve true o false según si esta en el estado despejado
+   *
+   * @return true or false
+   */
+  def isClear(): Boolean = state.isClear()
+
+  /** Devuelve true o false según si esta en el estado niebla
+   *
+   * @return true or false
+   */
+  def isFog(): Boolean = state.isFog()
+
+  /** Devuelve true o false según si esta en el estado escarcha
+   *
+   * @return true or false
+   */
+  def isFrost(): Boolean = state.isFrost()
+
+  /** Devuelve true o false según si esta en el estado lluvia
+   *
+   * @return true or false
+   */
+  def isRain(): Boolean = state.isRain()
 }

@@ -2,9 +2,9 @@ package cl.uchile.dcc
 package gwent.cards
 
 import gwent.cards.Card
-import gwent.effects.Effect
 
 import cl.uchile.dcc.gwent.board.{Board, BoardSection}
+import cl.uchile.dcc.gwent.cards.effects.{Effect, UnitEffect}
 
 import java.util.Objects
 
@@ -21,7 +21,7 @@ import java.util.Objects
  * @since 1.0.0
  * @version 1.0.2                  
  */
-abstract class UnitCard(private val name: String, private val strength: Int, private val effect: Effect) extends Card with Equals {
+abstract class UnitCard(private val name: String, private val strength: Int, private val effect: UnitEffect) extends Card with Equals {
   /**Devuelve el nombre de la carta
    * 
    * @return nombre
@@ -44,7 +44,7 @@ abstract class UnitCard(private val name: String, private val strength: Int, pri
    * @param boardSection seccion donde juega el jugador que uso la carta
    */
   def apply(board: Board, boardSection: BoardSection): Unit = {
-    effect.apply(board, boardSection)
+    effect.apply(boardSection, this)
   }
 
   /**

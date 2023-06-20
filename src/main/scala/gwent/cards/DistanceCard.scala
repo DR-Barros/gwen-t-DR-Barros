@@ -2,7 +2,8 @@ package cl.uchile.dcc
 package gwent.cards
 
 import cl.uchile.dcc.gwent.board.Section
-import gwent.effects.Effect
+import cl.uchile.dcc.gwent.cards.effects.UnitEffect
+
 import java.util.Objects
 
 /** Clase de carta tipo a distancia
@@ -17,7 +18,7 @@ import java.util.Objects
  * @since 1.0.0
  * @version 1.0.3                 
  */
-class DistanceCard (private val name: String, private  val strength: Int, private val effect: Effect) extends UnitCard(name, strength, effect) {
+class DistanceCard (private val name: String, private  val strength: Int, private val effect: UnitEffect) extends UnitCard(name, strength, effect) {
   /** Devuelve el tipo de la carta
    *
    * @return "Corp"

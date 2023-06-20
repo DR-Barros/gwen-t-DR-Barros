@@ -3,11 +3,13 @@ package gwent.cards
 
 import gwent.exception.{DeckIsEmpty, HandDontHaveCard, HandIsFull}
 
+import cl.uchile.dcc.gwent.cards.effects.{ClearEffect, FogEffect, NullEffect}
+
 class CorpCardTest extends munit.FunSuite{
   var C1: CorpCard = _
 
   override def beforeEach(context: BeforeEach): Unit = {
-    C1 = new CorpCard("vikingo", 18)
+    C1 = new CorpCard("vikingo", 18, new NullEffect)
   }
   test("Una carta cuerpo a cuerpo tien nombre"){
     assertEquals(C1.getName(), "vikingo")
@@ -19,17 +21,17 @@ class CorpCardTest extends munit.FunSuite{
     assertEquals(C1.getStrength(), 18)
   }
   test("Una carta cuerpo a cuerpo se identifica por su nombre y fuerza"){
-    assert(C1.equals(new CorpCard("vikingo", 18)))
-    assert(!C1.equals(new CorpCard("soldado", 18)))
-    assert(!C1.equals(new CorpCard("vikingo", 10)))
+    assert(C1.equals(new CorpCard("vikingo", 18, new NullEffect)))
+    assert(!C1.equals(new CorpCard("soldado", 18, new NullEffect)))
+    assert(!C1.equals(new CorpCard("vikingo", 10, new NullEffect)))
   }
   test("Una carta cuerpo a cuerpo solo es igual a otra carta cuerpo a cuerpo con igual nombre y fuerza"){
-    assert(C1.equals(new CorpCard("vikingo", 18)))
-    assert(!C1.equals(new CorpCard("vikingos", 18)))
-    assert(!C1.equals(new CorpCard("vikingo", 19)))
-    assert(!C1.equals(new DistanceCard("vikingo", 18)))
-    assert(!C1.equals(new SiegeCard("vikingo", 18)))
-    assert(!C1.equals(new WeatherCard("Soleado")))
+    assert(C1.equals(new CorpCard("vikingo", 18, new NullEffect)))
+    assert(!C1.equals(new CorpCard("vikingos", 18, new NullEffect)))
+    assert(!C1.equals(new CorpCard("vikingo", 19, new NullEffect)))
+    assert(!C1.equals(new DistanceCard("vikingo", 18, new NullEffect)))
+    assert(!C1.equals(new SiegeCard("vikingo", 18, new NullEffect)))
+    assert(!C1.equals(new WeatherCard("Soleado", new ClearEffect)))
   }
 }
 
@@ -37,7 +39,7 @@ class DistanceCardTest extends munit.FunSuite{
   var C1: DistanceCard = _
 
   override def beforeEach(context: BeforeEach): Unit = {
-    C1 = new DistanceCard("arquera", 14)
+    C1 = new DistanceCard("arquera", 14, new NullEffect)
   }
   test("Una carta a distancia tien nombre"){
     assertEquals(C1.getName(), "arquera")
@@ -49,17 +51,17 @@ class DistanceCardTest extends munit.FunSuite{
     assertEquals(C1.getStrength(), 14)
   }
   test("Una carta a distancia se identifica por su nombre y fuerza") {
-    assert(C1.equals(new DistanceCard("arquera", 14)))
-    assert(!C1.equals(new DistanceCard("mago", 14)))
-    assert(!C1.equals(new DistanceCard("arquera", 10)))
+    assert(C1.equals(new DistanceCard("arquera", 14, new NullEffect)))
+    assert(!C1.equals(new DistanceCard("mago", 14, new NullEffect)))
+    assert(!C1.equals(new DistanceCard("arquera", 10, new NullEffect)))
   }
   test("Una carta a distancia solo es igual a otra carta a distancia con igual nombre y fuerza") {
-    assert(C1.equals(new DistanceCard("arquera", 14)))
-    assert(!C1.equals(new DistanceCard("arqueras", 14)))
-    assert(!C1.equals(new DistanceCard("arquera", 19)))
-    assert(!C1.equals(new CorpCard("arquera", 14)))
-    assert(!C1.equals(new SiegeCard("arquera", 14)))
-    assert(!C1.equals(new WeatherCard("Soleado")))
+    assert(C1.equals(new DistanceCard("arquera", 14, new NullEffect)))
+    assert(!C1.equals(new DistanceCard("arqueras", 14, new NullEffect)))
+    assert(!C1.equals(new DistanceCard("arquera", 19, new NullEffect)))
+    assert(!C1.equals(new CorpCard("arquera", 14, new NullEffect)))
+    assert(!C1.equals(new SiegeCard("arquera", 14, new NullEffect)))
+    assert(!C1.equals(new WeatherCard("Soleado", new ClearEffect)))
   }
 
 }
@@ -68,7 +70,7 @@ class SiegeCardTest extends munit.FunSuite{
   var C1: SiegeCard = _
 
   override def beforeEach(context: BeforeEach): Unit = {
-    C1 = new SiegeCard("catapulta", 25)
+    C1 = new SiegeCard("catapulta", 25, new NullEffect)
   }
   test("Una carta de asedio tien nombre"){
     assertEquals(C1.getName(), "catapulta")
@@ -80,17 +82,17 @@ class SiegeCardTest extends munit.FunSuite{
     assertEquals(C1.getStrength(), 25)
   }
   test("Una carta de asedio se identifica por su nombre y fuerza") {
-    assert(C1.equals(new SiegeCard("catapulta", 25)))
-    assert(!C1.equals(new SiegeCard("Torre", 25)))
-    assert(!C1.equals(new SiegeCard("catapulta", 20)))
+    assert(C1.equals(new SiegeCard("catapulta", 25, new NullEffect)))
+    assert(!C1.equals(new SiegeCard("Torre", 25, new NullEffect)))
+    assert(!C1.equals(new SiegeCard("catapulta", 20, new NullEffect)))
   }
   test("Una carta de asedio solo es igual a otra carta de asedio con igual nombre y fuerza") {
-    assert(C1.equals(new SiegeCard("catapulta", 25)))
-    assert(!C1.equals(new SiegeCard("catapultas", 25)))
-    assert(!C1.equals(new SiegeCard("catapulta", 19)))
-    assert(!C1.equals(new CorpCard("catapulta", 25)))
-    assert(!C1.equals(new DistanceCard("catapulta", 25)))
-    assert(!C1.equals(new WeatherCard("Soleado")))
+    assert(C1.equals(new SiegeCard("catapulta", 25, new NullEffect)))
+    assert(!C1.equals(new SiegeCard("catapultas", 25, new NullEffect)))
+    assert(!C1.equals(new SiegeCard("catapulta", 19, new NullEffect)))
+    assert(!C1.equals(new CorpCard("catapulta", 25, new NullEffect)))
+    assert(!C1.equals(new DistanceCard("catapulta", 25, new NullEffect)))
+    assert(!C1.equals(new WeatherCard("Soleado", new ClearEffect)))
   }
 }
 
@@ -99,8 +101,8 @@ class WeatherCardTest extends munit.FunSuite{
   var W2: WeatherCard = _
 
   override def beforeEach(context: BeforeEach): Unit = {
-    W1 = new WeatherCard("soleado")
-    W2 = new WeatherCard("nublado")
+    W1 = new WeatherCard("soleado", new ClearEffect)
+    W2 = new WeatherCard("nublado", new FogEffect)
   }
   test("Una carta de clima tien nombre"){
     assertEquals(W1.getName(), "soleado")

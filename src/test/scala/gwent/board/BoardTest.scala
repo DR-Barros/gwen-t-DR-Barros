@@ -1,7 +1,9 @@
 package cl.uchile.dcc
 package gwent.board
-import gwent.cards.{Card, CorpCard, Deck, WeatherCard, DistanceCard, SiegeCard}
+import gwent.cards.{Card, CorpCard, Deck, DistanceCard, SiegeCard, WeatherCard}
 import gwent.players.UserPlayer
+
+import cl.uchile.dcc.gwent.cards.effects.{ClearEffect, NullEffect}
 
 class BoardTest extends munit.FunSuite {
   var board: Board = _
@@ -13,10 +15,10 @@ class BoardTest extends munit.FunSuite {
 
   override def beforeEach(context: BeforeEach): Unit = {
     board = new Board()
-    cardC = new CorpCard("Darth Vader", 19)
-    cardD = new DistanceCard("Han Solo", 10)
-    cardS = new SiegeCard("C3PO", 1)
-    cardW = new WeatherCard("Templado")
+    cardC = new CorpCard("Darth Vader", 19, new NullEffect)
+    cardD = new DistanceCard("Han Solo", 10, new NullEffect)
+    cardS = new SiegeCard("C3PO", 1, new NullEffect)
+    cardW = new WeatherCard("Templado", new ClearEffect)
     player = new UserPlayer("P1", new Deck(Array(cardC, cardD, cardS, cardW)))
     player.stealCard()
     player.stealCard()
@@ -59,7 +61,7 @@ class BoardSectionTest extends munit.FunSuite{
     assertEquals(Sec1.getZoneD().toSeq, new Array[Card](6).toSeq)
   }
   test("Las cartas pueden ser asignadas a alguna zona de la seccion"){
-    val card: Card = new CorpCard("nombre", 14)
+    val card: Card = new CorpCard("nombre", 14, new NullEffect)
     Sec1.assignZoneC(card)
     assert(card.equals(Sec1.getZoneC()(0)))
     Sec1.assignZoneD(card)

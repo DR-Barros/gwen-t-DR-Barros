@@ -2,7 +2,7 @@ package cl.uchile.dcc
 package gwent.cards
 
 import cl.uchile.dcc.gwent.board.{Board, BoardSection, Section}
-import gwent.effects.Effect
+import cl.uchile.dcc.gwent.cards.effects.WeatherEffect
 
 import java.util.Objects
 
@@ -17,7 +17,7 @@ import java.util.Objects
  * @since 1.0.0
  * @version 1.0.3
  */
-class WeatherCard(private val name: String, private val effect: Effect) extends Card with Equals {
+class WeatherCard(private val name: String, private val effect: WeatherEffect) extends Card with Equals {
   /** Devuelve el nombre de la carta
    *
    * @return nombre
@@ -49,7 +49,7 @@ class WeatherCard(private val name: String, private val effect: Effect) extends 
    * @param boardSection seccion donde juega el jugador que uso la carta
    */
   def apply(board: Board, boardSection: BoardSection): Unit = {
-    effect.apply(board, boardSection)
+    effect.apply(board)
   }
 
   /**

@@ -3,7 +3,7 @@ package gwent.board.states
 import gwent.board.Board
 
 abstract class AbstractBoardState extends BoardState {
-  private var b: option[Board] = None
+  private var b: Option[Board] = None
   def setBoard(board: Board): Unit = {
     b = Some(board)
   }
@@ -17,7 +17,7 @@ abstract class AbstractBoardState extends BoardState {
 
   def fog(): Unit = changeState(new FogState())
 
-  def frost(): Unit = changeState(new frostState())
+  def frost(): Unit = changeState(new FrostState())
 
   def rain(): Unit = changeState(new RainState())
 
