@@ -5,6 +5,7 @@ package Cards
 import gwent.cards.{Card, CorpCard, Deck, DistanceCard, SiegeCard}
 import gwent.players.UserPlayer
 
+import cl.uchile.dcc.gwent.cards.effects.NullEffect
 import cl.uchile.dcc.gwent.exception.HandDontHaveCard
 import munit.FunSuite
 
@@ -16,18 +17,18 @@ class PlayerTest extends munit.FunSuite {
 
   override def beforeEach(context: BeforeEach): Unit = {
     player1 = new UserPlayer("P1", new Deck(Array(
-      new CorpCard("Darth Vader", 19), new CorpCard("Luke Skywalker", 16), new CorpCard("Yoda", 20),
-      new DistanceCard("Han Solo", 10), new SiegeCard("C3PO", 1), new DistanceCard("Chewbacca", 12),
-      new CorpCard("Darth Maul", 13), new CorpCard("Obi Wan Kenobi", 17), new CorpCard("Ahsoka Tano", 12),
-      new CorpCard("Palpatine", 20), new SiegeCard("R2-D2", 9), new CorpCard("Mace Windu", 17),
-      new DistanceCard("Din Djarin", 13), new CorpCard("General Grievous", 14), new DistanceCard("Leia Organa", 16)
+      new CorpCard("Darth Vader", 19, new NullEffect), new CorpCard("Luke Skywalker", 16, new NullEffect), new CorpCard("Yoda", 20, new NullEffect),
+      new DistanceCard("Han Solo", 10, new NullEffect), new SiegeCard("C3PO", 1, new NullEffect), new DistanceCard("Chewbacca", 12, new NullEffect),
+      new CorpCard("Darth Maul", 13, new NullEffect), new CorpCard("Obi Wan Kenobi", 17, new NullEffect), new CorpCard("Ahsoka Tano", 12, new NullEffect),
+      new CorpCard("Palpatine", 20, new NullEffect), new SiegeCard("R2-D2", 9, new NullEffect), new CorpCard("Mace Windu", 17, new NullEffect),
+      new DistanceCard("Din Djarin", 13, new NullEffect), new CorpCard("General Grievous", 14, new NullEffect), new DistanceCard("Leia Organa", 16, new NullEffect)
     )))
     player2 = new UserPlayer("P2", new Deck(Array(
-      new CorpCard("Darth Vader", 19), new CorpCard("Luke Skywalker", 16), new CorpCard("Yoda", 20),
-      new DistanceCard("Han Solo", 10), new SiegeCard("C3PO", 1), new DistanceCard("Chewbacca", 12),
-      new CorpCard("Darth Maul", 13), new CorpCard("Obi Wan Kenobi", 17), new CorpCard("Ahsoka Tano", 12),
-      new CorpCard("Palpatine", 20), new SiegeCard("R2-D2", 9), new CorpCard("Mace Windu", 17),
-      new DistanceCard("Din Djarin", 13), new CorpCard("General Grievous", 14), new DistanceCard("Leia Organa", 16)
+      new CorpCard("Darth Vader", 19, new NullEffect), new CorpCard("Luke Skywalker", 16, new NullEffect), new CorpCard("Yoda", 20, new NullEffect),
+      new DistanceCard("Han Solo", 10, new NullEffect), new SiegeCard("C3PO", 1, new NullEffect), new DistanceCard("Chewbacca", 12, new NullEffect),
+      new CorpCard("Darth Maul", 13, new NullEffect), new CorpCard("Obi Wan Kenobi", 17, new NullEffect), new CorpCard("Ahsoka Tano", 12, new NullEffect),
+      new CorpCard("Palpatine", 20, new NullEffect), new SiegeCard("R2-D2", 9, new NullEffect), new CorpCard("Mace Windu", 17, new NullEffect),
+      new DistanceCard("Din Djarin", 13, new NullEffect), new CorpCard("General Grievous", 14, new NullEffect), new DistanceCard("Leia Organa", 16, new NullEffect)
     )))
   }
 
@@ -36,7 +37,7 @@ class PlayerTest extends munit.FunSuite {
     assertEquals(player2.getName(), "P2")
   }
   test("Un jugador debe ser de clase UserPlayer"){
-    assert(!player1.equals(new CorpCard("P1", 1)))
+    assert(!player1.equals(new CorpCard("P1", 1, new NullEffect)))
   }
   test("Un jugador se identifica por su nombre y zona"){
     assert(!player1.equals(player2))

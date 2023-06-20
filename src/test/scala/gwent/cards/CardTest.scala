@@ -109,12 +109,12 @@ class WeatherCardTest extends munit.FunSuite{
   }
   test("Una carta de clima es de tipo clima y no es igual a una carta de unidad"){
     assertEquals(W1.getCardType(), "Weather")
-    assert(!W1.equals(new CorpCard("Soldado", 15)))
-    assert(!W1.equals(new DistanceCard("Arquera", 15)))
-    assert(!W1.equals(new SiegeCard("catapulta", 20)))
+    assert(!W1.equals(new CorpCard("Soldado", 15, new NullEffect)))
+    assert(!W1.equals(new DistanceCard("Arquera", 15, new NullEffect)))
+    assert(!W1.equals(new SiegeCard("catapulta", 20, new NullEffect)))
   }
   test("Una carta clima se identifica por su nombre"){
-    assert(W1.equals(new WeatherCard("soleado")))
+    assert(W1.equals(new WeatherCard("soleado", new ClearEffect)))
     assert(!W1.equals(W2))
   }
 }
@@ -128,10 +128,10 @@ class DeckTest extends munit.FunSuite{
   var D2: Deck = _
 
   override def beforeEach(context: BeforeEach): Unit = {
-    U1 = new CorpCard("soldado", 15)
-    U2 = new DistanceCard("arquera", 4)
-    W1 = new WeatherCard("Escarcha")
-    W2 = new WeatherCard("Niebla")
+    U1 = new CorpCard("soldado", 15, new NullEffect)
+    U2 = new DistanceCard("arquera", 4, new NullEffect)
+    W1 = new WeatherCard("Escarcha", new ClearEffect)
+    W2 = new WeatherCard("Niebla", new FogEffect)
     D1 = new Deck(Array(U1, U2, W1))
     D2 = new Deck(Array())
   }
@@ -163,10 +163,10 @@ class CardsHandTest extends munit.FunSuite {
   var C2: CardsHand = _
 
   override def beforeEach(context: BeforeEach): Unit = {
-    U1 = new CorpCard("soldado", 15)
-    U2 = new DistanceCard("arquera", 4)
-    W1 = new WeatherCard("Escarcha")
-    W2 = new WeatherCard("Niebla")
+    U1 = new CorpCard("soldado", 15, new NullEffect)
+    U2 = new DistanceCard("arquera", 4, new NullEffect)
+    W1 = new WeatherCard("Escarcha", new ClearEffect)
+    W2 = new WeatherCard("Niebla", new FogEffect)
     C1 = new CardsHand()
     C2 = new CardsHand()
   }
