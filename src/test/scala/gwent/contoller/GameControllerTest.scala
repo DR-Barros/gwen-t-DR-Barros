@@ -58,7 +58,7 @@ class GameControllerTest extends munit.FunSuite {
     intercept[StateError]{c.roundInit()}
     assert(!c.isRoundInit())
   }
-  test("De el estado inicio de ronda puede pasar a turno P1"){
+  test("De el estado inicio de ronda puede pasar a turno P2"){
     c.roundInit()
     c.player2Turn()
     assert(c.isPlayer2Turn())
@@ -68,6 +68,13 @@ class GameControllerTest extends munit.FunSuite {
     c.player1Turn()
     c.playCardP1()
     assert(c.isPlayCardP1())
+  }
+  test("De jugar carta P1 puede pasar a turno P2"){
+    c.roundInit()
+    c.player1Turn()
+    c.playCardP1()
+    c.player2Turn()
+    assert(c.isPlayer2Turn())
   }
   test("Del turno P1 puede pasar a Turno final P2"){
     c.roundInit()
@@ -81,10 +88,111 @@ class GameControllerTest extends munit.FunSuite {
     c.playCardP2()
     assert(c.isPlayCardP2())
   }
+  test("De jugar carta P2 puede pasar a turno P1"){
+    c.roundInit()
+    c.player2Turn()
+    c.playCardP2()
+    c.player1Turn()
+    assert(c.isPlayer1Turn())
+  }
   test("Del turno P2 puede pasar a Turno final P1") {
     c.roundInit()
     c.player2Turn()
     c.player1FinalTurn()
     assert(c.isPlayer1FinalTurn())
+  }
+  test("Del Turno final P1 se puede pasar a Final de ronda"){
+    c.roundInit()
+    c.player2Turn()
+    c.player1FinalTurn()
+    c.finishRound()
+    assert(c.isFinishRound())
+  }
+  test("Del Turno final P1 se puede pasar a jugar cartas P1") {
+    c.roundInit()
+    c.player2Turn()
+    c.player1FinalTurn()
+    c.playCardsP1()
+    assert(c.isPlayCardsP1())
+  }
+  test("De jugar cartas P1 se puede pasar a jugar cartas P1"){
+    c.roundInit()
+    c.player2Turn()
+    c.player1FinalTurn()
+    c.playCardsP1()
+    c.playCardsP1()
+    assert(c.isPlayCardsP1())
+  }
+  test("De jugar cartas P1 se puede pasar a Turno final P2") {
+    c.roundInit()
+    c.player2Turn()
+    c.player1FinalTurn()
+    c.playCardsP1()
+    c.player2FinalTurn()
+    assert(c.isPlayer2FinalTurn())
+  }
+  test("Del Turno final P2 se puede pasar a Final de ronda") {
+    c.roundInit()
+    c.player1Turn()
+    c.player2FinalTurn()
+    c.finishRound()
+    assert(c.isFinishRound())
+  }
+  test("Del Turno final P2 se puede pasar a jugar cartas P2") {
+    c.roundInit()
+    c.player1Turn()
+    c.player2FinalTurn()
+    c.playCardsP2()
+    assert(c.isPlayCardsP2())
+  }
+  test("De jugar cartas P2 se puede pasar a jugar cartas P2") {
+    c.roundInit()
+    c.player1Turn()
+    c.player2FinalTurn()
+    c.playCardsP2()
+    c.playCardsP2()
+    assert(c.isPlayCardsP2())
+  }
+  test("De jugar cartas P2 se puede pasar a turno final P1") {
+    c.roundInit()
+    c.player1Turn()
+    c.player2FinalTurn()
+    c.playCardsP2()
+    c.player1FinalTurn()
+    assert(c.isPlayer1FinalTurn())
+  }
+  test("Del final de la ronda se puede pasar al final del juego"){
+    c.roundInit()
+    c.player1Turn()
+    c.player2FinalTurn()
+    c.finishRound()
+    c.finishGame()
+    assert(c.isFinishGame())
+  }
+  test("Del fin del juego se puede reiniciar volviendo a start"){
+    c.roundInit()
+    c.player1Turn()
+    c.player2FinalTurn()
+    c.finishRound()
+    c.finishGame()
+    c.start()
+    assert(c.isStart())
+  }
+  test("Del final de la ronda se puede pasar al proxima ronda") {
+    c.roundInit()
+    c.player1Turn()
+    c.player2FinalTurn()
+    c.finishRound()
+    c.nextRound()
+    assert(c.isNextRound())
+  }
+  test("De la proxima ronda se puede pasar a inicio de ronda") {
+    c.roundInit()
+    c.player1Turn()
+    c.player2FinalTurn()
+    c.finishRound()
+    c.nextRound()
+    c.roundInit()
+    assert(c.isRoundInit())
   }
 }
