@@ -18,7 +18,7 @@ import java.util.Objects
  * @since 1.0.0
  * @version 1.0.3
  */
-class CorpCard(private val name: String, private  val strength: Int, private val effect: UnitEffect) extends UnitCard(name, strength, effect){
+class CorpCard(private val name: String, private  var strength: Int, private val effect: UnitEffect) extends UnitCard(name, strength, effect){
   /**Devuelve el tipo de la carta
    * 
    * @return "Corp"
@@ -47,7 +47,7 @@ class CorpCard(private val name: String, private  val strength: Int, private val
   override def equals(obj: Any): Boolean = {
     if (canEqual(obj)) {
       val other = obj.asInstanceOf[CorpCard]
-      return super.equals(other)
+      return (this eq other) || (this.getName() == other.getName() && this.getStrength() == other.getStrength())
     } else {
       return false
     }

@@ -21,7 +21,7 @@ import java.util.Objects
  * @since 1.0.0
  * @version 1.0.2                  
  */
-abstract class UnitCard(private val name: String, private val strength: Int, private val effect: UnitEffect) extends Card with Equals {
+abstract class UnitCard(private val name: String, private var strength: Int, private val effect: UnitEffect) extends Card with Equals {
   /**Devuelve el nombre de la carta
    * 
    * @return nombre
@@ -38,6 +38,12 @@ abstract class UnitCard(private val name: String, private val strength: Int, pri
     return  strength
   }
 
+  /** Aumenta en uno la fuerza de la carta
+   */
+  def moreStrength(): Unit = {
+    strength += 1
+  }
+
   /** Le entrega la responsabilidad a la carta de aplicar el efecto
    *
    * @param board        tablero del juego
@@ -46,26 +52,4 @@ abstract class UnitCard(private val name: String, private val strength: Int, pri
   def apply(board: Board, boardSection: BoardSection): Unit = {
     effect.apply(boardSection, this)
   }
-
-  /**
-   * Comprobar si el objeto es de la mima clase que el objeto actual
-   */
-  override def canEqual(that: Any): Boolean = that.isInstanceOf[UnitCard]
-
-  /**
-   * Evalua si son iguales
-   */
-  override def equals(obj: Any): Boolean = {
-    if (canEqual(obj)) {
-      val other = obj.asInstanceOf[UnitCard]
-      return (this eq other) || (this.getName() == other.getName() && this.getStrength() == other.getStrength())
-    } else {
-      return false
-    }
-  }
-
-  /**
-   * hashcode
-   */
-  override def hashCode(): Int = Objects.hash(classOf[UnitCard], name, strength)
 }

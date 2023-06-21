@@ -18,6 +18,11 @@ class SiegeCardTest extends munit.FunSuite{
   test("Una carta de asedio tiene fuerza"){
     assertEquals(C1.getStrength(), 25)
   }
+  test("Una carta de asedio puede aumentar en uno su fuerza"){
+    assertEquals(C1.getStrength(), 25)
+    C1.moreStrength()
+    assertEquals(C1.getStrength(), 26)
+  }
   test("Una carta de asedio se identifica por su nombre y fuerza") {
     assert(C1.equals(new SiegeCard("catapulta", 25, new NullEffect)))
     assert(!C1.equals(new SiegeCard("Torre", 25, new NullEffect)))

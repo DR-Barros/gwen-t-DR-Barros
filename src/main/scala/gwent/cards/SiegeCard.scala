@@ -18,7 +18,7 @@ import java.util.Objects
  * @since 1.0.0
  * @version 1.0.3
  */
-class SiegeCard (private val name: String, private  val strength: Int, private val effect: UnitEffect) extends UnitCard(name, strength, effect)  {
+class SiegeCard (private val name: String, private  var strength: Int, private val effect: UnitEffect) extends UnitCard(name, strength, effect)  {
   def getCardType(): String = {
     return "Siege"
   }
@@ -43,7 +43,7 @@ class SiegeCard (private val name: String, private  val strength: Int, private v
   override def equals(obj: Any): Boolean = {
     if (canEqual(obj)) {
       val other = obj.asInstanceOf[SiegeCard]
-      return super.equals(other)
+      return (this eq other) || (this.getName() == other.getName() && this.getStrength() == other.getStrength())
     } else {
       return false
     }

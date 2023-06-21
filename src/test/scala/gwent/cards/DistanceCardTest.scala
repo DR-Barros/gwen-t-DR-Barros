@@ -18,6 +18,11 @@ class DistanceCardTest extends munit.FunSuite{
   test("Una carta a distancia tiene fuerza"){
     assertEquals(C1.getStrength(), 14)
   }
+  test("Una carta a distancia puede aumentar en uno su fuerza"){
+    assertEquals(C1.getStrength(), 14)
+    C1.moreStrength()
+    assertEquals(C1.getStrength(), 15)
+  }
   test("Una carta a distancia se identifica por su nombre y fuerza") {
     assert(C1.equals(new DistanceCard("arquera", 14, new NullEffect)))
     assert(!C1.equals(new DistanceCard("mago", 14, new NullEffect)))
