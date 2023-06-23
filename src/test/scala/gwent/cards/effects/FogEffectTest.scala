@@ -15,8 +15,4 @@ class FogEffectTest extends munit.FunSuite {
   test("Un efecto de niebla se llama: Niebla impenetrable") {
     assertEquals(fog.getName(), "Niebla impenetrable")
   }
-  test("al hacer apply al FogEffect el tablero cambia de estado a niebla") {
-    fog.apply(board)
-    assert(board.isFog())
-  }
 }

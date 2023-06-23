@@ -36,4 +36,30 @@ class CorpCardTest extends munit.FunSuite{
     assert(!C1.equals(new SiegeCard("vikingo", 18, new NullEffect)))
     assert(!C1.equals(new WeatherCard("Soleado", new ClearEffect)))
   }
+  test("Una Carta cuerpo cuerpo se inicializa en el estado despejado"){
+    assert(C1.isClear())
+    assert(!C1.isFog())
+    assert(!C1.isRain())
+    assert(!C1.isFrost())
+  }
+  test("Una carta cuerpo a cuerpo solo puede pasar de despejado a escarcha y viceversa"){
+    C1.clear()
+    assert(C1.isClear())
+    C1.frost()
+    assert(C1.isFrost())
+    C1.fog()
+    assert(!C1.isFog())
+    C1.rain()
+    assert(!C1.isRain())
+    assert(C1.isFrost())
+    C1.frost()
+    assert(C1.isFrost())
+    C1.clear()
+    assert(C1.isClear())
+  }
+  test("Si una carta cuerpo a cuerpo sufre escarcha su fuerza pasa a 1"){
+    assertEquals(C1.getStrength(), 18)
+    C1.frost()
+    assertEquals(C1.getStrength(), 1)
+  }
 }

@@ -15,8 +15,4 @@ class ClearEffectTest extends munit.FunSuite {
   test("Un efecto de despejado se llama: Clima despejado") {
     assertEquals(clear.getName(), "Clima despejado")
   }
-  test("al hacer apply al ClearEffect el tablero cambia de estado a despejado") {
-    clear.apply(board)
-    assert(board.isClear())
-  }
 }

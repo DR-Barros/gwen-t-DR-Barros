@@ -1,13 +1,13 @@
 package cl.uchile.dcc
-package gwent.board.states
+package gwent.cards.states
 
-/** Clase Frost
+/** Estado Frost
  *
  * @author Daniel Radrigán
  * @since 1.0.0
  * @version 1.0.0
  */
-class FrostState extends AbstractBoardState {
+class FrostState extends AbstractCardState {
   /**sobrescribe frost para que no haga nada */
   override def frost(): Unit = {}
 

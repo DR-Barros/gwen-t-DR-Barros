@@ -36,5 +36,30 @@ class DistanceCardTest extends munit.FunSuite{
     assert(!C1.equals(new SiegeCard("arquera", 14, new NullEffect)))
     assert(!C1.equals(new WeatherCard("Soleado", new ClearEffect)))
   }
-
+  test("Una carta a distancia se inicializa en el estado despejado"){
+    assert(C1.isClear())
+    assert(!C1.isFog())
+    assert(!C1.isRain())
+    assert(!C1.isFrost())
+  }
+  test("Una carta a distancia solo puede pasar de despejado a niebla y viceversa"){
+    C1.clear()
+    assert(C1.isClear())
+    C1.fog()
+    assert(C1.isFog())
+    C1.frost()
+    assert(!C1.isFrost())
+    C1.rain()
+    assert(!C1.isRain())
+    assert(C1.isFog())
+    C1.fog()
+    assert(C1.isFog())
+    C1.clear()
+    assert(C1.isClear())
+  }
+  test("Si una carta a distancia sufre niebla su fuerza pasa a 1") {
+    assertEquals(C1.getStrength(), 14)
+    C1.fog()
+    assertEquals(C1.getStrength(), 1)
+  }
 }

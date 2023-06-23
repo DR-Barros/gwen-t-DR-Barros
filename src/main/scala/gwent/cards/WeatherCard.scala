@@ -1,7 +1,7 @@
 package cl.uchile.dcc
 package gwent.cards
 
-import cl.uchile.dcc.gwent.board.{Board, BoardSection, Section}
+import cl.uchile.dcc.gwent.board.{Board, Section}
 import cl.uchile.dcc.gwent.cards.effects.WeatherEffect
 
 import java.util.Objects
@@ -31,7 +31,7 @@ class WeatherCard(private val name: String, private val effect: WeatherEffect) e
    * @param sec es la seccion del tablero a la cual hay que asignar la carta
    * @param wheather corresponde a la seccion de clima
    */
-  def assignZone(sec: Section, wheather: Array[Card]): Unit = {
+  def assignZone(sec: Section, wheather: Array[WeatherCard]): Unit = {
     wheather(0) = this
   }
 
@@ -48,7 +48,7 @@ class WeatherCard(private val name: String, private val effect: WeatherEffect) e
    * @param board tablero del juego
    * @param boardSection seccion donde juega el jugador que uso la carta
    */
-  def apply(board: Board, boardSection: BoardSection): Unit = {
+  def apply(board: Board, boardSection: Section): Unit = {
     effect.apply(board)
   }
 

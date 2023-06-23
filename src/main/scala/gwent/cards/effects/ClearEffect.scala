@@ -6,6 +6,6 @@ class ClearEffect extends WeatherEffect {
   def getName(): String = "Clima despejado"
 
   def apply(board: Board): Unit = {
-    board.clear()
+    board. clear()
   }
 }

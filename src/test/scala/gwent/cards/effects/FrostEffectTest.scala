@@ -15,8 +15,4 @@ class FrostEffectTest extends munit.FunSuite {
   test("Un efecto de escarcha se llama: Escarcha mordiente") {
     assertEquals(frost.getName(), "Escarcha mordiente")
   }
-  test("al hacer apply al FrostEffect el tablero cambia de estado a escarcha") {
-    frost.apply(board)
-    assert(board.isFrost())
-  }
 }

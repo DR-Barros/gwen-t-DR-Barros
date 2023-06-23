@@ -1,13 +1,13 @@
 package cl.uchile.dcc
-package gwent.board.states
+package gwent.cards.states
 
-/** Clase Rain
+/** Estado Rain
  *
  * @author Daniel Radrigán
  * @since 1.0.0
  * @version 1.0.0
  */
-class RainState extends  AbstractBoardState {
+class RainState extends  AbstractCardState {
   /**sobrescribe rain para que no haga nada */
   override def rain(): Unit = {}
 

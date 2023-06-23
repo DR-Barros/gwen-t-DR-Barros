@@ -1,9 +1,10 @@
 package cl.uchile.dcc
 package gwent.board
-import gwent.cards.Card
+import gwent.cards.{Card, UnitCard, WeatherCard}
 import gwent.players.Player
 
-import cl.uchile.dcc.gwent.board.states.{BoardState, ClearState}
+import scala.collection.mutable.ArrayBuffer
+
 
 /** Representa el tablero del juego
  *
@@ -19,26 +20,15 @@ import cl.uchile.dcc.gwent.board.states.{BoardState, ClearState}
 class Board{
   /** Seccion 1
    */
-  private val sec1: BoardSection = new BoardSection
+  private val sec1: Section = new BoardSection
   /** Seccion 2
    */
-  private val sec2: BoardSection = new BoardSection
+  private val sec2: Section = new BoardSection
   /** Seccion de clima
    */
-  private val weatherSec: Array[Card] = new Array[Card](1)
-  /** estado del clima del tablero
-   */
-  private var state: BoardState = new ClearState()
-  state.setBoard(this)
+  private val weatherSec: Array[WeatherCard] = new Array[WeatherCard](1)
 
-  /**Cambia el estado de clima del tablero
-   *
-   * @param cState estado al cual se va a cambiar
-   */
-  def setState(cState: BoardState): Unit = {
-    state = cState
-    state.setBoard(this)
-  }
+
 
   /** juega la carta del jugador en la seccion 1
    *
@@ -66,7 +56,7 @@ class Board{
    *
    * @return arreglo con  la zona cuerpo a cuerpo de la seccion 1
    */
-  def getSec1C(): Array[Card] = {
+  def getSec1C(): ArrayBuffer[UnitCard] = {
     return sec1.getZoneC()
   }
 
@@ -74,7 +64,7 @@ class Board{
    *
    * @return arreglo con  la zona a distancia de la seccion 1
    */
-  def getSec1D(): Array[Card] = {
+  def getSec1D(): ArrayBuffer[UnitCard] = {
     sec1.getZoneD()
   }
 
@@ -82,7 +72,7 @@ class Board{
    *
    * @return arreglo con  la zona de asedio de la seccion 1
    */
-  def getSec1S(): Array[Card] = {
+  def getSec1S(): ArrayBuffer[UnitCard] = {
     sec1.getZoneS()
   }
 
@@ -90,7 +80,7 @@ class Board{
    *
    * @return arreglo con  la zona cuerpo a cuerpo de la seccion 2
    */
-  def getSec2C(): Array[Card] = {
+  def getSec2C(): ArrayBuffer[UnitCard] = {
     sec2.getZoneC()
   }
 
@@ -98,7 +88,7 @@ class Board{
    *
    * @return arreglo con  la zona a distancia de la seccion 2
    */
-  def getSec2D(): Array[Card] = {
+  def getSec2D(): ArrayBuffer[UnitCard] = {
     sec2.getZoneD()
   }
 
@@ -106,7 +96,7 @@ class Board{
    *
    * @return arreglo con  la zona de asedio de la seccion 2
    */
-  def getSec2S(): Array[Card] = {
+  def getSec2S(): ArrayBuffer[UnitCard] = {
     sec2.getZoneS()
   }
 
@@ -114,47 +104,31 @@ class Board{
    *
    * @return arreglo con  seccion de clima
    */
-  def getSecW():Array[Card] = {
+  def getSecW():Array[WeatherCard] = {
     return weatherSec
   }
 
-  /** Cambia al estado despejado
-   */
-  def clear(): Unit = state.clear()
+  /** Manda a actualizar el estado de las cartas a despejado */
+  def clear(): Unit = {
+    sec1.clear()
+    sec2.clear()
+  }
 
-  /** Cambia al estado Niebla
-   */
-  def fog(): Unit = state.fog()
+  /** Manda a actualizar el estado de las cartas a niebla */
+  def fog(): Unit = {
+    sec1.fog()
+    sec2.fog()
+  }
 
-  /** Cambia al estado escarcha
-   */
-  def frost(): Unit = state.frost()
+  /** Manda a actualizar el estado de las cartas a escarcha */
+  def frost(): Unit = {
+    sec1.frost()
+    sec2.frost()
+  }
 
-  /** Cambia al estado lluvia
-   */
-  def rain(): Unit = state.rain()
-
-  /** Devuelve true o false según si esta en el estado despejado
-   *
-   * @return true or false
-   */
-  def isClear(): Boolean = state.isClear()
-
-  /** Devuelve true o false según si esta en el estado niebla
-   *
-   * @return true or false
-   */
-  def isFog(): Boolean = state.isFog()
-
-  /** Devuelve true o false según si esta en el estado escarcha
-   *
-   * @return true or false
-   */
-  def isFrost(): Boolean = state.isFrost()
-
-  /** Devuelve true o false según si esta en el estado lluvia
-   *
-   * @return true or false
-   */
-  def isRain(): Boolean = state.isRain()
+  /** Manda a actualizar el estado de las cartas a lluvia */
+  def rain(): Unit = {
+    sec1.rain()
+    sec2.rain()
+  }
 }

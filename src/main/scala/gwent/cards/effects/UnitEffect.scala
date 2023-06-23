@@ -1,9 +1,9 @@
 package cl.uchile.dcc
 package gwent.cards.effects
-import gwent.board.BoardSection
+import gwent.board.Section
 
-import cl.uchile.dcc.gwent.cards.Card
+import gwent.cards.UnitCard
 
 trait UnitEffect extends Effect {
-  def apply(boardSection: BoardSection, card: Card): Unit 
+  def apply(boardSection: Section, card: UnitCard): Unit 
 }

@@ -1,6 +1,8 @@
 package cl.uchile.dcc
 package gwent.board
-import gwent.cards.Card
+import gwent.cards.UnitCard
+
+import scala.collection.mutable.ArrayBuffer
 
 /**Representa la seccion del tablero de cada jugador
  *
@@ -19,65 +21,49 @@ class BoardSection  extends Section {
    *
    * En el arreglo se guardan las cartas cuerpo a cuerpo
    */
-  private var zoneC: Array[Card] = new Array[Card](6)
-  /** Contador de cartas cuerpo a cuerpo
-   *
-   * Lleva el registro de cuantas cartas se tienen en la fila cuerpo a cuerpo
-   */
-  private var countC: Int = 0
+  private var zoneC: ArrayBuffer[UnitCard] = new ArrayBuffer[UnitCard]
+
   /** Fila de cartas a distancia
    *
    * En el arreglo se guardan las cartas a distancia
    */
-  private var zoneD: Array[Card] = new Array[Card](6)
-  /** Contador de cartas a distancia
-   *
-   * Lleva el registro de cuantas cartas se tienen en la fila a distancia
-   */
-  private var countD: Int = 0
+  private var zoneD: ArrayBuffer[UnitCard] = new ArrayBuffer[UnitCard]
+
   /** Fila de cartas de asedio
    *
    * En el arreglo se guardan las cartas de asedio
    */
-  private var zoneS: Array[Card] = new Array[Card](6)
-  /** Contador de cartas de asedio
-   *
-   * Lleva el registro de cuantas cartas se tienen en la fila de asedio
-   */
-  private var countS: Int = 0
+  private var zoneS: ArrayBuffer[UnitCard] = new ArrayBuffer[UnitCard](6)
 
   /** Asigna cartas a la seccion cuerpo a cuerpo
    *
    * @param card la carta que se asignara en la seccion cuerpo a cuerpo
    */
-  def assignZoneC(card: Card): Unit = {
-    zoneC(countC) = card
-    countC += 1
+  def assignZoneC(card: UnitCard): Unit = {
+    zoneC += card
   }
 
   /** Asigna cartas a la seccion a Distancia
    *
    * @param card la carta que se asignara en la seccion a Distancia
    */
-  def assignZoneD(card: Card): Unit = {
-    zoneD(countD) = card
-    countD += 1
+  def assignZoneD(card: UnitCard): Unit = {
+    zoneD += card
   }
 
   /** Asigna cartas a la seccion de asedio
    *
    * @param card la carta que se asignara en la seccion de asedio
    */
-  def assignZoneS(card: Card): Unit = {
-    zoneS(countS) = card
-    countS += 1
+  def assignZoneS(card: UnitCard): Unit = {
+    zoneS += card
   }
 
   /** Devuelve el arreglo corresponiente a la seccion cuerpo a cuerpo
    * 
    * @return el arreglo con las cartas de la seccion cuerpo a cuerpo
    */
-  def getZoneC(): Array[Card] = {
+  def getZoneC(): ArrayBuffer[UnitCard] = {
     return zoneC
   }
 
@@ -85,7 +71,7 @@ class BoardSection  extends Section {
    * 
    * @return el arreglo con las cartas de la seccion a distancia
    */
-  def getZoneD(): Array[Card] = {
+  def getZoneD(): ArrayBuffer[UnitCard] = {
     return zoneD
   }
 
@@ -93,7 +79,59 @@ class BoardSection  extends Section {
    * 
    * @return el arreglo con las cartas de la seccion de asedio
    */
-  def getZoneS(): Array[Card] = {
+  def getZoneS(): ArrayBuffer[UnitCard] = {
     return zoneS
+  }
+
+  def bondC(card: UnitCard): Unit = {
+    zoneC.foreach(unitCard => if(unitCard.getName() == card.getName()){unitCard.moreStrength()})
+  }
+
+  def bondD(card: UnitCard): Unit = {
+    zoneD.foreach(unitCard => if(unitCard.getName() == card.getName()){unitCard.moreStrength()})
+  }
+
+  def bondS(card: UnitCard): Unit = {
+    zoneS.foreach(unitCard => if(unitCard.getName() == card.getName()){unitCard.moreStrength()})
+  }
+
+  def moralC(): Unit ={
+    zoneC.foreach(_.moreStrength())
+  }
+
+  def moralD(): Unit = {
+    zoneD.foreach(_.moreStrength())
+  }
+
+  def moralS(): Unit = {
+    zoneS.foreach(_.moreStrength())
+  }
+
+  /** Manda a actualizar el estado de las cartas a despejado*/
+  def clear(): Unit = {
+    zoneC.foreach(_.clear())
+    zoneD.foreach(_.clear())
+    zoneS.foreach(_.clear())
+  }
+
+  /** Manda a actualizar el estado de las cartas a niebla*/
+  def fog(): Unit = {
+    zoneC.foreach(_.fog())
+    zoneD.foreach(_.fog())
+    zoneS.foreach(_.fog())
+  }
+
+  /** Manda a actualizar el estado de las cartas a escarcha */
+  def frost(): Unit = {
+    zoneC.foreach(_.frost())
+    zoneD.foreach(_.frost())
+    zoneS.foreach(_.frost())
+  }
+
+  /** Manda a actualizar el estado de las cartas a lluvia */
+  def rain(): Unit = {
+    zoneC.foreach(_.rain())
+    zoneD.foreach(_.rain())
+    zoneS.foreach(_.rain())
   }
 }

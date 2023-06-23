@@ -15,8 +15,4 @@ class RainEffectTest extends munit.FunSuite {
   test("Un efecto de lluvia se llama: Lluvia torrencial"){
     assertEquals(rain.getName(), "Lluvia torrencial")
   }
-  test("al hacer apply al RainEffect el tablero cambia de estado a lluvioso"){
-    rain.apply(board)
-    assert(board.isRain())
-  }
 }

@@ -31,7 +31,6 @@ class PlayerTest extends munit.FunSuite {
       new DistanceCard("Din Djarin", 13, new NullEffect), new CorpCard("General Grievous", 14, new NullEffect), new DistanceCard("Leia Organa", 16, new NullEffect)
     )))
   }
-
   test("Un jugador debe tener un nombre"){
     assertEquals(player1.getName(), "P1")
     assertEquals(player2.getName(), "P2")
@@ -62,7 +61,6 @@ class PlayerTest extends munit.FunSuite {
     player1.stealCard()
     assertEquals(player1.handSize(), 4)
   }
-
   test("El jugador puede jugar cartas y estas se eliminan de la mano"){
     assertEquals(player2.handSize(), 0)
     player2.stealCard()

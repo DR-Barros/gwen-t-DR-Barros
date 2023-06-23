@@ -1,10 +1,11 @@
 package cl.uchile.dcc
-package gwent.board.states
-import gwent.board.Board
+package gwent.cards.states
 
-trait BoardState {
-  def setBoard(board: Board): Unit
-  protected  def changeState(state: BoardState): Unit
+import gwent.cards.UnitCard
+
+trait CardState {
+  def setCard(card: UnitCard): Unit
+  protected def changeState(state: CardState): Unit
   def clear(): Unit
   def fog(): Unit
   def frost(): Unit

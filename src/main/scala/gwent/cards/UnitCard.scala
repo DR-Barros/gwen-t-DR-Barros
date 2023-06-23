@@ -1,55 +1,22 @@
 package cl.uchile.dcc
 package gwent.cards
 
-import gwent.cards.Card
+import gwent.cards.states.CardState
 
-import cl.uchile.dcc.gwent.board.{Board, BoardSection}
-import cl.uchile.dcc.gwent.cards.effects.{Effect, UnitEffect}
+import cl.uchile.dcc.gwent.board.Section
 
-import java.util.Objects
-
-/** Clase abstracta de cartas Unidad
- * 
- * Las cartas de unidad que van a implementar esta clase abstracta son siegeCard, CorpCard y DistanceCard.
- * Las cartas de unidad tienen en comun tener un nombre, un tipo y fuerza.
- * 
- * @param name nombre de la carta
- * @param strength fuerza de la carta
- * @param effect el efecto de la carta                
- *                 
- * @author Daniel Radrigan
- * @since 1.0.0
- * @version 1.0.2                  
- */
-abstract class UnitCard(private val name: String, private var strength: Int, private val effect: UnitEffect) extends Card with Equals {
-  /**Devuelve el nombre de la carta
-   * 
-   * @return nombre
-   */
-  def getName(): String = {
-    return name
-  }
-
-  /**Devuelve la fuerza de la carta
-   * 
-   * @return fuerza
-   */
-  def getStrength(): Int = {
-    return  strength
-  }
-
-  /** Aumenta en uno la fuerza de la carta
-   */
-  def moreStrength(): Unit = {
-    strength += 1
-  }
-
-  /** Le entrega la responsabilidad a la carta de aplicar el efecto
-   *
-   * @param board        tablero del juego
-   * @param boardSection seccion donde juega el jugador que uso la carta
-   */
-  def apply(board: Board, boardSection: BoardSection): Unit = {
-    effect.apply(boardSection, this)
-  }
+trait UnitCard extends  Card {
+  def getStrength(): Int
+  def moreStrength(): Unit
+  def bond(boardSection: Section): Unit
+  def moral(boardSection: Section): Unit
+  def setState(cState: CardState): Unit
+  def clear(): Unit
+  def fog(): Unit
+  def frost(): Unit
+  def rain(): Unit
+  def isClear(): Boolean
+  def isFog(): Boolean
+  def isFrost(): Boolean
+  def isRain(): Boolean
 }

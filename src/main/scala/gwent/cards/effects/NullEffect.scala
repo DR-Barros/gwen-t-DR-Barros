@@ -1,9 +1,9 @@
 package cl.uchile.dcc
 package gwent.cards.effects
-import gwent.board.BoardSection
-import gwent.cards.Card
+import gwent.board.Section
+import gwent.cards.{Card, UnitCard}
 
 class NullEffect extends UnitEffect {
   def getName(): String = ""
-  def apply(boardSection: BoardSection, card: Card): Unit = {}
+  def apply(boardSection: Section, card: UnitCard): Unit = {}
 }

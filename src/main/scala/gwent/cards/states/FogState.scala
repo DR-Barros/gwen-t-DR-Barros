@@ -1,13 +1,13 @@
 package cl.uchile.dcc
-package gwent.board.states
+package gwent.cards.states
 
-/** Clase Fog
+/** Estado Fog
  *
  * @author Daniel Radrigán
  * @since 1.0.0
  * @version 1.0.0 
  */
-class FogState extends AbstractBoardState {
+class FogState extends AbstractCardState {
   /**sobrescribe fog para que no haga nada */
   override def fog(): Unit = {}
 

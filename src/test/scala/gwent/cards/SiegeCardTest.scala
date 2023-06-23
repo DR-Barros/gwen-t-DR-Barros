@@ -36,4 +36,30 @@ class SiegeCardTest extends munit.FunSuite{
     assert(!C1.equals(new DistanceCard("catapulta", 25, new NullEffect)))
     assert(!C1.equals(new WeatherCard("Soleado", new ClearEffect)))
   }
+  test("Una Carta de asedio se inicializa en el estado despejado") {
+    assert(C1.isClear())
+    assert(!C1.isFog())
+    assert(!C1.isRain())
+    assert(!C1.isFrost())
+  }
+  test("Una carta de asedio solo puede pasar de despejado a lluvia y viceversa") {
+    C1.clear()
+    assert(C1.isClear())
+    C1.rain()
+    assert(C1.isRain())
+    C1.fog()
+    assert(!C1.isFog())
+    C1.frost()
+    assert(!C1.isFrost())
+    assert(C1.isRain())
+    C1.rain()
+    assert(C1.isRain())
+    C1.clear()
+    assert(C1.isClear())
+  }
+  test("Si una carta cuerpo a cuerpo sufre escarcha su fuerza pasa a 1") {
+    assertEquals(C1.getStrength(), 25)
+    C1.rain()
+    assertEquals(C1.getStrength(), 1)
+  }
 }
