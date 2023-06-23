@@ -7,6 +7,6 @@ class MoralEffect extends UnitEffect {
   def getName(): String = "Refuerzo moral"
 
   override def apply(boardSection: Section, card: UnitCard): Unit = {
-    
+    card.moral(boardSection)
   }
 }

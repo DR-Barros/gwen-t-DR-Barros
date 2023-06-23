@@ -18,7 +18,7 @@ class CorpCardTest extends munit.FunSuite{
   test("Una carta de cuerpo a cuerpo tiene fuerza"){
     assertEquals(C1.getStrength(), 18)
   }
-  test("Una carta cuepo a cuerpo puede aumentar en 1 su fuerza"){
+  test("Una carta cuerpo a cuerpo puede aumentar en 1 su fuerza"){
     assertEquals(C1.getStrength(), 18)
     C1.moreStrength()
     assertEquals(C1.getStrength(), 19)
@@ -47,15 +47,14 @@ class CorpCardTest extends munit.FunSuite{
     assert(C1.isClear())
     C1.frost()
     assert(C1.isFrost())
-    C1.fog()
-    assert(!C1.isFog())
-    C1.rain()
-    assert(!C1.isRain())
-    assert(C1.isFrost())
     C1.frost()
     assert(C1.isFrost())
     C1.clear()
     assert(C1.isClear())
+    C1.fog()
+    assert(!C1.isFog())
+    C1.rain()
+    assert(!C1.isRain())
   }
   test("Si una carta cuerpo a cuerpo sufre escarcha su fuerza pasa a 1"){
     assertEquals(C1.getStrength(), 18)

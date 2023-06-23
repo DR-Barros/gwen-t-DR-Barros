@@ -49,4 +49,28 @@ class BoardTest extends munit.FunSuite {
     assert(cardS.equals(board.getSec2S()(0)))
     assert(cardW.equals(board.getSecW()(0)))
   }
+  test("Al usar frost se actualizan las cartas cuerpo cuerpo a el estado frost"){
+    board.playCardSec1(player, 1)
+    board.playCardSec1(player, 1)
+    board.playCardSec1(player, 1)
+    board.playCardSec1(player, 1)
+    board.frost()
+    assert(cardC.isFrost())
+  }
+  test("Al usar fog se actualizan las cartas cuerpo cuerpo a el estado frost") {
+    board.playCardSec1(player, 1)
+    board.playCardSec1(player, 1)
+    board.playCardSec1(player, 1)
+    board.playCardSec1(player, 1)
+    board.fog()
+    assert(cardD.isFog())
+  }
+  test("Al usar rain se actualizan las cartas cuerpo cuerpo a el estado frost") {
+    board.playCardSec1(player, 1)
+    board.playCardSec1(player, 1)
+    board.playCardSec1(player, 1)
+    board.playCardSec1(player, 1)
+    board.rain()
+    assert(cardS.isRain())
+  }
 }

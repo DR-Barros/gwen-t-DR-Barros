@@ -52,10 +52,10 @@ class SiegeCard (private val name: String, private  var strength: Int, private v
   }
 
   /** Una carta de asedio no puede pasar al estado escarcha */
-  override def frost(): Unit = {}
+  override def frost(): Unit = clear()
 
   /** Una carta de asedio no puede pasar al estado niebla */
-  override def fog(): Unit = {}
+  override def fog(): Unit = clear()
 
   /**
    * Comprobar si el objeto es de la mima clase que el objeto actual

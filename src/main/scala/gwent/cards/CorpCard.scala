@@ -54,10 +54,10 @@ class CorpCard(private val name: String, private  var strength: Int, private val
   }
 
   /** Una carta cuerpo cuerpo no puede cambiar a niebla */
-  override def fog(): Unit = {}
+  override def fog(): Unit = clear()
 
   /** Una carta cuerpo a cuerpo no puede cambiar a lluvia */
-  override def rain(): Unit = {}
+  override def rain(): Unit = clear()
 
   /**
    * Comprobar si el objeto es de la mima clase que el objeto actual
