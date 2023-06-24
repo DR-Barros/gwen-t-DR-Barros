@@ -59,7 +59,7 @@ class DistanceCard (private val name: String, private  var strength: Int, privat
   override def frost(): Unit = clear()
 
   /** Una carta a distancia no puede pasar al estado lluvia */
-  override def rain(): Unit = {}
+  override def rain(): Unit = clear()
 
   /**
    * Comprobar si el objeto es de la mima clase que el objeto actual

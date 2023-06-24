@@ -61,4 +61,7 @@ class CorpCardTest extends munit.FunSuite{
     C1.frost()
     assertEquals(C1.getStrength(), 1)
   }
+  test("Una carta aplica bond "){
+
+  }
 }
