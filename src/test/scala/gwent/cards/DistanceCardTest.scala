@@ -3,6 +3,8 @@ package gwent.cards
 
 import gwent.cards.effects.{ClearEffect, NullEffect}
 
+import cl.uchile.dcc.gwent.board.BoardSection
+
 class DistanceCardTest extends munit.FunSuite{
   var C1: DistanceCard = _
 
@@ -60,5 +62,27 @@ class DistanceCardTest extends munit.FunSuite{
     assertEquals(C1.getStrength(), 14)
     C1.fog()
     assertEquals(C1.getStrength(), 1)
+  }
+  test("Una carta aplica bond a las cartas de su fila") {
+    val c2 = new DistanceCard("mago", 20, new NullEffect)
+    val c3 = new DistanceCard("arquera", 20, new NullEffect)
+    val section = new BoardSection()
+    section.assignZoneD(c2)
+    section.assignZoneD(c3)
+    C1.bond(section)
+    assertEquals(C1.getStrength(), 15)
+    assertEquals(c2.getStrength(), 20)
+    assertEquals(c3.getStrength(), 21)
+  }
+  test("Una carta aplica moral a las cartas de su fila") {
+    val c2 = new DistanceCard("mago", 20, new NullEffect)
+    val c3 = new DistanceCard("arquera", 20, new NullEffect)
+    val section = new BoardSection()
+    section.assignZoneD(c2)
+    section.assignZoneD(c3)
+    C1.moral(section)
+    assertEquals(C1.getStrength(), 14)
+    assertEquals(c2.getStrength(), 21)
+    assertEquals(c3.getStrength(), 21)
   }
 }

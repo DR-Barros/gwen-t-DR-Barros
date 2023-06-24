@@ -3,6 +3,8 @@ package gwent.cards
 
 import gwent.cards.effects.{ClearEffect, NullEffect}
 
+import cl.uchile.dcc.gwent.board.BoardSection
+
 class SiegeCardTest extends munit.FunSuite{
   var C1: SiegeCard = _
 
@@ -60,5 +62,27 @@ class SiegeCardTest extends munit.FunSuite{
     assertEquals(C1.getStrength(), 25)
     C1.rain()
     assertEquals(C1.getStrength(), 1)
+  }
+  test("Una carta aplica bond a las cartas de su fila") {
+    val c2 = new SiegeCard("Torre", 20, new NullEffect)
+    val c3 = new SiegeCard("catapulta", 20, new NullEffect)
+    val section = new BoardSection()
+    section.assignZoneS(c2)
+    section.assignZoneS(c3)
+    C1.bond(section)
+    assertEquals(C1.getStrength(), 26)
+    assertEquals(c2.getStrength(), 20)
+    assertEquals(c3.getStrength(), 21)
+  }
+  test("Una carta aplica moral a las cartas de su fila") {
+    val c2 = new SiegeCard("Torre", 20, new NullEffect)
+    val c3 = new SiegeCard("catapulta", 20, new NullEffect)
+    val section = new BoardSection()
+    section.assignZoneS(c2)
+    section.assignZoneS(c3)
+    C1.moral(section)
+    assertEquals(C1.getStrength(), 25)
+    assertEquals(c2.getStrength(), 21)
+    assertEquals(c3.getStrength(), 21)
   }
 }

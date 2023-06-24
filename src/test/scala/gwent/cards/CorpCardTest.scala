@@ -3,6 +3,8 @@ package gwent.cards
 
 import gwent.cards.effects.{ClearEffect, NullEffect}
 
+import cl.uchile.dcc.gwent.board.BoardSection
+
 class CorpCardTest extends munit.FunSuite{
   var C1: CorpCard = _
 
@@ -61,7 +63,26 @@ class CorpCardTest extends munit.FunSuite{
     C1.frost()
     assertEquals(C1.getStrength(), 1)
   }
-  test("Una carta aplica bond "){
-
+  test("Una carta cuerpo a cuerpo aplica bond a las cartas de su fila"){
+    val c2 = new CorpCard("valkiria", 20, new NullEffect)
+    val c3 = new CorpCard("vikingo", 20, new NullEffect)
+    val section = new BoardSection()
+    section.assignZoneC(c2)
+    section.assignZoneC(c3)
+    C1.bond(section)
+    assertEquals(C1.getStrength(), 19)
+    assertEquals(c2.getStrength(), 20)
+    assertEquals(c3.getStrength(), 21)
+  }
+  test("Una carta cuerpo a cuerpo aplica moral a las cartas de su fila") {
+    val c2 = new CorpCard("valkiria", 20, new NullEffect)
+    val c3 = new CorpCard("vikingo", 20, new NullEffect)
+    val section = new BoardSection()
+    section.assignZoneC(c2)
+    section.assignZoneC(c3)
+    C1.moral(section)
+    assertEquals(C1.getStrength(), 18)
+    assertEquals(c2.getStrength(), 21)
+    assertEquals(c3.getStrength(), 21)
   }
 }
