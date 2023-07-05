@@ -1,10 +1,10 @@
 package cl.uchile.dcc
 package gwent.controller.states
 
-import gwent.controller.Controller
+import gwent.controller.GameController
 
 trait State {
-  def setController(controller: Controller): Unit
+  def setController(controller: GameController): Unit
   protected def changeState(state: State): Unit
   def handle(): Unit
   def start(): Unit

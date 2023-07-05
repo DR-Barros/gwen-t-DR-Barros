@@ -1,13 +1,13 @@
 package cl.uchile.dcc
 package gwent.controller.states
 
-import gwent.controller.Controller
+import gwent.controller.GameController
 
 import cl.uchile.dcc.gwent.exception.StateError
 
 abstract class AbstractState extends State {
-  private var c: Option[Controller] = None
-  def setController(controller: Controller): Unit = {
+  protected var c: Option[GameController] = None
+  def setController(controller: GameController): Unit = {
     c = Some(controller)
   }
 
