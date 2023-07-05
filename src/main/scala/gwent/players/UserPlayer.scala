@@ -3,6 +3,9 @@ package gwent.players
 
 import gwent.cards.{Card, CardsHand, Deck}
 import gwent.players.Player
+
+import cl.uchile.dcc.gwent.observer.{ISubject, Observer}
+
 import java.util.Objects
 import scala.collection.mutable.ListBuffer
 
@@ -20,7 +23,7 @@ import scala.collection.mutable.ListBuffer
  * @since 1.0.0
  * @version 1.0.3
  */
-class UserPlayer (private  val name: String, private var deck: Deck) extends Player with Equals {
+class UserPlayer (private  val name: String, private var deck: Deck) extends Player with Equals with ISubject{
   /** Contador de gemas.
    *
    * Esta variable lleva la cuenta de cuantas gemas le quedan al jugador, se inicia en 2.
@@ -32,6 +35,12 @@ class UserPlayer (private  val name: String, private var deck: Deck) extends Pla
    * Esta variable es Una mano de cartas y por lo tanto instancia la clase CardsHand.
    */
   private var cardHand: CardsHand = new CardsHand
+
+  /** Observers
+   *
+   * esta variable guarda en un list buffer todos los observers del jugador
+   */
+  private var observers: ListBuffer[Observer] = ListBuffer()
 
   /**
    * Devuelve el nombre del jugador.
@@ -78,6 +87,18 @@ class UserPlayer (private  val name: String, private var deck: Deck) extends Pla
   def playCard(n: Int): Card = {
     var hS = handSize()
     return cardHand.playCard(n-1)
+  }
+
+  /** Añade observers a el jugador
+   *
+   * @param o observer a agregar
+   */
+  def registerObserver(o: Observer): Unit = observers += o
+
+  def notifyObservers(response: Any): Unit = {
+    for(o<-observers){
+      o.update(this, response)
+    }
   }
 
   /**

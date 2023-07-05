@@ -1,10 +1,11 @@
 package cl.uchile.dcc
 package gwent.controller
 
-import gwent.players.Player
+import gwent.players.{Player, UserPlayer}
 
 import cl.uchile.dcc.gwent.board.Board
-import cl.uchile.dcc.gwent.controller.states._
+import cl.uchile.dcc.gwent.controller.states.*
+import cl.uchile.dcc.gwent.observer.ISubject
 
 
 class GameController extends Controller{
@@ -17,6 +18,11 @@ class GameController extends Controller{
   def setState(aState: State): Unit = {
     state = aState
     state.setController(this)
+  }
+
+  def loose(o: ISubject): Unit = {
+    var n = o.asInstanceOf[UserPlayer].getName()
+    println(s"$n perdio")
   }
 
   def handleState(): Unit = state.handle()
