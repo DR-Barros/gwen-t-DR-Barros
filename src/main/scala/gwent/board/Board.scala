@@ -105,7 +105,7 @@ class Board{
    * @return arreglo con  seccion de clima
    */
   def getSecW():Array[WeatherCard] = {
-    return weatherSec
+    return weatherSec.clone()
   }
 
   /** Manda a actualizar el estado de las cartas a despejado */

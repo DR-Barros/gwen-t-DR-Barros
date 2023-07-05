@@ -64,7 +64,7 @@ class BoardSection  extends Section {
    * @return el arreglo con las cartas de la seccion cuerpo a cuerpo
    */
   def getZoneC(): ArrayBuffer[UnitCard] = {
-    return zoneC
+    return zoneC.clone()
   }
 
   /** Devuelve el arreglo corresponiente a la seccion a distancia
@@ -72,7 +72,7 @@ class BoardSection  extends Section {
    * @return el arreglo con las cartas de la seccion a distancia
    */
   def getZoneD(): ArrayBuffer[UnitCard] = {
-    return zoneD
+    return zoneD.clone()
   }
 
   /** Devuelve el arreglo corresponiente a la seccion de asedio
@@ -80,7 +80,7 @@ class BoardSection  extends Section {
    * @return el arreglo con las cartas de la seccion de asedio
    */
   def getZoneS(): ArrayBuffer[UnitCard] = {
-    return zoneS
+    return zoneS.clone()
   }
 
   def bondC(card: UnitCard): Unit = {
