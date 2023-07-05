@@ -1,8 +1,9 @@
 package cl.uchile.dcc
 package gwent.players
 
-import gwent.cards.{Card, CardsHand, Deck}
+import gwent.cards.Card
 import gwent.players.Player
+import cl.uchile.dcc.gwent.cards.structures.{CardsHand, Deck}
 
 import cl.uchile.dcc.gwent.observer.{ISubject, Observer}
 
@@ -21,7 +22,7 @@ import scala.collection.mutable.ListBuffer
  *
  * @author Daniel Radrigan
  * @since 1.0.0
- * @version 1.0.3
+ * @version 1.0.4
  */
 class UserPlayer (private  val name: String, private var deck: Deck) extends Player with Equals with ISubject{
   /** Contador de gemas.
@@ -63,6 +64,9 @@ class UserPlayer (private  val name: String, private var deck: Deck) extends Pla
   def loseGems(): Unit = {
     if (gems >0){
       gems -= 1
+      if (gems == 0){
+        notifyObservers("Perdio")
+      }
     }
   }
 

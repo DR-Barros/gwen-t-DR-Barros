@@ -1,9 +1,10 @@
 package cl.uchile.dcc
 package gwent.board
-import gwent.cards.{Card, CorpCard, Deck, DistanceCard, SiegeCard, WeatherCard}
+import gwent.cards.{Card, CorpCard, DistanceCard, SiegeCard, WeatherCard}
 import gwent.players.{Player, UserPlayer}
 
 import cl.uchile.dcc.gwent.cards.effects.{ClearEffect, FogEffect, FrostEffect, NullEffect, RainEffect}
+import cl.uchile.dcc.gwent.cards.structures.Deck
 
 class BoardTest extends munit.FunSuite {
   var board: Board = _

@@ -1,9 +1,8 @@
 package cl.uchile.dcc
-package gwent.cards
+package gwent.cards.structures
 
 import gwent.cards.Card
-
-import cl.uchile.dcc.gwent.exception.{HandDontHaveCard, HandIsFull}
+import gwent.exception.{HandDontHaveCard, HandIsFull}
 
 import scala.collection.mutable.ListBuffer
 

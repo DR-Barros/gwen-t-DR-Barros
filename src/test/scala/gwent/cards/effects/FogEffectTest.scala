@@ -2,8 +2,9 @@ package cl.uchile.dcc
 package gwent.cards.effects
 
 import gwent.board.Board
+import cl.uchile.dcc.gwent.cards.structures.Deck
 
-import cl.uchile.dcc.gwent.cards.{Deck, DistanceCard, UnitCard}
+import cl.uchile.dcc.gwent.cards.{DistanceCard, UnitCard}
 import cl.uchile.dcc.gwent.players.UserPlayer
 
 class FogEffectTest extends munit.FunSuite {

@@ -2,8 +2,9 @@ package cl.uchile.dcc
 package gwent.cards.effects
 
 import gwent.board.Board
+import cl.uchile.dcc.gwent.cards.structures.Deck
 
-import cl.uchile.dcc.gwent.cards.{Deck, SiegeCard, UnitCard}
+import cl.uchile.dcc.gwent.cards.{SiegeCard, UnitCard}
 import cl.uchile.dcc.gwent.players.UserPlayer
 
 class RainEffectTest extends munit.FunSuite {

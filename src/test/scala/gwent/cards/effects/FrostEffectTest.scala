@@ -2,8 +2,9 @@ package cl.uchile.dcc
 package gwent.cards.effects
 
 import gwent.board.Board
+import cl.uchile.dcc.gwent.cards.structures.Deck
 
-import cl.uchile.dcc.gwent.cards.{CorpCard, Deck, UnitCard}
+import cl.uchile.dcc.gwent.cards.{CorpCard, UnitCard}
 import cl.uchile.dcc.gwent.players.UserPlayer
 
 class FrostEffectTest extends munit.FunSuite {

@@ -1,9 +1,10 @@
 package cl.uchile.dcc
 package gwent.players
 
-import gwent.cards.{Card, CorpCard, Deck, DistanceCard, SiegeCard}
+import gwent.cards.{Card, CorpCard, DistanceCard, SiegeCard}
 import gwent.cards.effects.NullEffect
 import gwent.exception.HandDontHaveCard
+import cl.uchile.dcc.gwent.cards.structures.Deck
 
 class UserPlayerTest extends munit.FunSuite {
   var player1: UserPlayer = _

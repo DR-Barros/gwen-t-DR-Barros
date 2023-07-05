@@ -1,7 +1,9 @@
 package cl.uchile.dcc
-package gwent.cards
+package gwent.cards.structures
 
 import gwent.cards.effects.{ClearEffect, FogEffect, NullEffect}
+import gwent.cards.structures.CardsHand
+import gwent.cards.{Card, CorpCard, DistanceCard, WeatherCard}
 import gwent.exception.{HandDontHaveCard, HandIsFull}
 
 class CardsHandTest extends munit.FunSuite {

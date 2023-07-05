@@ -6,7 +6,9 @@ import gwent.controller.GameController
 class GemObserver extends Observer {
   private var gameController: Option[GameController] = None
   def update(o:ISubject, arg:Any) = {
-    gameController.get.loose(o)
+    if (arg.asInstanceOf[String] == "Perdio"){
+      gameController.get.loose(o)
+    }
   }
 
   def setGameController(g:GameController): Unit = {

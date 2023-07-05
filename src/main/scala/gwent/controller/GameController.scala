@@ -7,11 +7,21 @@ import cl.uchile.dcc.gwent.board.Board
 import cl.uchile.dcc.gwent.controller.states.*
 import cl.uchile.dcc.gwent.observer.ISubject
 
-
+/** Clase game controller
+ *
+ * Se encarga de manejar el flujo de la partida
+ *
+ * @constructor crea las variables donde se guardaran los jugadores, tablero e inicializa los estados
+ * 
+ * @author Daniel Radrigan
+ * @since 1.0.0
+ * @version 1.0.1
+ */
 class GameController extends Controller{
   var p1: Option[Player] = None
   var p2: Option[Player] = None
   var board: Option[Board] = None
+  var isFinish: Boolean = false
   private var state: State = new StartState()
   state.setController(this)
 
@@ -22,6 +32,7 @@ class GameController extends Controller{
 
   def loose(o: ISubject): Unit = {
     var n = o.asInstanceOf[UserPlayer].getName()
+    isFinish = true
     println(s"$n perdio")
   }
 
