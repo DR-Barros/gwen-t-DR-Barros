@@ -31,7 +31,7 @@ class Player1TurnStateTest extends munit.FunSuite {
     c.handleState()
     c.player1Turn()
     val in = System.in
-    val input = new ByteArrayInputStream("jugar\n".getBytes)
+    val input = new ByteArrayInputStream("jugar".getBytes)
     System.setIn(input)
     c.handleState()
     assert(c.isPlayCardP1())
@@ -41,7 +41,7 @@ class Player1TurnStateTest extends munit.FunSuite {
     c.handleState()
     c.player1Turn()
     val in = System.in
-    val input = new ByteArrayInputStream("pasar\n".getBytes)
+    val input = new ByteArrayInputStream("pasar".getBytes)
     System.setIn(input)
     c.handleState()
     System.setIn(in)
