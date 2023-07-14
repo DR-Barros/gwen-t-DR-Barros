@@ -6,7 +6,7 @@ class Player2TurnState extends AbstractState {
 
   override def playCardP2(): Unit = changeState(new PlayCardP2State())
 
-  override def player1FinalTurn(): Unit = changeState(new Player1FinalTurnState())
+  override def playCardsP1(): Unit = changeState(new PlayCardsP1State())
 
   override def isPlayer2Turn(): Boolean = true
 }

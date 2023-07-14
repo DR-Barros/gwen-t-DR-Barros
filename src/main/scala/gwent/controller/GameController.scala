@@ -50,10 +50,6 @@ class GameController extends Controller{
 
   def playCardP2(): Unit = state.playCardP2()
 
-  def player1FinalTurn(): Unit = state.player1FinalTurn()
-
-  def player2FinalTurn(): Unit = state.player2FinalTurn()
-
   def playCardsP1(): Unit = state.playCardsP1()
 
   def playCardsP2(): Unit = state.playCardsP2()
@@ -75,10 +71,6 @@ class GameController extends Controller{
   def isPlayCardP1(): Boolean = state.isPlayCardP1()
 
   def isPlayCardP2(): Boolean = state.isPlayCardP2()
-
-  def isPlayer1FinalTurn(): Boolean = state.isPlayer1FinalTurn()
-
-  def isPlayer2FinalTurn(): Boolean = state.isPlayer2FinalTurn()
 
   def isPlayCardsP1(): Boolean = state.isPlayCardsP1()
 

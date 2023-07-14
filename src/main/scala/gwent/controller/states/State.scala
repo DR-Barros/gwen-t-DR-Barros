@@ -13,8 +13,6 @@ trait State {
   def player2Turn(): Unit
   def playCardP1(): Unit
   def playCardP2(): Unit
-  def player1FinalTurn(): Unit
-  def player2FinalTurn(): Unit
   def playCardsP1(): Unit
   def playCardsP2(): Unit
   def finishRound(): Unit
@@ -26,8 +24,6 @@ trait State {
   def isPlayer2Turn(): Boolean
   def isPlayCardP1(): Boolean
   def isPlayCardP2(): Boolean
-  def isPlayer1FinalTurn(): Boolean
-  def isPlayer2FinalTurn(): Boolean
   def isPlayCardsP1(): Boolean
   def isPlayCardsP2(): Boolean
   def isFinishRound(): Boolean

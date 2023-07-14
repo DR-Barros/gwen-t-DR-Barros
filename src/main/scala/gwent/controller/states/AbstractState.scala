@@ -30,10 +30,6 @@ abstract class AbstractState extends State {
 
   def playCardP2(): Unit = error()
 
-  def player1FinalTurn(): Unit = error()
-
-  def player2FinalTurn(): Unit = error()
-
   def playCardsP1(): Unit = error()
 
   def playCardsP2(): Unit = error()
@@ -55,10 +51,6 @@ abstract class AbstractState extends State {
   def isPlayCardP1(): Boolean = false
 
   def isPlayCardP2(): Boolean = false
-
-  def isPlayer1FinalTurn(): Boolean = false
-
-  def isPlayer2FinalTurn(): Boolean = false
 
   def isPlayCardsP1(): Boolean = false
 

@@ -25,7 +25,7 @@ class Player1TurnStateTest extends munit.FunSuite {
     System.setIn(input)
     c.handleState()
     System.setIn(in)
-    assert(c.isPlayer2FinalTurn())
+    assert(c.isPlayCardsP2())
   }
   test("Si el jugador tiene cartas y el jugador elige jugar se pasa al estado playCardP1"){
     c.handleState()
@@ -45,7 +45,7 @@ class Player1TurnStateTest extends munit.FunSuite {
     System.setIn(input)
     c.handleState()
     System.setIn(in)
-    assert(c.isPlayer2FinalTurn())
+    assert(c.isPlayCardsP2())
   }
   test("Si el jugador tiene cartas y el jugador escribe algo distinto a 'jugar' o 'pasar' tiene que volver a introducir algo hasta que elija uno los 2") {
     c.handleState()
@@ -53,6 +53,6 @@ class Player1TurnStateTest extends munit.FunSuite {
     val input = new ByteArrayInputStream("sdhjhahd\nsdhjhahd\npasar\n".getBytes)
     System.setIn(input)
     c.handleState()
-    assert(c.isPlayer2FinalTurn())
+    assert(c.isPlayCardsP2())
   }
 }
