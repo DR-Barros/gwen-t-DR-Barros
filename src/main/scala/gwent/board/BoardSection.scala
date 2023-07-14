@@ -83,26 +83,41 @@ class BoardSection  extends Section {
     return zoneS.clone()
   }
 
+  /** Aplica bond a las cartas de la fila que tienen igual nombre que card
+   * 
+   * @param card carta de referencia que se usa para aplicar bond
+   */
   def bondC(card: UnitCard): Unit = {
     zoneC.foreach(unitCard => if(unitCard.getName() == card.getName()){unitCard.moreStrength()})
   }
 
+  /** Aplica bond a las cartas de la fila que tienen igual nombre que card
+   *
+   * @param card carta de referencia que se usa para aplicar bond
+   */
   def bondD(card: UnitCard): Unit = {
     zoneD.foreach(unitCard => if(unitCard.getName() == card.getName()){unitCard.moreStrength()})
   }
 
+  /** Aplica bond a las cartas de la fila que tienen igual nombre que card
+   *
+   * @param card carta de referencia que se usa para aplicar bond
+   */
   def bondS(card: UnitCard): Unit = {
     zoneS.foreach(unitCard => if(unitCard.getName() == card.getName()){unitCard.moreStrength()})
   }
 
+  /** Aplica moral a las cartas de la fila */
   def moralC(): Unit ={
     zoneC.foreach(_.moreStrength())
   }
 
+  /** Aplica moral a las cartas de la fila */
   def moralD(): Unit = {
     zoneD.foreach(_.moreStrength())
   }
 
+  /** Aplica moral a las cartas de la fila */
   def moralS(): Unit = {
     zoneS.foreach(_.moreStrength())
   }

@@ -9,6 +9,12 @@ import cl.uchile.dcc.gwent.cards.structures.Deck
 
 import scala.util.Random
 
+/** Estado que representa el comienzo del juego 
+ *
+ * @author Daniel Radrigan
+ * @since 1.0.0
+ * @version 1.0.0
+ */
 class StartState extends AbstractState {
   private val corpCards: Array[Card] = Array(
     new CorpCard("Anakin Skywalker", 17, new MoralEffect),
@@ -87,6 +93,7 @@ class StartState extends AbstractState {
     new WeatherCard("Scarif", new ClearEffect),
     new WeatherCard("Shili", new RainEffect)
   )
+  /** acción que realiza el juego */
   def handle(): Unit = {
     c.get.p1 = Some(new UserPlayer("Player 1", createDeck()))
     c.get.p2 = Some(new UserPlayer("CPU", createDeck()))
@@ -95,9 +102,11 @@ class StartState extends AbstractState {
     stealCards(c.get.p2.get)
     roundInit()
   }
-
+  /** cambia el estado a RoundInit */
   override def roundInit(): Unit = changeState(new RoundInitState())
+  /** Indica que el estado actual es Start */
   override def isStart(): Boolean = true
+  /** Crea mazos de cartas */
   private def createDeck(): Deck = {
     var c: Array[Card] = Random.shuffle(corpCards.toSeq).toArray
     c = c.take(6)
@@ -110,6 +119,11 @@ class StartState extends AbstractState {
     var deck: Array[Card] =Random.shuffle((c ++ d ++ s ++ w).toSeq).toArray
     return new Deck(deck)
   }
+
+  /** Roba 10 cartas del mazo del jugador
+   * 
+   * @param p jugador
+   */
   private def stealCards(p:Player): Unit = {
     for (i <- 1 to 10){
       p.stealCard()
