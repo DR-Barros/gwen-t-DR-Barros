@@ -9,6 +9,7 @@ trait Section {
   def assignZoneC(card: UnitCard): Unit
   def assignZoneD(card: UnitCard): Unit
   def assignZoneS(card: UnitCard): Unit
+  def getStrength(): Int
   def getZoneC(): ArrayBuffer[UnitCard]
   def getZoneD(): ArrayBuffer[UnitCard]
   def getZoneS(): ArrayBuffer[UnitCard]

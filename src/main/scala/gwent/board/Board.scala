@@ -28,8 +28,6 @@ class Board{
    */
   private val weatherSec: Array[WeatherCard] = new Array[WeatherCard](1)
 
-
-
   /** juega la carta del jugador en la seccion 1
    *
    * @param player jugador que juega la carta
@@ -50,6 +48,22 @@ class Board{
     val card = player.playCard(n)
     card.apply(this, sec2)
     card.assignZone(sec2, weatherSec)
+  }
+
+  /** entrega la fuerza en la seccion 1 del tablero
+   *
+   * @return el entero que representa la fuerza en la seccion
+   */
+  def getSec1Strength(): Int = {
+    return  sec1.getStrength()
+  }
+
+  /** entrega la fuerza en la seccion 2 del tablero
+   *
+   * @return el entero que representa la fuerza en la seccion
+   */
+  def getSec2Strength(): Int = {
+    return sec2.getStrength()
   }
 
   /** devuelve la fila cuepo a cuerpo de la seccion 1

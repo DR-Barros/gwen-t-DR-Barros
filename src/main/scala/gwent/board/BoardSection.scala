@@ -59,6 +59,18 @@ class BoardSection  extends Section {
     zoneS += card
   }
 
+  /** Devuelve un entero con la fuerza que hay en la seccion
+   *
+   * @return la fuerza que hay en la seccion
+   */
+  override def getStrength(): Int = {
+    var S: Int = 0;
+    zoneC.foreach(card => S+=card.getStrength())
+    zoneC.foreach(card => S+=card.getStrength())
+    zoneC.foreach(card => S+=card.getStrength())
+    return S
+  }
+
   /** Devuelve el arreglo corresponiente a la seccion cuerpo a cuerpo
    * 
    * @return el arreglo con las cartas de la seccion cuerpo a cuerpo
@@ -84,7 +96,7 @@ class BoardSection  extends Section {
   }
 
   /** Aplica bond a las cartas de la fila que tienen igual nombre que card
-   * 
+   *
    * @param card carta de referencia que se usa para aplicar bond
    */
   def bondC(card: UnitCard): Unit = {

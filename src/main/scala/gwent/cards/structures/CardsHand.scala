@@ -1,7 +1,7 @@
 package cl.uchile.dcc
 package gwent.cards.structures
 
-import gwent.cards.Card
+import gwent.cards.{Card, UnitCard}
 import gwent.exception.{HandDontHaveCard, HandIsFull}
 
 import scala.collection.mutable.ListBuffer
@@ -80,5 +80,18 @@ class CardsHand {
       return card
     }
     throw new HandDontHaveCard("La mano no contiene  la carta solicitada")
+  }
+
+  /** entrega la fuerza sumada de las cartas en la mano
+   *
+   * @return la fuerza que hay en la mano
+   */
+  def getStrength(): Int = {
+    var result: Int = 0
+    for (i <- 0 to cant){
+      if (cards(i).isInstanceOf[UnitCard])
+        result += cards(i).asInstanceOf[UnitCard].getStrength()
+    }
+    return result
   }
 }

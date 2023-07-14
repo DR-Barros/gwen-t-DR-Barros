@@ -78,6 +78,13 @@ class UserPlayer (private  val name: String, private var deck: Deck) extends Pla
   }
 
   /**
+   *  Devuelve la fuerza que hay en la mano del jugador
+   */
+  def handStrength(): Int = {
+    return cardHand.getStrength()
+  }
+
+  /**
    * Realiza la acción de robar una carta del mazo.
    */
   def stealCard(): Unit = {

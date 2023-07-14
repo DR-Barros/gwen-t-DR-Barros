@@ -9,6 +9,7 @@ trait Player {
   def getGems(): Int
   def loseGems(): Unit
   def handSize(): Int
+  def handStrength(): Int
   def stealCard(): Unit
   def playCard(n: Int): Card
 }
