@@ -9,7 +9,23 @@ package gwent.controller.states
  */
 class FinishRoundState extends AbstractState {
   /** acción que realiza el juego */
-  def handle(): Unit = {}
+  def handle(): Unit = {
+    val S1 = c.get.board.get.getSec1Strength()
+    val S2 = c.get.board.get.getSec2Strength()
+    if (S1 == S2){
+      c.get.p1.get.loseGems()
+      c.get.p2.get.loseGems()
+    } else if (S1 > S2){
+      c.get.p2.get.loseGems()
+    } else {
+      c.get.p1.get.loseGems()
+    }
+    if (c.get.isFinish){
+      finishGame()
+    } else {
+      nextRound()
+    }
+  }
   /** cambia el estado a NextRound */
   override def nextRound(): Unit = changeState(new NextRoundState())
   /** cambia el estado a FinishGame */

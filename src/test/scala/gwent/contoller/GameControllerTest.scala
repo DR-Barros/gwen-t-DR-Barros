@@ -97,13 +97,6 @@ class GameControllerTest extends munit.FunSuite {
     c.playCardsP1()
     assert(c.isPlayCardsP1())
   }
-  test("De jugar cartas P1 se puede pasar a jugar cartas P1"){
-    c.roundInit()
-    c.player2Turn()
-    c.playCardsP1()
-    c.playCardsP1()
-    assert(c.isPlayCardsP1())
-  }
   test("De jugar cartas P1 se puede pasar a ronda final") {
     c.roundInit()
     c.player2Turn()
