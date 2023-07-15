@@ -95,6 +95,13 @@ class BoardSection  extends Section {
     return zoneS.clone()
   }
 
+  /** Limpia la sección */
+  def clean(): Unit = {
+    zoneC = new ArrayBuffer[UnitCard]()
+    zoneS = new ArrayBuffer[UnitCard]()
+    zoneD = new ArrayBuffer[UnitCard]()
+  }
+
   /** Aplica bond a las cartas de la fila que tienen igual nombre que card
    *
    * @param card carta de referencia que se usa para aplicar bond

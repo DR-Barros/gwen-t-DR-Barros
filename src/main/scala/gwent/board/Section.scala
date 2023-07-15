@@ -13,6 +13,7 @@ trait Section {
   def getZoneC(): ArrayBuffer[UnitCard]
   def getZoneD(): ArrayBuffer[UnitCard]
   def getZoneS(): ArrayBuffer[UnitCard]
+  def clean(): Unit
   def bondC(card: UnitCard): Unit
   def bondD(card: UnitCard): Unit
   def bondS(card: UnitCard): Unit

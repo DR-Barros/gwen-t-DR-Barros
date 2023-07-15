@@ -10,6 +10,8 @@ trait Player {
   def loseGems(): Unit
   def handSize(): Int
   def handStrength(): Int
+  def handHasWeatherCard(): Boolean
+  def handHasUnitCard(): Boolean
   def stealCard(): Unit
   def playCard(n: Int): Card
 }

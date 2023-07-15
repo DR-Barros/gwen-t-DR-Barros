@@ -9,9 +9,9 @@ package gwent.controller.states
  */
 class PlayCardsP1State extends AbstractState {
   /** acción que realiza el juego */
-  def handle(): Unit = {}
-  /** cambia el estado a PlayCardsP1 */
-  override def playCardsP1(): Unit = changeState(new PlayCardsP1State())
+  def handle(): Unit = {
+    
+  }
   /** cambia el estado a FinishRound */
   override def finishRound(): Unit = changeState(new FinishRoundState())
   /** cambia el estado a FinishRound */

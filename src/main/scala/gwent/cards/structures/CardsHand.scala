@@ -1,10 +1,10 @@
 package cl.uchile.dcc
 package gwent.cards.structures
 
-import gwent.cards.{Card, UnitCard}
+import gwent.cards.{Card, UnitCard, WeatherCard}
 import gwent.exception.{HandDontHaveCard, HandIsFull}
 
-import scala.collection.mutable.ListBuffer
+import scala.collection.mutable.{ArrayBuffer, ListBuffer}
 
 /**Una clase que representa una mano de cartas
  *
@@ -22,13 +22,8 @@ class CardsHand {
    *
    * Esta variable guarda el conjunto de cartas de la mano en un array
    */
-  private var cards: Array[Card] = new Array[Card](10)
+  private var cards: ArrayBuffer[Card] = new ArrayBuffer[Card]()
 
-  /** Cantidad de cartas en la mano
-   *
-   * Esta variable guarda cuantas cartas hay en la mano
-   */
-  private var cant: Int = 0
 
   /** Calcula el tamaño de la mano
    *
@@ -37,7 +32,7 @@ class CardsHand {
    * @return el tamaño de la mano
    */
   def handSize(): Int = {
-    return cant
+    return cards.size
   }
 
   /** Añade una carta a la mano
@@ -51,8 +46,7 @@ class CardsHand {
    */
   def addCards(card: Card): Unit = {
     if (handSize() < 10){
-      cards(cant) = card
-      cant += 1
+      cards += card
     } else{
       throw new HandIsFull("la mano esta llena, no puede agregar mas cartas")
     }
@@ -73,10 +67,7 @@ class CardsHand {
   def playCard(n: Int): Card = {
     if (n < handSize() && n>=0){
       val card = cards(n)
-      cant -= 1
-      for (i <- n until cant) {
-        cards(i) = cards(i + 1)
-      }
+      cards -= card
       return card
     }
     throw new HandDontHaveCard("La mano no contiene  la carta solicitada")
@@ -88,10 +79,25 @@ class CardsHand {
    */
   def getStrength(): Int = {
     var result: Int = 0
-    for (i <- 0 to cant){
-      if (cards(i).isInstanceOf[UnitCard])
-        result += cards(i).asInstanceOf[UnitCard].getStrength()
-    }
+    cards.foreach(card => if (card.isInstanceOf[UnitCard]) result+= card.asInstanceOf[UnitCard].getStrength())
     return result
+  }
+  
+  /** Devuelve si hay cartas de clima en la mano */
+  def hasWeatherCard(): Boolean = {
+    for (i <- 0 to handSize()){
+      if(cards(i).isInstanceOf[WeatherCard])
+        return true
+    }
+    return false
+  }
+
+  /** Devuelve si hay cartas de unidad en la mano */
+  def hasUnitCard(): Boolean = {
+    for (i <- 0 to handSize()) {
+      if (cards(i).isInstanceOf[UnitCard])
+        return true
+    }
+    return false
   }
 }

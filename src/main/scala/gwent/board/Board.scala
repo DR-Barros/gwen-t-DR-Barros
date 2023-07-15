@@ -26,7 +26,7 @@ class Board{
   private val sec2: Section = new BoardSection
   /** Seccion de clima
    */
-  private val weatherSec: Array[WeatherCard] = new Array[WeatherCard](1)
+  private var weatherSec: Array[WeatherCard] = new Array[WeatherCard](1)
 
   /** juega la carta del jugador en la seccion 1
    *
@@ -120,6 +120,12 @@ class Board{
    */
   def getSecW():Array[WeatherCard] = {
     return weatherSec.clone()
+  }
+
+  def clean(): Unit = {
+    sec1.clean()
+    sec2.clean()
+    weatherSec = new Array[WeatherCard](1)
   }
 
   /** Manda a actualizar el estado de las cartas a despejado */

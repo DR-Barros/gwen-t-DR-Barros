@@ -9,7 +9,13 @@ package gwent.controller.states
  */
 class NextRoundState extends AbstractState {
   /** acción que realiza el juego */
-  def handle(): Unit = {}
+  def handle(): Unit = {
+    c.get.board.get.clean()
+    for(i <- 0 to 3){
+      c.get.p1.get.stealCard()
+      c.get.p2.get.stealCard()
+    }
+  }
   /** cambia el estado a RoundInit */
   override def roundInit(): Unit = changeState(new RoundInitState())
   /** Indica que el estado actual es NextRound */

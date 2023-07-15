@@ -5,11 +5,19 @@ package gwent.controller.states
  *
  * @author Daniel Radrigan
  * @since 1.0.0
- * @version 1.0.0
+ * @version 1.0.1
  */
 class Player2TurnState extends AbstractState {
   /** acción que realiza el juego */
-  def handle(): Unit = {}
+  def handle(): Unit = {
+    val S1 = c.get.board.get.getSec1Strength()
+    val S2 = c.get.board.get.getSec2Strength() + c.get.p2.get.handStrength()
+    if ((S2 >= S1 && c.get.p2.get.handHasUnitCard()) || (S2<= S1 && c.get.p2.get.handHasWeatherCard())){
+      playCardP2()
+    } else {
+      playCardsP1()
+    }
+  }
   /** cambia el estado a PlayCardP2 */
   override def playCardP2(): Unit = changeState(new PlayCardP2State())
   /** cambia el estado a PlayCardsP1 */

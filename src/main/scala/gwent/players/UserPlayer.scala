@@ -84,6 +84,16 @@ class UserPlayer (private  val name: String, private var deck: Deck) extends Pla
     return cardHand.getStrength()
   }
 
+  /** devuelve si en la mano hay al menos una carta de clima */
+  override def handHasWeatherCard(): Boolean = {
+    cardHand.hasWeatherCard()
+  }
+
+  /** devuelve si en la mano hay al menos una carta de unidad */
+  override def handHasUnitCard(): Boolean = {
+    cardHand.hasUnitCard()
+  }
+
   /**
    * Realiza la acción de robar una carta del mazo.
    */
