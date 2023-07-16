@@ -95,11 +95,13 @@ class UserPlayer (private  val name: String, private var deck: Deck) extends Pla
   }
 
   /**
-   * Realiza la acción de robar una carta del mazo.
+   * Realiza la acción de robar una carta del mazo si la mano tiene menos de 10 cartas.
    */
   def stealCard(): Unit = {
-    val card = deck.stealCard()
-    cardHand.addCards(card)
+    if (handSize() <10){
+      val card = deck.stealCard()
+      cardHand.addCards(card)
+    }
   }
 
   /**

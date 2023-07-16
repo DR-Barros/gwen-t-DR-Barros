@@ -1,9 +1,10 @@
 package cl.uchile.dcc
 package gwent.players
 
-import gwent.cards.{Card, CorpCard, DistanceCard, SiegeCard}
-import gwent.cards.effects.NullEffect
+import gwent.cards.{Card, CorpCard, DistanceCard, SiegeCard, WeatherCard}
+import gwent.cards.effects.{ClearEffect, NullEffect}
 import gwent.exception.HandDontHaveCard
+
 import cl.uchile.dcc.gwent.cards.structures.Deck
 
 class UserPlayerTest extends munit.FunSuite {
@@ -74,5 +75,21 @@ class UserPlayerTest extends munit.FunSuite {
     intercept[HandDontHaveCard] {
       player2.playCard(0)
     }
+  }
+  test("La mano del jugador tiene fuerza según las cartas que tenga"){
+    assert(player1.handStrength() == 0)
+    player1.stealCard()
+    player1.stealCard()
+    assert(player1.handStrength() != 0)
+  }
+  test("El jugador puede saber si tiene cartas de unidad"){
+    val p = new UserPlayer("p", new Deck(Array(new CorpCard("card", 1, new NullEffect))))
+    p.stealCard()
+    assertEquals(p.handHasUnitCard(), 0)
+  }
+  test("El jugador puede saber si tiene cartas de clima") {
+    val p = new UserPlayer("p", new Deck(Array(new WeatherCard("card", new ClearEffect))))
+    p.stealCard()
+    assertEquals(p.handHasWeatherCard(), 0)
   }
 }
