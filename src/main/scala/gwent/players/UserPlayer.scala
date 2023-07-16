@@ -85,12 +85,12 @@ class UserPlayer (private  val name: String, private var deck: Deck) extends Pla
   }
 
   /** devuelve si en la mano hay al menos una carta de clima */
-  override def handHasWeatherCard(): Boolean = {
+  override def handHasWeatherCard(): Int = {
     cardHand.hasWeatherCard()
   }
 
   /** devuelve si en la mano hay al menos una carta de unidad */
-  override def handHasUnitCard(): Boolean = {
+  override def handHasUnitCard(): Int = {
     cardHand.hasUnitCard()
   }
 

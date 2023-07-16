@@ -14,7 +14,7 @@ class PlayCardP1State extends AbstractState {
   def handle(): Unit = {
     println("Elije que carta jugar")
     var input: Int = StdIn.readLine().toInt
-    c.get.p1.get.playCard(input)
+    c.get.board.get.playCardSec1(c.get.p1.get, input)
     player2Turn()
   }
   /** cambia el estado actual a player2Turn */

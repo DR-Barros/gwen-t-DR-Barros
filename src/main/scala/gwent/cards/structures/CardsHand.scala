@@ -59,9 +59,9 @@ class CardsHand {
    * Si la carta solicitada no esta en la carta se lanza una excepcion de tipo HandDontHaveCard
    *
    * @param n el numero de la carta que se va a jugar
-   *          
-   * @throws HandDontHaveCard cuando no hay carta en el indice entregado         
-   *          
+   *
+   * @throws HandDontHaveCard cuando no hay carta en el indice entregado
+   *
    * @return la carta jugada
    */
   def playCard(n: Int): Card = {
@@ -82,22 +82,28 @@ class CardsHand {
     cards.foreach(card => if (card.isInstanceOf[UnitCard]) result+= card.asInstanceOf[UnitCard].getStrength())
     return result
   }
-  
-  /** Devuelve si hay cartas de clima en la mano */
-  def hasWeatherCard(): Boolean = {
+
+  /** Devuelve si hay cartas de clima en la mano
+   *
+   * @return el numero de la carta de una de las cartas de clima, si no hay devuelve -1
+   */
+  def hasWeatherCard(): Int = {
     for (i <- 0 to handSize()){
       if(cards(i).isInstanceOf[WeatherCard])
-        return true
+        return i
     }
-    return false
+    return -1
   }
 
-  /** Devuelve si hay cartas de unidad en la mano */
-  def hasUnitCard(): Boolean = {
+  /** Devuelve si hay cartas de unidad en la mano
+   *
+   * @return el numero de la carta de una de las cartas de unidad, si no hay devuelve -1
+   */
+  def hasUnitCard(): Int = {
     for (i <- 0 to handSize()) {
       if (cards(i).isInstanceOf[UnitCard])
-        return true
+        return i
     }
-    return false
+    return -1
   }
 }
