@@ -5,7 +5,9 @@ import gwent.players.{Player, UserPlayer}
 
 import cl.uchile.dcc.gwent.board.Board
 import cl.uchile.dcc.gwent.controller.states.*
-import cl.uchile.dcc.gwent.observer.ISubject
+import cl.uchile.dcc.gwent.observer.{ISubject, Observer}
+
+import scala.collection.mutable.ArrayBuffer
 
 /** Clase game controller
  *
@@ -33,6 +35,7 @@ class GameController extends Controller{
    * esta variable guarda una instancia de Board que representa el tablero del juego
    */
   var board: Option[Board] = None
+  var observers: ArrayBuffer[Observer] = new ArrayBuffer[Observer]
   /** Indica si la partida termino */
   var isFinish: Boolean = false
   /** Estado del juego

@@ -66,8 +66,8 @@ class BoardSection  extends Section {
   override def getStrength(): Int = {
     var S: Int = 0;
     zoneC.foreach(card => S+=card.getStrength())
-    zoneC.foreach(card => S+=card.getStrength())
-    zoneC.foreach(card => S+=card.getStrength())
+    zoneS.foreach(card => S+=card.getStrength())
+    zoneD.foreach(card => S+=card.getStrength())
     return S
   }
 

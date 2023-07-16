@@ -131,4 +131,25 @@ class BoardSectionTest extends munit.FunSuite{
     assert(card2.isClear())
     assert(card3.isClear())
   }
+  test("se puede obtener la fuerza de que hay en las cartas del tableros"){
+    val card: UnitCard = new CorpCard("nombre", 14, new NullEffect)
+    val card2: UnitCard = new DistanceCard("nombre", 14, new NullEffect)
+    val card3: UnitCard = new SiegeCard("nombre", 14, new NullEffect)
+    Sec1.assignZoneC(card)
+    Sec1.assignZoneD(card2)
+    Sec1.assignZoneS(card3)
+    assertEquals(Sec1.getStrength(), 42)
+  }
+  test("Se puede borrar las cartas de la seccion del tablero"){
+    val card: UnitCard = new CorpCard("nombre", 14, new NullEffect)
+    val card2: UnitCard = new DistanceCard("nombre", 14, new NullEffect)
+    val card3: UnitCard = new SiegeCard("nombre", 14, new NullEffect)
+    Sec1.assignZoneC(card)
+    Sec1.assignZoneD(card2)
+    Sec1.assignZoneS(card3)
+    Sec1.clean()
+    assertEquals(Sec1.getZoneC(), new ArrayBuffer[UnitCard](0))
+    assertEquals(Sec1.getZoneD(), new ArrayBuffer[UnitCard](0))
+    assertEquals(Sec1.getZoneS(), new ArrayBuffer[UnitCard](0))
+  }
 }

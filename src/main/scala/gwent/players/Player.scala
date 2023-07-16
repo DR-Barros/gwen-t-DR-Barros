@@ -2,7 +2,9 @@ package cl.uchile.dcc
 package gwent.players
 
 import gwent.cards.Card
+
 import cl.uchile.dcc.gwent.cards.structures.Deck
+import cl.uchile.dcc.gwent.observer.Observer
 
 trait Player {
   def getName(): String
@@ -14,4 +16,6 @@ trait Player {
   def handHasUnitCard(): Int
   def stealCard(): Unit
   def playCard(n: Int): Card
+  def registerObserver(o: Observer): Unit
+  def notifyObservers(response: Any): Unit
 }

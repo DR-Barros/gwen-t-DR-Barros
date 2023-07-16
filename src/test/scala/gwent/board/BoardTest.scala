@@ -1,10 +1,12 @@
 package cl.uchile.dcc
 package gwent.board
-import gwent.cards.{Card, CorpCard, DistanceCard, SiegeCard, WeatherCard}
+import gwent.cards.{Card, CorpCard, DistanceCard, SiegeCard, UnitCard, WeatherCard}
 import gwent.players.{Player, UserPlayer}
 
 import cl.uchile.dcc.gwent.cards.effects.{ClearEffect, FogEffect, FrostEffect, NullEffect, RainEffect}
 import cl.uchile.dcc.gwent.cards.structures.Deck
+
+import scala.collection.mutable.ArrayBuffer
 
 class BoardTest extends munit.FunSuite {
   var board: Board = _
@@ -73,5 +75,24 @@ class BoardTest extends munit.FunSuite {
     board.playCardSec1(player, 1)
     board.rain()
     assert(cardS.isRain())
+  }
+  test("Se puede limiar las cartas del tablero"){
+    board.playCardSec1(player, 1)
+    board.playCardSec1(player, 1)
+    board.playCardSec1(player, 1)
+    board.playCardSec1(player, 1)
+    board.clean()
+    assertEquals(board.getSec1S(), new ArrayBuffer[UnitCard](0))
+    assertEquals(board.getSec1C(), new ArrayBuffer[UnitCard](0))
+    assertEquals(board.getSec1D(), new ArrayBuffer[UnitCard](0))
+    assertEquals(board.getSecW()(0), null)
+  }
+  test("Se puede obtener la fuerza de cada sección"){
+    board.playCardSec2(player, 1)
+    board.playCardSec2(player, 1)
+    board.playCardSec2(player, 1)
+    board.playCardSec2(player, 1)
+    assertEquals(board.getSec1Strength(), 0)
+    assertEquals(board.getSec2Strength(), 30)
   }
 }

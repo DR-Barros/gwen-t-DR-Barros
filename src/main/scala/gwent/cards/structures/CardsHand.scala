@@ -88,9 +88,11 @@ class CardsHand {
    * @return el numero de la carta de una de las cartas de clima, si no hay devuelve -1
    */
   def hasWeatherCard(): Int = {
-    for (i <- 0 to handSize()){
-      if(cards(i).isInstanceOf[WeatherCard])
-        return i
+    if (handSize() >0) {
+      for (i <- 0 to handSize()) {
+        if (cards(i).isInstanceOf[WeatherCard])
+          return i
+      }
     }
     return -1
   }
@@ -100,9 +102,11 @@ class CardsHand {
    * @return el numero de la carta de una de las cartas de unidad, si no hay devuelve -1
    */
   def hasUnitCard(): Int = {
-    for (i <- 0 to handSize()) {
-      if (cards(i).isInstanceOf[UnitCard])
-        return i
+    if (handSize() >0){
+      for (i <- 0 to handSize()) {
+        if (cards(i).isInstanceOf[UnitCard])
+          return i
+      }
     }
     return -1
   }

@@ -64,4 +64,23 @@ class CardsHandTest extends munit.FunSuite {
     intercept[HandDontHaveCard]{C1.playCard(-1)}
     intercept[HandDontHaveCard]{C1.playCard(5)}
   }
+  test("Una mano puede  devolver la fuerza que hay en ella"){
+    C1.addCards(U1)
+    C1.addCards(U2)
+    assertEquals(C1.getStrength(), 19)
+  }
+  test("Una mano puede devolver el primer indice con una carta clima y si no tiene devuelve -1"){
+    C1.addCards(U1)
+    C1.addCards(U2)
+    C1.addCards(W1)
+    assertEquals(C1.hasWeatherCard(), 2)
+    assertEquals(C2.hasWeatherCard(), -1)
+  }
+
+  test("Una mano puede devolver el primer indice con una carta unidad y si no tiene devuelve -1"){
+    C1.addCards(U1)
+    C1.addCards(U2)
+    assertEquals(C1.hasUnitCard(), 0)
+    assertEquals(C2.hasUnitCard(), -1)
+  }
 }

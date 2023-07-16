@@ -1,11 +1,12 @@
 package cl.uchile.dcc
 package gwent.controller.states
-import gwent.players.{UserPlayer, Player}
+import gwent.players.{Player, UserPlayer}
 import gwent.cards.*
 
 import cl.uchile.dcc.gwent.board.Board
 import cl.uchile.dcc.gwent.cards.effects.*
 import cl.uchile.dcc.gwent.cards.structures.Deck
+import cl.uchile.dcc.gwent.observer.GemObserver
 
 import scala.util.Random
 
@@ -98,6 +99,11 @@ class StartState extends AbstractState {
     c.get.p1 = Some(new UserPlayer("Player 1", createDeck()))
     c.get.p2 = Some(new UserPlayer("CPU", createDeck()))
     c.get.board = Some(new Board)
+    c.get.observers += new GemObserver
+    c.get.observers.foreach(observer =>
+      observer.setGameController(c.get)
+      c.get.p1.get.registerObserver(observer)
+    )
     stealCards(c.get.p1.get)
     stealCards(c.get.p2.get)
     roundInit()

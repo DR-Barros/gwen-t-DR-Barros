@@ -15,7 +15,7 @@ class PlayCardsP2State extends AbstractState {
     if (S2 >= S1) {
       var n: Int = c.get.p2.get.handHasUnitCard()
       if (n >=0){
-        c.get.board.get.playCardSec2(c.get.p2.get, n)
+        c.get.board.get.playCardSec2(c.get.p2.get, n+1)
       } else {
         finishRound()
       }
@@ -23,7 +23,7 @@ class PlayCardsP2State extends AbstractState {
     } else {
       var n: Int = c.get.p2.get.handHasWeatherCard()
       if (n>=0){
-        c.get.board.get.playCardSec2(c.get.p2.get, n)
+        c.get.board.get.playCardSec2(c.get.p2.get, n+1)
       } else {
         finishRound()
       }

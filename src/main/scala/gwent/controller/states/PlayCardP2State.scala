@@ -14,10 +14,12 @@ class PlayCardP2State extends AbstractState {
     val S2 = c.get.board.get.getSec2Strength() + c.get.p2.get.handStrength()
     if(S2 >= S1){
       var n: Int = c.get.p2.get.handHasUnitCard()
-      c.get.board.get.playCardSec2(c.get.p2.get, n)
+      c.get.board.get.playCardSec2(c.get.p2.get, n+1)
+      player1Turn()
     } else {
       var n: Int = c.get.p2.get.handHasWeatherCard()
-      c.get.board.get.playCardSec2(c.get.p2.get, n)
+      c.get.board.get.playCardSec2(c.get.p2.get, n+1)
+      player1Turn()
     }
   }
   /** cambia el estado a Player1Turn */
