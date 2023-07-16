@@ -37,7 +37,7 @@ class GameController extends Controller{
   var board: Option[Board] = None
   var observers: ArrayBuffer[Observer] = new ArrayBuffer[Observer]
   /** Indica si la partida termino */
-  var isFinish: Boolean = false
+  private var isFinish: Boolean = false
   /** Estado del juego
    * 
    * esta variable guarda el estado actual en que se encuentra la partida
@@ -53,6 +53,9 @@ class GameController extends Controller{
     state = aState
     state.setController(this)
   }
+
+  /** devuelve si el juego termino */
+  def getIsFinish(): Boolean = return isFinish
 
   /**Inidca el jugador que perdio la partida
    * 

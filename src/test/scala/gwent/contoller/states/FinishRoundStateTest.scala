@@ -50,6 +50,6 @@ class FinishRoundStateTest extends munit.FunSuite {
     c.handleState()
     assertEquals(c.p1.get.getGems(), 0)
     assertEquals(c.p2.get.getGems(), 2)
-    assert(c.isFinish)
+    assert(c.getIsFinish())
   }
 }

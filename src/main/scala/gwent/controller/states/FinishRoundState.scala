@@ -20,7 +20,7 @@ class FinishRoundState extends AbstractState {
     } else {
       c.get.p1.get.loseGems()
     }
-    if (c.get.isFinish){
+    if (c.get.getIsFinish()){
       finishGame()
     } else {
       nextRound()

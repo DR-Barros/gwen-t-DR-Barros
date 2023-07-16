@@ -19,7 +19,6 @@ class PlayCardsP2State extends AbstractState {
       } else {
         finishRound()
       }
-
     } else {
       var n: Int = c.get.p2.get.handHasWeatherCard()
       if (n>=0){

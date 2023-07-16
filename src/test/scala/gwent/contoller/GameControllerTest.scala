@@ -3,7 +3,10 @@ package gwent.contoller
 
 import gwent.controller.{Controller, GameController}
 
+import cl.uchile.dcc.gwent.cards.Card
+import cl.uchile.dcc.gwent.cards.structures.Deck
 import cl.uchile.dcc.gwent.exception.StateError
+import cl.uchile.dcc.gwent.players.UserPlayer
 
 class GameControllerTest extends munit.FunSuite {
   var c: Controller = _
@@ -12,6 +15,11 @@ class GameControllerTest extends munit.FunSuite {
     c = new GameController()
   }
 
+  test("el game controller indica si la partida termino"){
+    assert(!c.getIsFinish())
+    c.loose(new UserPlayer("P", new Deck(new Array[Card](0))))
+    assert(c.getIsFinish())
+  }
   test("Parte en el estado Start"){
     assert(c.isStart())
   }

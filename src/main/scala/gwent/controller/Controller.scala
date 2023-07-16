@@ -3,8 +3,12 @@ package gwent.controller
 
 import gwent.controller.states.State
 
+import cl.uchile.dcc.gwent.observer.ISubject
+
 trait Controller {
   def setState(aState: State): Unit
+  def getIsFinish(): Boolean
+  def loose(o: ISubject): Unit
   def handleState(): Unit
   def start(): Unit
   def roundInit(): Unit
