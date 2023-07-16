@@ -1,6 +1,6 @@
 package cl.uchile.dcc
 package gwent.board
-import gwent.cards.{Card, UnitCard, WeatherCard}
+import gwent.cards.{Card, CorpCard, DistanceCard, SiegeCard, WeatherCard}
 import gwent.players.Player
 
 import scala.collection.mutable.ArrayBuffer
@@ -70,7 +70,7 @@ class Board{
    *
    * @return arreglo con  la zona cuerpo a cuerpo de la seccion 1
    */
-  def getSec1C(): ArrayBuffer[UnitCard] = {
+  def getSec1C(): ArrayBuffer[CorpCard] = {
     return sec1.getZoneC()
   }
 
@@ -78,7 +78,7 @@ class Board{
    *
    * @return arreglo con  la zona a distancia de la seccion 1
    */
-  def getSec1D(): ArrayBuffer[UnitCard] = {
+  def getSec1D(): ArrayBuffer[DistanceCard] = {
     sec1.getZoneD()
   }
 
@@ -86,7 +86,7 @@ class Board{
    *
    * @return arreglo con  la zona de asedio de la seccion 1
    */
-  def getSec1S(): ArrayBuffer[UnitCard] = {
+  def getSec1S(): ArrayBuffer[SiegeCard] = {
     sec1.getZoneS()
   }
 
@@ -94,7 +94,7 @@ class Board{
    *
    * @return arreglo con  la zona cuerpo a cuerpo de la seccion 2
    */
-  def getSec2C(): ArrayBuffer[UnitCard] = {
+  def getSec2C(): ArrayBuffer[CorpCard] = {
     sec2.getZoneC()
   }
 
@@ -102,7 +102,7 @@ class Board{
    *
    * @return arreglo con  la zona a distancia de la seccion 2
    */
-  def getSec2D(): ArrayBuffer[UnitCard] = {
+  def getSec2D(): ArrayBuffer[DistanceCard] = {
     sec2.getZoneD()
   }
 
@@ -110,7 +110,7 @@ class Board{
    *
    * @return arreglo con  la zona de asedio de la seccion 2
    */
-  def getSec2S(): ArrayBuffer[UnitCard] = {
+  def getSec2S(): ArrayBuffer[SiegeCard] = {
     sec2.getZoneS()
   }
 

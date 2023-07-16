@@ -1,6 +1,6 @@
 package cl.uchile.dcc
 package gwent.board
-import gwent.cards.UnitCard
+import gwent.cards.{CorpCard, DistanceCard, SiegeCard}
 
 import scala.collection.mutable.ArrayBuffer
 
@@ -21,25 +21,25 @@ class BoardSection  extends Section {
    *
    * En el arreglo se guardan las cartas cuerpo a cuerpo
    */
-  private var zoneC: ArrayBuffer[UnitCard] = new ArrayBuffer[UnitCard]
+  private var zoneC: ArrayBuffer[CorpCard] = new ArrayBuffer[CorpCard]
 
   /** Fila de cartas a distancia
    *
    * En el arreglo se guardan las cartas a distancia
    */
-  private var zoneD: ArrayBuffer[UnitCard] = new ArrayBuffer[UnitCard]
+  private var zoneD: ArrayBuffer[DistanceCard] = new ArrayBuffer[DistanceCard]
 
   /** Fila de cartas de asedio
    *
    * En el arreglo se guardan las cartas de asedio
    */
-  private var zoneS: ArrayBuffer[UnitCard] = new ArrayBuffer[UnitCard](6)
+  private var zoneS: ArrayBuffer[SiegeCard] = new ArrayBuffer[SiegeCard]
 
   /** Asigna cartas a la seccion cuerpo a cuerpo
    *
    * @param card la carta que se asignara en la seccion cuerpo a cuerpo
    */
-  def assignZoneC(card: UnitCard): Unit = {
+  def assignZoneC(card: CorpCard): Unit = {
     zoneC += card
   }
 
@@ -47,7 +47,7 @@ class BoardSection  extends Section {
    *
    * @param card la carta que se asignara en la seccion a Distancia
    */
-  def assignZoneD(card: UnitCard): Unit = {
+  def assignZoneD(card: DistanceCard): Unit = {
     zoneD += card
   }
 
@@ -55,7 +55,7 @@ class BoardSection  extends Section {
    *
    * @param card la carta que se asignara en la seccion de asedio
    */
-  def assignZoneS(card: UnitCard): Unit = {
+  def assignZoneS(card: SiegeCard): Unit = {
     zoneS += card
   }
 
@@ -75,7 +75,7 @@ class BoardSection  extends Section {
    * 
    * @return el arreglo con las cartas de la seccion cuerpo a cuerpo
    */
-  def getZoneC(): ArrayBuffer[UnitCard] = {
+  def getZoneC(): ArrayBuffer[CorpCard] = {
     return zoneC.clone()
   }
 
@@ -83,7 +83,7 @@ class BoardSection  extends Section {
    * 
    * @return el arreglo con las cartas de la seccion a distancia
    */
-  def getZoneD(): ArrayBuffer[UnitCard] = {
+  def getZoneD(): ArrayBuffer[DistanceCard] = {
     return zoneD.clone()
   }
 
@@ -91,22 +91,22 @@ class BoardSection  extends Section {
    * 
    * @return el arreglo con las cartas de la seccion de asedio
    */
-  def getZoneS(): ArrayBuffer[UnitCard] = {
+  def getZoneS(): ArrayBuffer[SiegeCard] = {
     return zoneS.clone()
   }
 
   /** Limpia la sección */
   def clean(): Unit = {
-    zoneC = new ArrayBuffer[UnitCard]()
-    zoneS = new ArrayBuffer[UnitCard]()
-    zoneD = new ArrayBuffer[UnitCard]()
+    zoneC = new ArrayBuffer[CorpCard]()
+    zoneS = new ArrayBuffer[SiegeCard]()
+    zoneD = new ArrayBuffer[DistanceCard]()
   }
 
   /** Aplica bond a las cartas de la fila que tienen igual nombre que card
    *
    * @param card carta de referencia que se usa para aplicar bond
    */
-  def bondC(card: UnitCard): Unit = {
+  def bondC(card: CorpCard): Unit = {
     zoneC.foreach(unitCard => if(unitCard.getName() == card.getName()){unitCard.moreStrength()})
   }
 
@@ -114,7 +114,7 @@ class BoardSection  extends Section {
    *
    * @param card carta de referencia que se usa para aplicar bond
    */
-  def bondD(card: UnitCard): Unit = {
+  def bondD(card: DistanceCard): Unit = {
     zoneD.foreach(unitCard => if(unitCard.getName() == card.getName()){unitCard.moreStrength()})
   }
 
@@ -122,7 +122,7 @@ class BoardSection  extends Section {
    *
    * @param card carta de referencia que se usa para aplicar bond
    */
-  def bondS(card: UnitCard): Unit = {
+  def bondS(card: SiegeCard): Unit = {
     zoneS.foreach(unitCard => if(unitCard.getName() == card.getName()){unitCard.moreStrength()})
   }
 

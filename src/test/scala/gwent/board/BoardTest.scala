@@ -82,9 +82,9 @@ class BoardTest extends munit.FunSuite {
     board.playCardSec1(player, 1)
     board.playCardSec1(player, 1)
     board.clean()
-    assertEquals(board.getSec1S(), new ArrayBuffer[UnitCard](0))
-    assertEquals(board.getSec1C(), new ArrayBuffer[UnitCard](0))
-    assertEquals(board.getSec1D(), new ArrayBuffer[UnitCard](0))
+    assertEquals(board.getSec1S(), new ArrayBuffer[SiegeCard](0))
+    assertEquals(board.getSec1C(), new ArrayBuffer[CorpCard](0))
+    assertEquals(board.getSec1D(), new ArrayBuffer[DistanceCard](0))
     assertEquals(board.getSecW()(0), null)
   }
   test("Se puede obtener la fuerza de cada sección"){

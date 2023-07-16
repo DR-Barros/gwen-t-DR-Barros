@@ -39,7 +39,7 @@ class DistanceCard (private val name: String, private  var strength: Int, privat
 
   /** Una carta a distancia al aplicar vinculo aumenta la fuerza de las cartas en su fila si hay una carta con su nombre */
   def bond(boardSection: Section): Unit = {
-    val fila: ArrayBuffer[UnitCard] = boardSection.getZoneD()
+    val fila: ArrayBuffer[DistanceCard] = boardSection.getZoneD()
     var name: Boolean = false
     fila.foreach(card => if (card.getName() == getName()) {
       name = true

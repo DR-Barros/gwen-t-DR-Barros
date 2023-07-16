@@ -18,8 +18,8 @@ class MoralEffectTest extends munit.FunSuite {
     assertEquals(moral.getName(), "Refuerzo moral")
   }
   test("Al hacer apply se añade uno de fuerza a todas las cartas que estaran en la misma fila"){
-    val card: UnitCard = new SiegeCard("nombre", 14, new NullEffect)
-    val card2: UnitCard = new SiegeCard("nombre", 14, new NullEffect)
+    val card: SiegeCard = new SiegeCard("nombre", 14, new NullEffect)
+    val card2: SiegeCard = new SiegeCard("nombre", 14, new NullEffect)
     boardSection.assignZoneS(card)
     moral.apply(boardSection, card2)
     assertEquals(card.getStrength(), 15)

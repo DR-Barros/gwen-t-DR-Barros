@@ -35,7 +35,7 @@ class SiegeCard (private val name: String, private  var strength: Int, private v
 
   /** Una carta de asedio al aplicar vinculo aumenta la fuerza de las cartas en su fila si hay una carta con su nombre */
   def bond(boardSection: Section): Unit = {
-    val fila: ArrayBuffer[UnitCard] = boardSection.getZoneS()
+    val fila: ArrayBuffer[SiegeCard] = boardSection.getZoneS()
     var name: Boolean = false
     fila.foreach(card => if (card.getName() == getName()) {
       name = true

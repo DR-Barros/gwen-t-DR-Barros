@@ -39,7 +39,7 @@ class CorpCard(private val name: String, private  var strength: Int, private val
 
   /** Una carta cuerpo a cuerpo al aplicar vinculo aumenta la fuerza de las cartas en su fila si hay una carta con su nombre*/
   def bond(boardSection: Section): Unit = {
-    val fila: ArrayBuffer[UnitCard] = boardSection.getZoneC()
+    val fila: ArrayBuffer[CorpCard] = boardSection.getZoneC()
     var name: Boolean = false
     fila.foreach(card => if (card.getName() == getName()){name = true})
     if (name){

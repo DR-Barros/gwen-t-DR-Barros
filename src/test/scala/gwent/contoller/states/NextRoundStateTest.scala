@@ -3,7 +3,7 @@ package gwent.contoller.states
 
 import gwent.controller.GameController
 
-import cl.uchile.dcc.gwent.cards.UnitCard
+import cl.uchile.dcc.gwent.cards.{CorpCard, DistanceCard, SiegeCard, UnitCard}
 
 import scala.collection.mutable.ArrayBuffer
 
@@ -14,7 +14,7 @@ class NextRoundStateTest extends munit.FunSuite {
     c = new GameController()
   }
 
-  test("") {
+  test("Cuando se termina una ronda para la siguiente ronda se debe limpiar el tablero y cada jugador robar maximo 3 cartas") {
     c.handleState()
     c.player2Turn()
     c.handleState()
@@ -27,11 +27,11 @@ class NextRoundStateTest extends munit.FunSuite {
     assertEquals(c.p1.get.handSize(), 10)
     assertEquals(c.p2.get.handSize(), 10)
     assertEquals(c.board.get.getSecW()(0), null)
-    assertEquals(c.board.get.getSec1S(), new ArrayBuffer[UnitCard](0))
-    assertEquals(c.board.get.getSec1D(), new ArrayBuffer[UnitCard](0))
-    assertEquals(c.board.get.getSec1C(), new ArrayBuffer[UnitCard](0))
-    assertEquals(c.board.get.getSec2S(), new ArrayBuffer[UnitCard](0))
-    assertEquals(c.board.get.getSec2D(), new ArrayBuffer[UnitCard](0))
-    assertEquals(c.board.get.getSec2C(), new ArrayBuffer[UnitCard](0))
+    assertEquals(c.board.get.getSec1S(), new ArrayBuffer[SiegeCard](0))
+    assertEquals(c.board.get.getSec1D(), new ArrayBuffer[DistanceCard](0))
+    assertEquals(c.board.get.getSec1C(), new ArrayBuffer[CorpCard](0))
+    assertEquals(c.board.get.getSec2S(), new ArrayBuffer[SiegeCard](0))
+    assertEquals(c.board.get.getSec2D(), new ArrayBuffer[DistanceCard](0))
+    assertEquals(c.board.get.getSec2C(), new ArrayBuffer[CorpCard](0))
   }
 }

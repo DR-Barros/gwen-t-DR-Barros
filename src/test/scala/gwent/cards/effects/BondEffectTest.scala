@@ -18,8 +18,8 @@ class BondEffectTest extends munit.FunSuite {
     assertEquals(bond.getName(), "Vínculo estrecho")
   }
   test("Al hacer apply se añade uno de fuerza a las cartas que tienen el mismo nombre") {
-    val card: UnitCard = new SiegeCard("nombre", 14, new NullEffect)
-    val card2: UnitCard = new SiegeCard("nombre", 14, new NullEffect)
+    val card: SiegeCard = new SiegeCard("nombre", 14, new NullEffect)
+    val card2: SiegeCard = new SiegeCard("nombre", 14, new NullEffect)
     boardSection.assignZoneS(card)
     bond.apply(boardSection, card2)
     assertEquals(card.getStrength(), 15)

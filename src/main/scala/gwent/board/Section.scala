@@ -1,22 +1,22 @@
 package cl.uchile.dcc
 package gwent.board
 
-import gwent.cards.UnitCard
+import gwent.cards.{CorpCard, DistanceCard, SiegeCard}
 
 import scala.collection.mutable.ArrayBuffer
 
 trait Section {
-  def assignZoneC(card: UnitCard): Unit
-  def assignZoneD(card: UnitCard): Unit
-  def assignZoneS(card: UnitCard): Unit
+  def assignZoneC(card: CorpCard): Unit
+  def assignZoneD(card: DistanceCard): Unit
+  def assignZoneS(card: SiegeCard): Unit
   def getStrength(): Int
-  def getZoneC(): ArrayBuffer[UnitCard]
-  def getZoneD(): ArrayBuffer[UnitCard]
-  def getZoneS(): ArrayBuffer[UnitCard]
+  def getZoneC(): ArrayBuffer[CorpCard]
+  def getZoneD(): ArrayBuffer[DistanceCard]
+  def getZoneS(): ArrayBuffer[SiegeCard]
   def clean(): Unit
-  def bondC(card: UnitCard): Unit
-  def bondD(card: UnitCard): Unit
-  def bondS(card: UnitCard): Unit
+  def bondC(card: CorpCard): Unit
+  def bondD(card: DistanceCard): Unit
+  def bondS(card: SiegeCard): Unit
   def moralC(): Unit
   def moralD(): Unit
   def moralS(): Unit
