@@ -58,6 +58,12 @@ Esta clase define los métodos getName y getStrength que devuelve el nombre y fu
    Esta subclase de UnitCard representa las cartas cuerpo a cuerpo, hereda los métodos getName y getStrength
    de UnitCard y añade la implementación del método getCardType para que devuelva "DistanceCard"
 
+#### Efectos:
+Para la implementación de los efectos se crearon las clases de efectos, cuatro para el clima (ClearEffect, 
+FogEffect, FrostEffect, RainEffect) y 3 para las cartas de unidad (BondEffect, MoralEffect, NullEffect). Hay que notar 
+que NullEffect es una implementacion de NULL OBJECT
+
+
 ---
 
 ## Jugadores

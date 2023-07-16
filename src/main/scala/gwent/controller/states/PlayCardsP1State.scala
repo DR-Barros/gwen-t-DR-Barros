@@ -17,8 +17,8 @@ class PlayCardsP1State extends AbstractState {
       var input: String = StdIn.readLine()
       if (input == "si"){
         println("Elije que carta jugar")
-        var input: Int = StdIn.readLine().toInt
-        c.get.p1.get.playCard(input)
+        var inputCard: Int = StdIn.readLine().toInt
+        c.get.p1.get.playCard(inputCard)
       } else {
         finishRound()
       }
