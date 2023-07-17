@@ -1,7 +1,7 @@
 package cl.uchile.dcc
 package gwent.cards.effects
 import gwent.board.Section
-import gwent.cards.{Card, UnitCard}
+import gwent.cards.UnitCard
 
 /** Efecto nulo */
 class NullEffect extends UnitEffect {

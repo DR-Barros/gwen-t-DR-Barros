@@ -12,7 +12,7 @@ import java.util.Objects
 /** Clase abstracta de cartas Unidad
  * 
  * Las cartas de unidad que van a implementar esta clase abstracta son siegeCard, CorpCard y DistanceCard.
- * Las cartas de unidad tienen en comun tener un nombre, un tipo y fuerza.
+ * Las cartas de unidad tienen en común tener un nombre, un tipo y fuerza.
  * 
  * @param name nombre de la carta
  * @param strength fuerza de la carta

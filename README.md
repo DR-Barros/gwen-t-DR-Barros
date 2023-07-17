@@ -73,6 +73,8 @@ Para la implementación de los efectos se crearon 3 clases para las cartas de un
 * MoralEffect: o refuerzo moral, aumenta la fuerza de las cartas en su fila en 1, excepto a si misma
 * NullEffect: es una implementación de null object para las cartas sin efecto
 
+A su vez los efectos climaticos sobre las cartas se realizan mediante estados. ClearState, FogState, FrostState y RainState.
+
 ---
 
 ## Jugadores
@@ -144,11 +146,14 @@ Es importante notar que si el jugador no tiene cartas por jugar se pasa automát
 
 ---
 ## Factories
-
+Se implementan fábricas para la creación de las cartas al iniciar la partida (para crear los mazos). Cada Fabrica crea cartas 
+de forma random eligiendo entre un arreglo de nombres, un entero (entre 0 y 20) que representa la fuerza de la carta y un efecto que se elige 
+tambien de forma aleatoria.
 
 ---
 ## Vista
-Es la clase encargada de los outputs e inputs del juego, permite que este se pueda jugar en la consola
+Es la clase encargada de los outputs e inputs del juego, permite que este se pueda jugar en la consola.
+Dentro de sus funciones esta mostrar el tablero, la mano del jugador, preguntarle al jugador si quiere jugar cartas, cuál carta jugar, entre otras.
 
 ---
 ## UML Global
