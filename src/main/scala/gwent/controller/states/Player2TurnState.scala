@@ -13,10 +13,10 @@ class Player2TurnState extends AbstractState {
     val S1 = c.get.board.get.getSec1Strength()
     val S2 = c.get.board.get.getSec2Strength() + c.get.p2.get.handStrength()
     if ((S2 >= S1 && c.get.p2.get.handHasUnitCard() >= 0) || (S2<= S1 && c.get.p2.get.handHasWeatherCard() >= 0)){
-      println("El CPU esta eligiendo que carta jugar")
+      c.get.view.cpuPlay()
       playCardP2()
     } else {
-      println("El CPU paso su turno")
+      c.get.view.cpuPass()
       playCardsP1()
     }
   }

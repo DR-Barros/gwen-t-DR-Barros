@@ -13,14 +13,14 @@ class FinishRoundState extends AbstractState {
     val S1 = c.get.board.get.getSec1Strength()
     val S2 = c.get.board.get.getSec2Strength()
     if (S1 == S2){
-      println("Empataron la ronda")
+      c.get.view.draw()
       c.get.p1.get.loseGems()
       c.get.p2.get.loseGems()
     } else if (S1 > S2){
-      println("Gano la ronda el jugador 1")
+      c.get.view.winP1()
       c.get.p2.get.loseGems()
     } else {
-      println("Gano la ronda el CPU")
+      c.get.view.winP2()
       c.get.p1.get.loseGems()
     }
     if (c.get.getIsFinish()){

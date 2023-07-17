@@ -15,19 +15,19 @@ class PlayCardsP2State extends AbstractState {
     if (S2 >= S1) {
       var n: Int = c.get.p2.get.handHasUnitCard()
       if (n >=0){
-        println("El CPU jugo una carta de unidad")
+        c.get.view.cpuPlay()
         c.get.board.get.playCardSec2(c.get.p2.get, n+1)
       } else {
-        println("El CPU paso su turno")
+        c.get.view.cpuPass()
         finishRound()
       }
     } else {
       var n: Int = c.get.p2.get.handHasWeatherCard()
       if (n>=0){
-        println("El CPU jugo una carta de clima")
+        c.get.view.cpuPlay()
         c.get.board.get.playCardSec2(c.get.p2.get, n+1)
       } else {
-        println("El CPU paso su turno")
+        c.get.view.cpuPass()
         finishRound()
       }
     }

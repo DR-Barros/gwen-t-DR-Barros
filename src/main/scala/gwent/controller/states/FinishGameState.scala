@@ -12,8 +12,7 @@ import scala.io.StdIn
 class FinishGameState extends AbstractState {
   /** acción que realiza el juego */
   def handle(): Unit = {
-    println("Quieres jugar una nueva partida: (si/no)")
-    var input: String = StdIn.readLine().toLowerCase()
+    var input = c.get.view.finishGame()
     if (input == "si"){
       start()
     }

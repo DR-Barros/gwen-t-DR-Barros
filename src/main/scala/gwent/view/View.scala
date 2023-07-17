@@ -17,7 +17,7 @@ import scala.io.StdIn
 class View {
   /** Muestra en consola el estado actual del tablero */
   def showBoard(secW: Array[WeatherCard], sec1C:ArrayBuffer[CorpCard], sec1S:ArrayBuffer[SiegeCard], sec1D:ArrayBuffer[DistanceCard], sec2C:ArrayBuffer[CorpCard], sec2S:ArrayBuffer[SiegeCard], sec2D:ArrayBuffer[DistanceCard]): Unit = {
-    println("Sección CPU \n Fila cartas a Distancia")
+    println("Sección CPU \nFila cartas a Distancia")
     for (c <- sec2D)
       println("Carta: "+ c.getName()+" Fuerza:"+c.getStrength())
     println("Fila cartas de asedio")
@@ -31,7 +31,7 @@ class View {
     } else {
       println("Carta clima: "+secW(0).getName())
     }
-    println("Sección Jugador"+"\n Fila combate cuerpo a cuerpo")
+    println("Sección Jugador"+"\nFila combate cuerpo a cuerpo")
     for (c <- sec1C)
       println("Carta: " + c.getName() + " Fuerza:" + c.getStrength())
     println("Fila cartas de asedio")
@@ -43,12 +43,16 @@ class View {
   }
 
   def showHand(hand: ArrayBuffer[Card]): Unit = {
-    var i: Int = 1
-    println("Tu mano es:")
+    if(hand.size > 0){
+      var i: Int = 1
+      println("Tu mano es:")
       for (card <- hand){
         println(s"Carta $i: "+card.print())
         i += 1
       }
+    } else {
+      println("Tu mano esta vacia")
+    }
   }
   def selectCard(n: Int): Int = {
     println(s"Elige una carta entre 1 y $n")
@@ -59,10 +63,23 @@ class View {
     }
     return ret
   }
-  def cpuPlay(): Unit = {
-    println("Esta jugando el cpu")
-  }
-  def cpuPass(): Unit = {
-    println("El cpu paso su turno")
+  def cpuPlay(): Unit = println("Esta jugando el cpu")
+  
+  def cpuPass(): Unit = println("El cpu paso su turno")
+ 
+  def winP1(): Unit = println("Gano la ronda el CPU")
+  
+  def winP2(): Unit = println("Gano la ronda el jugador 1")
+  
+  def draw(): Unit = println("Empataron la ronda")
+  
+  def finishGame(): String ={
+    println("Quieres jugar una nueva partida: (si/no)")
+    var input: String = StdIn.readLine().toLowerCase()
+    while (input != "si" || input != "no"){
+      println("Quieres jugar una nueva partida: (si/no)")
+      var input: String = StdIn.readLine().toLowerCase()
+    }
+    return input
   }
 }
