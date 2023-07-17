@@ -70,9 +70,9 @@ class CorpCardTest extends munit.FunSuite{
     section.assignZoneC(c2)
     section.assignZoneC(c3)
     C1.bond(section)
-    assertEquals(C1.getStrength(), 19)
+    assertEquals(C1.getStrength(), 36)
     assertEquals(c2.getStrength(), 20)
-    assertEquals(c3.getStrength(), 21)
+    assertEquals(c3.getStrength(), 40)
   }
   test("Una carta cuerpo a cuerpo aplica moral a las cartas de su fila") {
     val c2 = new CorpCard("valkiria", 20, new NullEffect)

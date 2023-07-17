@@ -41,7 +41,7 @@ class SiegeCard (private val name: String, private  var strength: Int, private v
       name = true
     })
     if (name) {
-      this.moreStrength()
+      this.doubleStrength()
       boardSection.bondS(this)
     }
   }

@@ -45,7 +45,7 @@ class DistanceCard (private val name: String, private  var strength: Int, privat
       name = true
     })
     if (name) {
-      this.moreStrength()
+      this.doubleStrength()
       boardSection.bondD(this)
     }
   }

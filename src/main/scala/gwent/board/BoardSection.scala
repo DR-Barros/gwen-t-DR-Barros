@@ -107,7 +107,7 @@ class BoardSection  extends Section {
    * @param card carta de referencia que se usa para aplicar bond
    */
   def bondC(card: CorpCard): Unit = {
-    zoneC.foreach(unitCard => if(unitCard.getName() == card.getName()){unitCard.moreStrength()})
+    zoneC.foreach(unitCard => if(unitCard.getName() == card.getName()){unitCard.doubleStrength()})
   }
 
   /** Aplica bond a las cartas de la fila que tienen igual nombre que card
@@ -115,7 +115,7 @@ class BoardSection  extends Section {
    * @param card carta de referencia que se usa para aplicar bond
    */
   def bondD(card: DistanceCard): Unit = {
-    zoneD.foreach(unitCard => if(unitCard.getName() == card.getName()){unitCard.moreStrength()})
+    zoneD.foreach(unitCard => if(unitCard.getName() == card.getName()){unitCard.doubleStrength()})
   }
 
   /** Aplica bond a las cartas de la fila que tienen igual nombre que card
@@ -123,7 +123,7 @@ class BoardSection  extends Section {
    * @param card carta de referencia que se usa para aplicar bond
    */
   def bondS(card: SiegeCard): Unit = {
-    zoneS.foreach(unitCard => if(unitCard.getName() == card.getName()){unitCard.moreStrength()})
+    zoneS.foreach(unitCard => if(unitCard.getName() == card.getName()){unitCard.doubleStrength()})
   }
 
   /** Aplica moral a las cartas de la fila */

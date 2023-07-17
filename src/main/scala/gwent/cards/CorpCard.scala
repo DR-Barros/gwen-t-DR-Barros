@@ -43,7 +43,7 @@ class CorpCard(private val name: String, private  var strength: Int, private val
     var name: Boolean = false
     fila.foreach(card => if (card.getName() == getName()){name = true})
     if (name){
-      this.moreStrength()
+      this.doubleStrength()
       boardSection.bondC(this)
     }
   }

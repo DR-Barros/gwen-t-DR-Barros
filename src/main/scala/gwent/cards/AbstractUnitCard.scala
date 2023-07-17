@@ -62,6 +62,12 @@ abstract class AbstractUnitCard(private val name: String, private var strength: 
     strength += 1
   }
 
+  /** Duplica la fuerza de la carta
+   */
+  def doubleStrength(): Unit = {
+    strength += strength
+  }
+
   /** Le entrega la responsabilidad a la carta de aplicar el efecto
    *
    * @param board        tablero del juego

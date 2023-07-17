@@ -70,9 +70,9 @@ class DistanceCardTest extends munit.FunSuite{
     section.assignZoneD(c2)
     section.assignZoneD(c3)
     C1.bond(section)
-    assertEquals(C1.getStrength(), 15)
+    assertEquals(C1.getStrength(), 28)
     assertEquals(c2.getStrength(), 20)
-    assertEquals(c3.getStrength(), 21)
+    assertEquals(c3.getStrength(), 40)
   }
   test("Una carta aplica moral a las cartas de su fila") {
     val c2 = new DistanceCard("mago", 20, new NullEffect)

@@ -23,7 +23,10 @@ asedio) por lo que deben tener un método que devuelva estos valores para poder 
 respectivamente estos métodos son getName y getCardType. Además, tienen un método assignZone que asigna donde debería 
 quedar la carta cuando es jugada en el tablero.
 
-![Esquema UML de Card](Card(Trait).jpg)
+Posteriormente se agregaron los métodos print y apply que respectivamente permiten entregar la informacion que se debe imprimir para 
+cada carta y aplicar los efectos de las cartas
+
+![Esquema UML de Card](Card.jpg)
 
 
 
@@ -31,17 +34,23 @@ quedar la carta cuando es jugada en el tablero.
 
 ### Tipos de carta:
 
-#### WeatherCard:
+### WeatherCard:
 Las cartas de clima son un tipo de carta especial, que se colocan en la zona de clima, 
 para poder asegurar que se colocan en esa zona es que getCardType devuelve "Weather".
 
 Estas cartas tendrán el poder de afectar el campo de batalla y brindar ventajas o desventajas a los jugadores, 
-una vez que se implemeten los efectos.
+mediante los efectos que tengan.
 Por ahora su implementación es de esta forma:
 
 ![Esquema UML de WeatherCard](WeatherCard.jpg)
 
-#### UnitCard:
+#### Efectos:
+* ClearEffect: elimina todos los efectos climaticos actualmente en efecto
+* FogEffect: o niebla impenetrable deja la fuerza de todas las unidades de combate a distancia en 1 y el resto quedan sin efectos.
+* FrostEffect: o escarcha mordiente deja la fuerza de todas las unidades de combate cuerpo a cuerpo en 1 y el resto quedan sin efectos.
+* RainEffect: o niebla mordiente deja la fuerza de todas las unidades de asedio en 1 y el resto quedan sin efectos.
+
+### UnitCard:
 La Clase abstracta UnitCard tiene 3 subclases, las cuales son CorpCard, SiegeCard y DistanceCard
 las que respectivamente representan Unidades cuerpo a cuerpo, Unidades de asedio y Unidades a distancia.
 Esta clase define los métodos getName y getStrength que devuelve el nombre y fuerza que debe tener una carta de unidad.
@@ -59,10 +68,10 @@ Esta clase define los métodos getName y getStrength que devuelve el nombre y fu
    de UnitCard y añade la implementación del método getCardType para que devuelva "DistanceCard"
 
 #### Efectos:
-Para la implementación de los efectos se crearon las clases de efectos, cuatro para el clima (ClearEffect, 
-FogEffect, FrostEffect, RainEffect) y 3 para las cartas de unidad (BondEffect, MoralEffect, NullEffect). Hay que notar 
-que NullEffect es una implementacion de NULL OBJECT
-
+Para la implementación de los efectos se crearon 3 clases para las cartas de unidad (BondEffect, MoralEffect, NullEffect). 
+* BondEffect: o vínculo estrecho, si ya existe una carta con el mismo nombre en la fila duplica la fuerza de esta incluyendose a si misma
+* MoralEffect: o refuerzo moral, aumenta la fuerza de las cartas en su fila en 1, excepto a si misma
+* NullEffect: es una implementación de null object para las cartas sin efecto
 
 ---
 
@@ -107,35 +116,43 @@ La representación de las secciones se hace mediante la clase BoardSection que c
 * Asedio
 estas filas son arreglos con hasta 6 cartas, en donde cada uno recibe el tipo de carta correspondiente
 
-## UML Global
-![Esquema UML](UML%20global.jpg)
-
 
 ## Controlador:
 El siguiente esquema de estados resume los distintos estados en que puede encontrarse el GameController.
+
 ![Esquema de estados](esquemaEstados.jpg)
+
 Los estados son los siguientes:
 1. inicio (Start): En este primer estado se inicializan los jugadores, el tablero y luego cada jugador roba 10 cartas. 
 De este estado se pasa a Inicio Ronda.
-3. Inicio ronda (RoundInit): En este estado se decide cúal de los jugadores va a comenzar a jugar primero. Puede pasar a 
+3. Inicio ronda (RoundInit): En este estado se decide cuál de los jugadores va a comenzar a jugar primero. Puede pasar a 
 "Turno P1" o "Turno P2".
 4. Turno P1: En este estado el jugador decide si jugar 1 carta o pasar el turno. Si el jugador decide jugar cartas 
-pasa a "Jugar carta P1" y si elige pasar pasa al estado "Turno P2 final". 
-5. Jugar carta P1: En este estado el jugador decide cúal carta jugar. De este estado se pasa a "Turno P2"
-6. Turno P1 final: En este estado el jugador decide si jugar cartas o pasar el turno. Si el jugador decide pasar se termina la ronda
-7. Jugar cartas P1: En este estado el jugador puede jugar cuantas cartas quiera. De este estado se pasa a "Turno P2 final"
-8. Turno P2: En este estado el jugador decide si jugar 1 carta o pasar el turno. Si el jugador decide jugar cartas
-   pasa a "Jugar carta P2" y si elige pasar pasa al estado "Turno P1 final".
-9. Jugar carta P2: En este estado el jugador decide cúal carta jugar. De este estado se pasa a "Turno P1"
-10. Turno P2 fin: En este estado el jugador decide si jugar cartas o pasar el turno. Si el jugador decide pasar se termina la ronda
-11. Jugar cartas P2: En este estado el jugador puede jugar cuantas cartas quiera. De este estado se pasa a "Turno P1 final"
-12. Terminar ronda: En este estado se calculan los puntos de los jugadores y se restan las gemas correspondientes segun quien perdio
+pasa a "Jugar carta P1" y si elige pasar pasa al estado "Jugar Cartas P2". 
+5. Jugar carta P1: En este estado el jugador decide cuál carta jugar. De este estado se pasa a "Turno P2"
+6. Jugar cartas P1: En este estado el jugador puede jugar cuantas cartas quiera. De este estado se pasa a "Final de ronda"
+7. Turno P2: En este estado el jugador decide si jugar 1 carta o pasar el turno. Si el jugador decide jugar cartas
+   pasa a "Jugar carta P2" y si elige pasar pasa al estado "Jugar Cartas P1".
+8. Jugar carta P2: En este estado el jugador decide cuál carta jugar. De este estado se pasa a "Turno P1"
+9. Jugar cartas P2: En este estado el jugador puede jugar cuantas cartas quiera. De este estado se pasa a "Final de ronda"
+10. Terminar ronda: En este estado se calculan los puntos de los jugadores y se restan las gemas correspondientes según quien perdio
 o si hay empate. De este estado si alguno de los jugadores se quedo sin cartas se pasa a "Terminar juego" si no se pasa a "Proxima ronda"
-13. Proxima ronda: En este estado se borra el tablero y roban 3 cartas cada jugador. De este estado se pasa a "Inicio de ronda"
-14. Terminar juego: En este estado se evalua quien gano o si hubo empate. Si el jugador quiere puede reiniciar el juego volviendo a "Inicio"
+11. Proxima ronda: En este estado se borra el tablero y roban 3 cartas cada jugador. De este estado se pasa a "Inicio de ronda"
+12. Terminar juego: En este estado se evalua quien gano o si hubo empate. Si el jugador quiere puede reiniciar el juego volviendo a "Inicio"
 
-Es importante notar que si el jugador no tiene cartas por jugar se pasa automaticamente su turno.
+Es importante notar que si el jugador no tiene cartas por jugar se pasa automáticamente su turno.
 
+---
+## Factories
+
+
+---
+## Vista
+Es la clase encargada de los outputs e inputs del juego, permite que este se pueda jugar en la consola
+
+---
+## UML Global
+![Esquema UML](UML%20global.jpg)
 ---
 **The rest of the documentation is left for the users of this template to complete**
 

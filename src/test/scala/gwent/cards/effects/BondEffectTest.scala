@@ -22,6 +22,6 @@ class BondEffectTest extends munit.FunSuite {
     val card2: SiegeCard = new SiegeCard("nombre", 14, new NullEffect)
     boardSection.assignZoneS(card)
     bond.apply(boardSection, card2)
-    assertEquals(card.getStrength(), 15)
+    assertEquals(card.getStrength(), 28)
   }
 }

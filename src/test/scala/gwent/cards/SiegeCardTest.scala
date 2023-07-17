@@ -73,9 +73,9 @@ class SiegeCardTest extends munit.FunSuite{
     section.assignZoneS(c2)
     section.assignZoneS(c3)
     C1.bond(section)
-    assertEquals(C1.getStrength(), 26)
+    assertEquals(C1.getStrength(), 50)
     assertEquals(c2.getStrength(), 20)
-    assertEquals(c3.getStrength(), 21)
+    assertEquals(c3.getStrength(), 40)
   }
   test("Una carta aplica moral a las cartas de su fila") {
     val c2 = new SiegeCard("Torre", 20, new NullEffect)

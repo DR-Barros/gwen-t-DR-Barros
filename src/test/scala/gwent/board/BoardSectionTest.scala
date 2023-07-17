@@ -35,7 +35,7 @@ class BoardSectionTest extends munit.FunSuite{
     Sec1.assignZoneC(card)
     Sec1.assignZoneC(card3)
     Sec1.bondC(card2)
-    assertEquals(card.getStrength(), 15)
+    assertEquals(card.getStrength(), 28)
     assertEquals(card3.getStrength(), 14)
   }
   test("las cartas al aplicarle vinculo a la fila D, si tienen el mismo nombre aumentan en uno su fuerza") {
@@ -45,7 +45,7 @@ class BoardSectionTest extends munit.FunSuite{
     Sec1.assignZoneD(card)
     Sec1.assignZoneD(card3)
     Sec1.bondD(card2)
-    assertEquals(card.getStrength(), 15)
+    assertEquals(card.getStrength(), 28)
     assertEquals(card3.getStrength(), 14)
   }
   test("las cartas al aplicarle vinculo a la fila S, si tienen el mismo nombre aumentan en uno su fuerza") {
@@ -55,7 +55,7 @@ class BoardSectionTest extends munit.FunSuite{
     Sec1.assignZoneS(card)
     Sec1.assignZoneS(card3)
     Sec1.bondS(card2)
-    assertEquals(card.getStrength(), 15)
+    assertEquals(card.getStrength(), 28)
     assertEquals(card3.getStrength(), 14)
   }
   test("las cartas al aplicarle moral a la fila C aumentan en uno su fuerza") {
