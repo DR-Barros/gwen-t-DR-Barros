@@ -57,6 +57,9 @@ class GameController extends Controller{
   /** devuelve si el juego termino */
   def getIsFinish(): Boolean = return isFinish
 
+  /** establece que el juego no termino */
+  def resetGame(): Unit = isFinish = false
+
   /**Inidca el jugador que perdio la partida
    * 
    * @param o el jugador que perdio la partida

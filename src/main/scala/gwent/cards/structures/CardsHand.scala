@@ -89,9 +89,9 @@ class CardsHand {
    */
   def hasWeatherCard(): Int = {
     if (handSize() >0) {
-      for (i <- 0 to handSize()) {
-        if (cards(i).isInstanceOf[WeatherCard])
-          return i
+      for (elem <- cards) {
+        if (elem.isInstanceOf[WeatherCard])
+          return cards.indexOf(elem)
       }
     }
     return -1
@@ -103,9 +103,9 @@ class CardsHand {
    */
   def hasUnitCard(): Int = {
     if (handSize() >0){
-      for (i <- 0 to handSize()) {
-        if (cards(i).isInstanceOf[UnitCard])
-          return i
+      for (elem <- cards) {
+        if (elem.isInstanceOf[UnitCard])
+          return cards.indexOf(elem)
       }
     }
     return -1

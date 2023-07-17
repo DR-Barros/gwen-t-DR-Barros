@@ -8,6 +8,7 @@ import cl.uchile.dcc.gwent.observer.ISubject
 trait Controller {
   def setState(aState: State): Unit
   def getIsFinish(): Boolean
+  def resetGame(): Unit
   def loose(o: ISubject): Unit
   def handleState(): Unit
   def start(): Unit

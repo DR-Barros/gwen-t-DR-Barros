@@ -33,5 +33,6 @@ class NextRoundStateTest extends munit.FunSuite {
     assertEquals(c.board.get.getSec2S(), new ArrayBuffer[SiegeCard](0))
     assertEquals(c.board.get.getSec2D(), new ArrayBuffer[DistanceCard](0))
     assertEquals(c.board.get.getSec2C(), new ArrayBuffer[CorpCard](0))
+    assert(c.isRoundInit())
   }
 }

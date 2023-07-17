@@ -15,10 +15,12 @@ class GameControllerTest extends munit.FunSuite {
     c = new GameController()
   }
 
-  test("el game controller indica si la partida termino"){
+  test("el game controller indica si la partida terminoy se puede reiniciar"){
     assert(!c.getIsFinish())
     c.loose(new UserPlayer("P", new Deck(new Array[Card](0))))
     assert(c.getIsFinish())
+    c.resetGame()
+    assert(!c.getIsFinish())
   }
   test("Parte en el estado Start"){
     assert(c.isStart())

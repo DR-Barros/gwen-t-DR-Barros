@@ -15,6 +15,7 @@ class NextRoundState extends AbstractState {
       c.get.p1.get.stealCard()
       c.get.p2.get.stealCard()
     }
+    roundInit()
   }
   /** cambia el estado a RoundInit */
   override def roundInit(): Unit = changeState(new RoundInitState())
