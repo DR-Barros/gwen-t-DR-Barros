@@ -13,11 +13,9 @@ class PlayCardsP1State extends AbstractState {
   /** acción que realiza el juego */
   def handle(): Unit = {
     if (c.get.p1.get.handSize() > 0){
-      println("Quieres jugar cartas? (si/no)")
-      var input: String = StdIn.readLine()
-      if (input == "si"){
-        println("Elije que carta jugar")
-        var inputCard: Int = StdIn.readLine().toInt
+      var input: String = c.get.view.playerTurn()
+      if (input == "jugar"){
+        var inputCard: Int = c.get.view.selectCard(c.get.p1.get.handSize())
         c.get.p1.get.playCard(inputCard)
       } else {
         finishRound()

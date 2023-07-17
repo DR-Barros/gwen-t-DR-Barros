@@ -12,8 +12,8 @@ import scala.io.StdIn
 class PlayCardP1State extends AbstractState {
   /** acción que realiza el juego */
   def handle(): Unit = {
-    println("Elije que carta jugar")
-    var input: Int = StdIn.readLine().toInt
+    c.get.view.showHand(c.get.p1.get.getHand())
+    var input: Int = c.get.view.selectCard(c.get.p1.get.handSize())
     c.get.board.get.playCardSec1(c.get.p1.get, input)
     player2Turn()
   }

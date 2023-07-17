@@ -42,6 +42,7 @@ class View {
       println("Carta: " + c.getName() + " Fuerza:" + c.getStrength())
   }
 
+  /** Muestra en consola la mano del jugador */
   def showHand(hand: ArrayBuffer[Card]): Unit = {
     if(hand.size > 0){
       var i: Int = 1
@@ -54,25 +55,56 @@ class View {
       println("Tu mano esta vacia")
     }
   }
+
+  /** Le pregunta al jugador si quiere jugar una carta o pasar el turno
+   * 
+   * @return un string con la respuesta del jugador
+   */
+  def playerTurn(): String = {
+    println("Quieres jugar una carta o pasar (escribe 'jugar' o 'pasar'):")
+    var input: String = StdIn.readLine().toLowerCase()
+    val p = Array("jugar", "pasar")
+    while (!p.contains(input)) {
+      println(input)
+      println("escribe 'jugar' o 'pasar' para elegir acción:")
+      input = StdIn.readLine().toLowerCase()
+    }
+    return input
+  }
+
+  /** Permite al jugador decidir que carta quiere jugar
+   * 
+   * @param n entero que representa el numero de cartas que tiene en la mano el jugador
+   * @return devuelve el entero que representa la carta que quiere jugar el jugador
+   */
   def selectCard(n: Int): Int = {
-    println(s"Elige una carta entre 1 y $n")
+    println(s"Elige una carta entre 1 y $n para jugar")
     var ret: Int = StdIn.readInt()
     while (ret<=0 || ret > n){
-      println(s"Elige una carta entre 1 y $n")
+      println(s"La carta debe ser entre 1 y $n")
       ret = StdIn.readInt()
     }
     return ret
   }
-  def cpuPlay(): Unit = println("Esta jugando el cpu")
-  
+  /** Indica en consola que el CPU esta jugando */
+  def cpuPlay(): Unit = println("Esta jugando el CPU")
+
+  /** Indica en consola que el CPU paso su turno */
   def cpuPass(): Unit = println("El cpu paso su turno")
- 
-  def winP1(): Unit = println("Gano la ronda el CPU")
-  
-  def winP2(): Unit = println("Gano la ronda el jugador 1")
-  
+
+  /** Indica en consola que el Jugador gano la ronda */
+  def winP1(): Unit = println("Gano la ronda el Jugador")
+
+  /** Indica en consola que el CPU gano la ronda */
+  def winP2(): Unit = println("Gano la ronda el CPU")
+
+  /** Indica en consola que hubo empate en la ronda*/
   def draw(): Unit = println("Empataron la ronda")
-  
+
+  /**Pregunta al jugador si quiere jugar una nueva partida
+   * 
+   * @return string con la respuesta del jugador
+   */
   def finishGame(): String ={
     println("Quieres jugar una nueva partida: (si/no)")
     var input: String = StdIn.readLine().toLowerCase()

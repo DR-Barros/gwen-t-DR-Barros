@@ -11,18 +11,13 @@ import scala.io.StdIn
 class Player1TurnState extends AbstractState {
   /** acción que realiza el juego */
   def handle(): Unit = {
+    val b = c.get.board.get
+    c.get.view.showBoard(b.getSecW(), b.getSec1C(), b.getSec1S(), b.getSec1D(), b.getSec2C(), b.getSec2S(), b.getSec2D())
     val n: Int = c.get.p1.get.handSize()
     if (n == 0){
       playCardsP2()
     } else {
-      println("Quieres jugar una carta o pasar (escribe 'jugar' o 'pasar'):")
-      var input: String = StdIn.readLine().toLowerCase()
-      val p = Array("jugar", "pasar")
-      while (!p.contains(input)) {
-        println(input)
-        println("escribe 'jugar' o 'pasar' para elegir acción:")
-        input = StdIn.readLine().toLowerCase()
-      }
+      val input = c.get.view.playerTurn()
       if (input == "jugar") {
         playCardP1()
       } else {

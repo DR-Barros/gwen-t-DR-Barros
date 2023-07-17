@@ -57,7 +57,7 @@ class ViewTest extends munit.FunSuite {
       v.cpuPlay()
     }
     val resultado = outputStream.toString.trim
-    assertEquals(resultado, "Esta jugando el cpu")
+    assertEquals(resultado, "Esta jugando el CPU")
   }
   test("imprime que el CPU paso su turno") {
     val outputStream = new ByteArrayOutputStream
