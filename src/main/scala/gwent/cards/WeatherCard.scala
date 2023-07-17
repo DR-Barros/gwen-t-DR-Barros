@@ -26,6 +26,15 @@ class WeatherCard(private val name: String, private val effect: WeatherEffect) e
     return name
   }
 
+  /** Entrega la información a imprimir de la carta
+   *
+   * @return un string con lo que deberia imprimir la carta
+   */
+  def print(): String = {
+    val ret: String = getName()  + " Tipo: " + getCardType() + " Efecto: " + effect.getName()
+    return ret
+  }
+
   /** Asigna la carta en la seccion de clima
    * 
    * @param sec es la seccion del tablero a la cual hay que asignar la carta

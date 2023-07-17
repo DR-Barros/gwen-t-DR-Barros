@@ -83,4 +83,11 @@ class CardsHandTest extends munit.FunSuite {
     assertEquals(C1.hasUnitCard(), 0)
     assertEquals(C2.hasUnitCard(), -1)
   }
+  test("Uno puede obtener las cartas que hay en la mano"){
+    C1.addCards(U1)
+    C1.addCards(U2)
+    val cards = C1.getCards()
+    assert(cards.contains(U1))
+    assert(cards.contains(U2))
+  }
 }

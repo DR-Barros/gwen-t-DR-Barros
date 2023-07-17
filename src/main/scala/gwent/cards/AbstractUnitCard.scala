@@ -47,6 +47,15 @@ abstract class AbstractUnitCard(private val name: String, private var strength: 
     }
   }
 
+  /** Entrega la información a imprimir de la carta
+   * 
+   * @return un string con lo que deberia imprimir la carta
+   */
+   def print(): String = {
+     val ret: String = getName() + " Fuerza: " + getStrength() + " Efecto: " + effect.getName()
+     return ret
+   }
+
   /** Aumenta en uno la fuerza de la carta
    */
   def moreStrength(): Unit = {

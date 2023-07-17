@@ -3,12 +3,12 @@ package gwent.players
 
 import gwent.cards.Card
 import gwent.players.Player
-import cl.uchile.dcc.gwent.cards.structures.{CardsHand, Deck}
 
+import cl.uchile.dcc.gwent.cards.structures.{CardsHand, Deck}
 import cl.uchile.dcc.gwent.observer.{ISubject, Observer}
 
 import java.util.Objects
-import scala.collection.mutable.ListBuffer
+import scala.collection.mutable.{ArrayBuffer, ListBuffer}
 
 /** clase que representa un jugador.
  *  Un jugador es cad uno de los participantes en una partida, estos tienen
@@ -75,6 +75,14 @@ class UserPlayer (private  val name: String, private var deck: Deck) extends Pla
    */
   def handSize(): Int = {
     return cardHand.handSize()
+  }
+
+  /** Devuelve las cartas que el jugador tiene en la mano
+   *
+   * @return las cartas que hay en la mano
+   */
+  def getHand(): ArrayBuffer[Card] = {
+    return cardHand.getCards()
   }
 
   /**

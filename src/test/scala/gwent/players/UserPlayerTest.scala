@@ -92,4 +92,14 @@ class UserPlayerTest extends munit.FunSuite {
     p.stealCard()
     assertEquals(p.handHasWeatherCard(), 0)
   }
+  test("Se puede obtener las cartas que el jugador tiene en la mano"){
+    val clima = new WeatherCard("card", new ClearEffect)
+    val corp = new CorpCard("card", 1, new NullEffect)
+    val p = new UserPlayer("p", new Deck(Array(corp, clima)))
+    p.stealCard()
+    p.stealCard()
+    val cards = p.getHand()
+    assert(cards.contains(corp))
+    assert(cards.contains(clima))
+  }
 }

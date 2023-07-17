@@ -21,7 +21,7 @@ class StartState extends AbstractState {
   var factories: Option[CardFactory] = None
   /** acción que realiza el juego */
   def handle(): Unit = {
-    c.get.p1 = Some(new UserPlayer("Player 1", createDeck()))
+    c.get.p1 = Some(new UserPlayer("Jugador", createDeck()))
     c.get.p2 = Some(new UserPlayer("CPU", createDeck()))
     c.get.board = Some(new Board)
     c.get.observers += new GemObserver

@@ -11,8 +11,11 @@ class SiegeCardTest extends munit.FunSuite{
   override def beforeEach(context: BeforeEach): Unit = {
     C1 = new SiegeCard("catapulta", 25, new NullEffect)
   }
-  test("Una carta de asedio tien nombre"){
+  test("Una carta de asedio tiene nombre"){
     assertEquals(C1.getName(), "catapulta")
+  }
+  test("Una carta de asedio tiene un print") {
+    assertEquals(C1.print(), "catapulta Fuerza: 25 Efecto: Sin efecto")
   }
   test("Una carta de asedio es de tipo asedio"){
     assertEquals(C1.getCardType(), "Siege")

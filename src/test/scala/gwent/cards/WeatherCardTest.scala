@@ -11,8 +11,11 @@ class WeatherCardTest extends munit.FunSuite{
     W1 = new WeatherCard("soleado", new ClearEffect)
     W2 = new WeatherCard("nublado", new FogEffect)
   }
-  test("Una carta de clima tien nombre"){
+  test("Una carta de clima tiene nombre"){
     assertEquals(W1.getName(), "soleado")
+  }
+  test("Una carta de clima tiene un print") {
+    assertEquals(W1.print(), "soleado Tipo: Weather Efecto: Clima despejado")
   }
   test("Una carta de clima es de tipo clima y no es igual a una carta de unidad"){
     assertEquals(W1.getCardType(), "Weather")

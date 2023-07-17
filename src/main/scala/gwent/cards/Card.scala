@@ -8,6 +8,8 @@ trait Card {
 
   def getCardType(): String
   
+  def print(): String
+  
   def assignZone(sec: Section, wheather: Array[WeatherCard]): Unit
   
   def apply(board: Board, boardSection: Section): Unit

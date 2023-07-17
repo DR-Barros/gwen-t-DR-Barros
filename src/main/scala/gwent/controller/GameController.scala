@@ -6,6 +6,7 @@ import gwent.players.{Player, UserPlayer}
 import cl.uchile.dcc.gwent.board.Board
 import cl.uchile.dcc.gwent.controller.states.*
 import cl.uchile.dcc.gwent.observer.{ISubject, Observer}
+import cl.uchile.dcc.gwent.view.View
 
 import scala.collection.mutable.ArrayBuffer
 
@@ -20,6 +21,11 @@ import scala.collection.mutable.ArrayBuffer
  * @version 1.0.2
  */
 class GameController extends Controller{
+  /** Vista del juego
+   * 
+   * maneja la interfaz "visual" del juego y los inputs
+   */
+  val view = new View
   /** El jugador 1
    *
    * esta variable guarda una instancia de UserPlayer que representa al jugador 1

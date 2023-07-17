@@ -13,6 +13,6 @@ class NullEffectTest extends munit.FunSuite {
   }
 
   test("Un efecto nulo no tiene nombre") {
-    assertEquals(nulo.getName(), "")
+    assertEquals(nulo.getName(), "Sin efecto")
   }
 }

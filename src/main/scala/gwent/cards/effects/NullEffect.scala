@@ -6,7 +6,7 @@ import gwent.cards.{Card, UnitCard}
 /** Efecto nulo */
 class NullEffect extends UnitEffect {
   /** No tiene nombre */
-  def getName(): String = ""
+  def getName(): String = "Sin efecto"
   /** No hace nada */
   def apply(boardSection: Section, card: UnitCard): Unit = {}
 }

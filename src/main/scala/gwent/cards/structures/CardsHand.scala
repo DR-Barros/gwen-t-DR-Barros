@@ -15,7 +15,7 @@ import scala.collection.mutable.{ArrayBuffer, ListBuffer}
  *
  * @author Daniel Radrigan
  * @since 1.0.0
- * @version 1.0.2
+ * @version 1.0.3
  */
 class CardsHand {
   /** Lista de cartas
@@ -72,6 +72,12 @@ class CardsHand {
     }
     throw new HandDontHaveCard("La mano no contiene  la carta solicitada")
   }
+
+  /** Entrega las cartas que hay en la mano
+   * 
+   * @return devuelve una copia de las cartas en la mano
+   */
+  def getCards(): ArrayBuffer[Card] = cards.clone()
 
   /** entrega la fuerza sumada de las cartas en la mano
    *
