@@ -1,7 +1,12 @@
 package cl.uchile.dcc
 package gwent
 
+import gwent.controller.GameController
+
 @main
 def main(): Unit = {
-  println("Hello world!")
+  val c: GameController = new GameController
+  while (true){
+    c.handleState()
+  }
 }
